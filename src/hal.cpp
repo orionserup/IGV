@@ -1,18 +1,11 @@
 #include "hal.hpp"
 
-Camera::Camera(){};
-
-
-
-
-
-
-
 #ifdef SIMULATION
 
-// 
+// TODO
 
 #else
 
+// TODO
 
 #endif

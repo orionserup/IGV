@@ -9,20 +9,14 @@
 
 #define FR 30
 
-
 using namespace std;
 using namespace cv;
 
-class Camera{
-
-public:
+struct Camera{
 
     Camera();
     Mat GetImage();
-    
-private:
 
-    Mat MyImage;
 };
 
 class Motor{
@@ -35,6 +29,8 @@ public:
     void Turn(char dir);
     void SetSpeed(char speed);
 
+    char GetSpeed();
+    char GetDirection();
 
 private:
 
@@ -60,7 +56,7 @@ public:
 
 private:
 
-    array<Camera> Cameras;
-    array<Motor> Motors;
+    array<Camera, NUMCAMERAS> Cameras;
+    array<Motor, NUMMOTORS> Motors;
 
 };
