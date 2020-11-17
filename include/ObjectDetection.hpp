@@ -3,7 +3,6 @@
 #define HAVE_OPENCV_PHOTO
 
 #include "opencv.hpp"
-#include <vector>
 #include "hal.hpp"
 
 using namespace cv;
@@ -12,14 +11,15 @@ class ObjectDetector{
 
 public:
 
-    ObjectDetector(Camera& MyCamera);
-    void SetCamera(Camera& cam);
-    void ReadImage( byte bytemask ) const;
+    ObjectDetector(HardwareInterface* hal);
+    ObjectDetector();
+
+    void ReadImage( unsigned char bytemask ) const;
+    Mat GetImage( int Loc = 0) { return hal->cam[Loc].GetImage(); }
 
 private:
 
-    Mat& MyImage;
-    Camera& MyCamera;
+    HardwareInterface* hal;
 
 };
 

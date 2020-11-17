@@ -1,21 +1,33 @@
 #include "opencv.hpp"
-#include <array>
 
-#define NUMCAMERAS 2
-#define NUMMOTORS  4
-
-#define IHEIGHT  480
-#define IWIDTH   480
+#define CENTER 0
+#define LEFT 0
+#define RIGHT 1
 
 #define FR 30
 
-using namespace std;
 using namespace cv;
 
-struct Camera{
+struct Location{   // struct for motor location
 
-    Camera();
-    Mat GetImage();
+    enum side: char{left, right};
+    enum balance : char{front, back};
+
+};
+
+class Camera {  // Camera struct, GetImage Calls to either ROS api or to the nano Camera API
+
+public:
+
+    Camera(int Location);
+
+    inline Mat GetImage() const { return this->Image; }
+    inline void Capture();
+
+private:
+
+    Mat Image;
+    int Location;
 
 };
 
@@ -23,40 +35,23 @@ class Motor{
 
 public:
 
-    Motor();
-    Motor(Motor& motor);
+    Motor(Location loc);
 
-    void Turn(char dir);
-    void SetSpeed(char speed);
-
-    char GetSpeed();
-    char GetDirection();
+    inline void SetSpeed(char speed) { this->myspeed = speed; }
+    inline char GetSpeed() const { return this->myspeed; }
 
 private:
 
     char myspeed;
-    char mydirection;
+    Location myloc;
 
 };
 
-class HardwareInterface{
+struct HardwareInterface{
 
-public:
-
-    HardwareInterface(array<Camera, NUMCAMERAS>& Cameras, array<Motor, NUMMOTORS>& motors);
     HardwareInterface();
 
-    void Init();
-
-    void SetCamera(array<Camera, NUMCAMERAS>& cams);
-    void SetMotors(array<Motor, NUMMOTORS>& motors);
-
-    array<Camera, NUMCAMERAS>& GetCameras();
-    array<Motor, NUMMOTORS>& GetMotors();
-
-private:
-
-    array<Camera, NUMCAMERAS> Cameras;
-    array<Motor, NUMMOTORS> Motors;
+    Camera cam[NUMCAMERAS];
+    Motor motors[NUMMOTORS];
 
 };
