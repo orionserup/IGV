@@ -11,16 +11,8 @@ void HardwareInterface::Init(){
 
 #else
 
-void HardwareInterface::Init(){};
 
-
-Mat Camera::GetImage(){
-    Mat Output;
-
-
-
-    return Output;
-}
+Mat Camera::GetImage() const ;
 
 Camera::Camera(){
 

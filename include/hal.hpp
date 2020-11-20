@@ -4,13 +4,19 @@
 #define LEFT 0
 #define RIGHT 1
 
+#define NUMCAMERAS 1
+#define NUMMOTORS  2
+
+#define IHEIGHT  480
+#define IWIDTH   480
+
 #define FR 30
 
 using namespace cv;
 
 struct Location{   // struct for motor location
 
-    enum side: char{left, right};
+    enum side: char{left, right, center};
     enum balance : char{front, back};
 
 };

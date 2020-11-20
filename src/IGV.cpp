@@ -1,11 +1,5 @@
 #define SIMULATION
 
-#define NUMCAMERAS 1
-#define NUMMOTORS  4
-
-#define IHEIGHT  480
-#define IWIDTH   480
-
 #include "IGV.hpp"
 
 int main(const char** argv){  // run from the commnand line from SSH
