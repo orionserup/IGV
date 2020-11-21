@@ -2,10 +2,6 @@
 
 #ifdef SIMULATION
 
-void HardwareInterface::Init(){
-
-
-}
 
 // TODO
 

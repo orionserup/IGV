@@ -1,4 +1,5 @@
-
+#pragma once
+ 
 #define HAVE_OPENCV_IMGPROC
 #define HAVE_OPENCV_PHOTO
 
@@ -11,7 +12,7 @@ using namespace cv;
 
 struct Object{
 
-    uint32_t distance;
+    double distance;
     char angle;
     string classification;
 
@@ -21,14 +22,14 @@ class ObjectDetector{
 
 public:
 
-    ObjectDetector(HardwareInterface* hal);
+    ObjectDetector(HardwareInterface& hal);
 
     vector<Object>& ReadImage( unsigned char bytemask ) const;
-    Mat GetImage( int Loc = 0 ) { return hal->cam[Loc].GetImage(); }
+    Mat& GetImage( int Loc = 0 ) { return hal.cam[Loc].GetImage(); }
 
 private:
 
-    HardwareInterface* hal;
+    HardwareInterface& hal;
     vector<Object> objects;
 
 };

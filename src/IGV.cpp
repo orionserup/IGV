@@ -1,22 +1,28 @@
-#define SIMULATION
 
 #include "IGV.hpp"
 
 int main(const char** argv){  // run from the commnand line from SSH
 
-    ObjectDetector detectors[NUMCAMERAS];
     HardwareInterface hal;
-    MotorController mc;
+    IGV vehicle(hal);
 
-    Initialize(detectors, hal, mc);
-    Run(detectors, mc);
+    vehicle.Setup();
+    vehicle.Run();
 
-}
-
-void Initialize(ObjectDetector* detectors, HardwareInterface& hal, MotorController& mc){
-
-    for( int i = 0; i < )
-        
+    return 0;
 
 }
 
+IGV::IGV(HardwareInterface& hal) {
+
+    MotorController mc(hal);
+    LIDAR lidar(hal);
+    ObjectDetector OD(hal);
+    LaneDetector LD(hal);
+
+     
+
+    
+    
+     
+}

@@ -4,6 +4,19 @@
 #include "BasicNavigation.hpp"
 #include "hal.hpp"
 
-void Initialize(ObjectDetector* detectors, HardwareInterface& hal , MotorController& mc);
-void Run(ObjectDetector* detector, MotorController& mc);
+class IGV{
+
+ public:
+
+    IGV(HardwareInterface& hal);
+    void Setup();
+    void Run();
+
+private:
+
+    ObjectDetector objdetector;
+    LaneDetector lanedetector;
+    LIDAR lidar;
+    MotorController MC;
+}
 
