@@ -8,7 +8,7 @@
 #else
 
 
-Mat Camera::GetImage() const ;
+Mat HardwareInterface::Camera::GetImage() const ;
 
 Camera::Camera(){
 

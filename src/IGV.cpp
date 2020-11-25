@@ -1,7 +1,7 @@
 
 #include "IGV.hpp"
 
-int main(const char** argv){  // run from the commnand line from SSH
+int main(string[] argv){  // run from the commnand line from SSH
 
     HardwareInterface hal;
     IGV vehicle(hal);
@@ -13,12 +13,10 @@ int main(const char** argv){  // run from the commnand line from SSH
 
 }
 
-IGV::IGV(HardwareInterface& hal) {
+IGV::IGV(HardwareInterface& hal): lanedetector(hal), objdetector(hal), MC(hal), lidar(hal), us(hal){
 
-    MotorController mc(hal);
-    LIDAR lidar(hal);
-    ObjectDetector OD(hal);
-    LaneDetector LD(hal);
+
+
 
      
 

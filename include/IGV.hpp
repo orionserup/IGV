@@ -2,6 +2,7 @@
 
 #include "ObjectDetection.hpp"
 #include "BasicNavigation.hpp"
+#include "LaneDetection.hpp"
 #include "hal.hpp"
 
 class IGV{
@@ -16,7 +17,6 @@ private:
 
     ObjectDetector objdetector;
     LaneDetector lanedetector;
-    LIDAR lidar;
     MotorController MC;
-}
+};
 

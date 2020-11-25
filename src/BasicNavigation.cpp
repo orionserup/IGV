@@ -1,10 +1,10 @@
 #include "BasicNavigation.hpp"
 
-MotorController::MotorController(HardwareInterface* hal){
+MotorController::MotorController(HardwareInterface& hal){
 
     direction = 0;
     speed = 0;
-    this->hal = &hal; 
+    this->hal = hal; 
 
 }
 
@@ -12,7 +12,7 @@ void MotorController::ChangeDirection(char dir, char speeddiff){
 
     if(busy) return;  // if doing something else exit
 
-    char currspeed = hal->motors[LEFT].GetSpeed(); // get the current motor speed
+    char currspeed = hal.motor[LEFT].GetSpeed(); // get the current motor speed
     double ohmega;  // angular velocity in terms of change in direction per second using dir = [-127, 127]
     milliseconds waittime; // wait time to travel dir angular distance
 
@@ -23,17 +23,17 @@ void MotorController::ChangeDirection(char dir, char speeddiff){
 
     ohmega = (speeddiff / (M_PI *  WHEELBASE * 508.0f));  // get tangential speed and convert it to angular
 
-    waittime = milliseconds(dir > 0 ? uint64_t(1000*dir/ohmega): uint64_t(1000* ~(dir - 1)/ohmega));
+    waittime = milliseconds(dir > 0 ? uint64_t(1000*dir/ohmega): uint64_t(1000* ~(dir - 1)/ohmega));  // calculate wait time in millis
 
     busy = true;
     
-    hal->motors[LEFT].SetSpeed( (dir > 0) ? currspeed - speeddiff: currspeed + speeddiff);
-    hal->motors[RIGHT].SetSpeed( (dir > 0) ? currspeed + speeddiff: currspeed - speeddiff);
+    hal.motor[LEFT].SetSpeed( (dir > 0) ? currspeed - speeddiff: currspeed + speeddiff);
+    hal.motor[RIGHT].SetSpeed( (dir > 0) ? currspeed + speeddiff: currspeed - speeddiff);
 
     this_thread::sleep_for(waittime);
 
-    hal->motors[LEFT].SetSpeed(currspeed);
-    hal->motors[RIGHT].SetSpeed(currspeed);
+    hal.motor[LEFT].SetSpeed(currspeed);
+    hal.motor[RIGHT].SetSpeed(currspeed);
 
     busy = false;
 

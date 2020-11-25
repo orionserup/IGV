@@ -25,7 +25,7 @@ public:
     ObjectDetector(HardwareInterface& hal);
 
     vector<Object>& ReadImage( unsigned char bytemask ) const;
-    Mat& GetImage( int Loc = 0 ) { return hal.cam[Loc].GetImage(); }
+    Mat* GetImage();
 
 private:
 
