@@ -1,50 +1,43 @@
 #include "LaneDetection.hpp"
 
-LaneDetector::LaneDetector(HardwareInterface& hal){
-    this->hal = hal;
-}
+LaneDetector::LaneDetector(HardwareInterface& hal): hal(hal){}
 
-uint32_t LaneDetector::DetectLanes(vector<Lane>& LaneVector){
+uint32_t LaneDetector::DetectLanes(array<Lane, 2>& LaneArray){
     
-    this->hal.cam[USB].Capture();
+    hal.LaneCam.Capture(); // take a picture
 
-    Mat myimage = *this->hal.cam[USB].GetImage();
-    vector<Vec2f> linesP;
+    Mat myimage = hal.LaneCam.GetImage();  // get a copy of the image
 
-    Canny(InputArray(myimage), OutputArray(myimage), 50, 150);
-    HoughLinesP(InputArray(myimage), OutputArray(myimage), 1, CV_PI/180, 50, 50, 10.0f);
+    vector<Vec2f> linesP;  // a vector to fill with line points
+
+    Canny(InputArray(myimage), OutputArray(myimage), 50, 150); // use edge detection
+    HoughLinesP(InputArray(myimage), OutputArray(myimage), 1, CV_PI/180, 50, 50, 10.0f);  // find the lines
 
     if(linesP.size() < 2) return 0; // if there is less than one line return 0 lanes
 
-    double mag = 0;
+    double mag = 0;  // magnitude of the lines storage
 
     pair<double, uint32_t> largest[2] = {{0,0}, {0,0}};  // stores index and magnitiude of largest lines
 
-    for( uint32_t i = 0; i < linesP.size(); i+=2){
+    for( uint32_t i = 0; i < linesP.size(); i+=2){  // find the two largest lines
 
-        mag = linesP[i+i][0] - linesP[i][0] + linesP[i+1][1] - linesP[i][1];  // adds deltax and deltay
+        mag = linesP[i+i][x] - linesP[i][x] + linesP[i+1][y] - linesP[i][y];  // adds deltax and deltay
 
-        if(mag > largest[0].first){
-            largest[0].second = i;
-            largest[0].first = mag;
-        }
-        else if(mag > largest[i].first){
-            largest[1].second = i;
-            largest[1].first = mag; 
-        }
+        if(mag > largest[0].first) largest[0] = {mag, i}; // if larger than the largest then replace it
+        else if(mag > largest[i].first) largest[1] = {mag, i};  // same here except second largest
 
     }
-
-    if(LaneVector.size() < 2) LaneVector.resize(2);
 
     double slope;
     int intercept;
 
-    for( int i = 0; i < 2; i++){
-        slope = (linesP[largest[i].second + 1][1] - linesP[largest[i].second][1])  // slope  = deltay/deltax
-                / (linesP[largest[i].second + 1][0] - linesP[largest[i].second][0]);
-        intercept = (uint32_t)(linesP[largest[1].second][1] - slope*linesP[largest[i].second][0]); // derived from point slope formula
-        LaneVector[i] = {slope, intercept};  // fill in the lanes with their slopes and intercepts
+    for( int i = 0; i < 2; i++){  // put the two biggest lines in the Lane Vector
+
+        slope = (linesP[largest[i].second + 1][y] - linesP[largest[i].second][y])  // slope  = deltay/deltax
+                / (linesP[largest[i].second + 1][x] - linesP[largest[i].second][x]);
+        intercept = (uint32_t)(linesP[largest[1].second][y] - slope*linesP[largest[i].second][x]); // derived from point slope formula
+        
+        LaneArray[i] = { slope, intercept };  // fill in the lanes with their slopes and intercepts
     }
 
     return linesP.size()/2;

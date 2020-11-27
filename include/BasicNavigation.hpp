@@ -1,15 +1,13 @@
 #pragma once
 
 #include "hal.hpp"
-#include <chrono>
-#include <thread>
-#include <math.h>
+#include <chrono> // wait funtionality
+#include <thread> // multithreading
 
 #define LEFT 0
 #define RIGHT 1
 #define CENTER 0
 
-using namespace std; 
 using namespace chrono;
 
 typedef unsigned char Speed;
@@ -22,6 +20,7 @@ class MotorController{
 public:
 
     MotorController(HardwareInterface& hal);  // by default the motor array comes from the HAL
+    ~MotorController();
 
     void ChangeDirection(DeltaDir deltadir, Speed speeddiff);  // changes the direction in motion
     void SetSpeed(Speed speed); // set the speed
