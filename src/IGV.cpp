@@ -3,7 +3,7 @@
 
 int main(string[] argv){  // run from the commnand line from SSH
 
-    HardwareInterface hal;
+    HardwareInterface hal(NORM_MODE);
     IGV vehicle(hal);
 
     vehicle.Setup();

@@ -12,24 +12,28 @@
 using namespace std; 
 using namespace chrono;
 
+typedef unsigned char Speed;
+typedef unsigned char Direction;
+typedef double Distance;
+typedef char DeltaDir;
+
 class MotorController{
 
 public:
 
     MotorController(HardwareInterface& hal);  // by default the motor array comes from the HAL
 
-    void ChangeDirection(char dir, char speed);
-    void SetSpeed(char speed) { this->speed = speed; }  // set the speed
-    void Go(double dist, char speed, char dir); // go dist meters, at speed speed in dir direction
-
-    void StopMotors();  // stops the motors
-
-    char GetSpeed() const { return this->speed; }  // gets the current speed
-    char GetDirection() const { return this->direction; } // gets the current direction
+    void ChangeDirection(DeltaDir deltadir, Speed speeddiff);  // changes the direction in motion
+    void SetSpeed(Speed speed); // set the speed
+    void Go(Distance dist, Speed speed, Direction dir); // go dist meters, at speed speed in dir direction
+    
+    Speed GetSpeed() const { return this->speed; }  // gets the current speed
+    Direction GetDirection() const { return this->direction; } // gets the current direction
 
 private:
 
-    char direction, speed;
+    Direction direction;
+    Speed speed;
     HardwareInterface& hal;
     bool busy; 
     

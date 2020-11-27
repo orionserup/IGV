@@ -7,6 +7,9 @@
 #define LEFT 0
 #define RIGHT 1
 
+#define USB 0
+#define DCIM 1
+
 #define NUMCAMERAS 1
 #define NUMMOTORS  2
 #define NUMLIDARS  1
@@ -20,9 +23,7 @@
 
 #define FR 30
 
-#define WHEELBASE (float)10.4f
-
-#define SIMULATION
+#define WHEELBASE (float)31.0f
 
 using namespace cv;
 using namespace std;
@@ -43,7 +44,7 @@ public:
 
     public:
 
-        Camera(string name): designator(name){}
+        Camera(uint32_t id): identifier(id){}
 
         inline Mat* GetImage() const { return this->Image; }
         void Capture();
@@ -51,7 +52,7 @@ public:
     private:
 
         Mat* Image;
-        string designator;
+        uint32_t identifier;
 
     };
 
@@ -62,7 +63,8 @@ public:
         Motor(int Location);
 
         void SetSpeed(char speed);
-        inline char GetSpeed() const { return myspeed; } 
+        inline char GetSpeed() const { return this->myspeed; } 
+        inline int GetLocation() const { return this->myloc; }
 
     private:
 
@@ -74,7 +76,8 @@ public:
     class LIDAR{
 
     public:
-    LIDAR(HardwareInterface& hal);
+        LIDAR(HardwareInterface& hal);
+        
 
     }; 
 
@@ -82,13 +85,14 @@ public:
 
     public:
 
-    UltraSonic(HardwareInterface& hal);
-    double GetDistance(){ return this->distance; }  // returns the probed distance
-    void Probe();  // gets a reading and puts it in the distance value
+        UltraSonic(HardwareInterface& hal);
+        double GetDistance(){ return this->distance; }  // returns the probed distance
+        void Probe();  // gets a reading and puts it in the distance value
 
     private:
 
         double distance;
+
     };
 
     HardwareInterface(char MODE);  // initializes the hardware interface, IO, etc

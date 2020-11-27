@@ -1,21 +1,11 @@
 #include "hal.hpp"
 
-#ifdef SIMULATION
-
-
-// TODO
-
-#else
-
-
-Mat HardwareInterface::Camera::GetImage() const ;
-
-Camera::Camera(){
+void HardwareInterface::Camera::Capture(){
 
 
 }
 
+HardwareInterface::Camera::Camera(HardwareInterface& hal){
 
-
-#endif
+}
 

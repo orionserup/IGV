@@ -11,7 +11,7 @@ class LaneDetector{
 public:
 
     LaneDetector(HardwareInterface& hal);
-    vector<Lane>& DetectLanes();
+    uint32_t DetectLanes(vector<Lane>& LaneVector);
 
 private:
 
@@ -22,6 +22,6 @@ private:
 
 struct Lane{
     double slope;
-    uint32_t xintercept;
+    uint32_t intercept;
 };
 
