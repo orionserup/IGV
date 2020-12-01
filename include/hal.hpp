@@ -2,30 +2,15 @@
 
 #include "opencv4/opencv2/opencv.hpp"
 #include <string>
+#include <array>
 
-#define CENTER 0
-#define LEFT 0
-#define RIGHT 1
-
-#define NUMCAMERAS 1
-#define NUMMOTORS  2
-#define NUMLIDARS  1
-#define NUMULTRAS  2
-
-#define SIM_MODE  0
-#define NORM_MODE 1
-
-#define IHEIGHT  480
-#define IWIDTH   480
-
-#define FR 30
-
-#define WHEELBASE (float)10.4f
-
-#define SIMULATION
+#define WHEELBASE (float)31.0f
 
 using namespace cv;
 using namespace std;
+
+enum Location: char{LEFT = 0, RIGHT = 1};
+enum ID : unsigned char{INT = 0, USB = 1};
 
 
 /* Hardware Interface Structure
@@ -43,15 +28,17 @@ public:
 
     public:
 
-        Camera(string name): designator(name){}
+        Camera(ID id);
+        Camera() = default;
+        ~Camera();
 
-        inline Mat* GetImage() const { return this->Image; }
+        inline Mat GetImage() const { return this->Image; }
         void Capture();
 
     private:
-
-        Mat* Image;
-        string designator;
+        
+        Mat Image;
+        VideoCapture cap;
 
     };
 
@@ -59,22 +46,28 @@ public:
 
     public:
 
-        Motor(int Location);
+        Motor(Location loc);
+        Motor() = default;
+        ~Motor();
 
         void SetSpeed(char speed);
-        inline char GetSpeed() const { return myspeed; } 
+        inline char GetSpeed() const { return this->myspeed; } 
+        inline int GetLocation() const { return this->myloc; }
 
     private:
 
         char myspeed;
-        int myloc;
+        Location myloc;
 
     };
 
     class LIDAR{
 
     public:
-    LIDAR(HardwareInterface& hal);
+
+        LIDAR();
+        ~LIDAR();
+        
 
     }; 
 
@@ -82,20 +75,23 @@ public:
 
     public:
 
-    UltraSonic(HardwareInterface& hal);
-    double GetDistance(){ return this->distance; }  // returns the probed distance
-    void Probe();  // gets a reading and puts it in the distance value
+        UltraSonic();
+        ~UltraSonic();
+
+        double GetDistance(){ return this->distance; }  // returns the probed distance
+        void Probe();  // gets a reading and puts it in the distance value
 
     private:
 
         double distance;
+
     };
 
-    HardwareInterface(char MODE);  // initializes the hardware interface, IO, etc
+    HardwareInterface();        // initializes the hardware interface, IO, etc
 
-    Camera cam[NUMCAMERAS];       // the interface holds the cameras,
-    Motor motor[NUMMOTORS];       // motors,
-    LIDAR lidar[NUMLIDARS];       // lidar,
-    UltraSonic us[NUMULTRAS];     // and UltraSonic Sensors so that the other modules can control peripherals without IO manip
+    Camera LaneCam, ObjCam;     // the interface holds the cameras,
+    Motor lmotor, rmotor;       // motors,
+    LIDAR lidar;                // lidar,
+    UltraSonic ultra;           // and UltraSonic Sensors so that the other modules can control peripherals without IO manip
 
 };

@@ -1,39 +1,53 @@
 #include "BasicNavigation.hpp"
 
-MotorController::MotorController(HardwareInterface& hal){
+MotorController::MotorController(HardwareInterface& hal): hal(hal){
 
     direction = 0;
     speed = 0;
-    this->hal = hal; 
+    busy = false;
 
 }
 
-void MotorController::ChangeDirection(char dir, char speeddiff){
 
-    if(busy) return;  // if doing something else exit
+/* FUNCTION ChangeDirection:
+ *
+ * Completes a turn while moving, if speediff = current speed it turns in place
+ * The slower the speed and faster the speeddiff the faster and less wide the turn
+ * 
+ * @params deltadir: change in direction, [0, 2pi] -> [0, 256]
+ * @params speeddiff: How much to take off of the motor speed [0, 127]
+ * @return void
+ *
+*/
 
-    char currspeed = hal.motor[LEFT].GetSpeed(); // get the current motor speed
-    double ohmega;  // angular velocity in terms of change in direction per second using dir = [-127, 127]
+void MotorController::ChangeDirection(DeltaDir deltadir, Speed speeddiff){
+
+    if(busy || deltadir == 0 || speeddiff == 0) return;  // if busy or with bad params exit
+
+    char currspeed = hal.lmotor.GetSpeed(); // get the current motor speed
+    double ohmega;  // angular velocity in terms of change in direction per second using dir: 0 = 0, 256 = 2pi
     milliseconds waittime; // wait time to travel dir angular distance
 
-    direction = (direction + dir) & 127;  // update the direction so that its mag is not above 127
+    this->direction = abs((uint8_t)this->direction + deltadir) & 0xff;  // update the direction so that its mag is not above 127
 
-    if( (int(speeddiff) + currspeed) > 127 ) speeddiff = 127 - currspeed;  // correct the speed diff if too high or low
-    if( (int(currspeed) - speeddiff) < -127 ) speeddiff = currspeed - 127;
+    speed &= 0x7f;
 
-    ohmega = (speeddiff / (M_PI *  WHEELBASE * 508.0f));  // get tangential speed and convert it to angular
+    if( ((int)speeddiff + currspeed) > 127 ) speeddiff = 127 - currspeed;  // correct the speed diff if too high or low
+    if( ((int)currspeed - speeddiff) < -127 ) speeddiff = currspeed - 127;
 
-    waittime = milliseconds(dir > 0 ? uint64_t(1000*dir/ohmega): uint64_t(1000* ~(dir - 1)/ohmega));  // calculate wait time in millis
+    ohmega = ((int)speeddiff << 8) / (CV_PI *  WHEELBASE);  // get tangential speed and convert it to angular
+
+    waittime = milliseconds((uint64_t)(1000*abs(deltadir)/ohmega));   // calculate wait time in millis
 
     busy = true;
     
-    hal.motor[LEFT].SetSpeed( (dir > 0) ? currspeed - speeddiff: currspeed + speeddiff);
-    hal.motor[RIGHT].SetSpeed( (dir > 0) ? currspeed + speeddiff: currspeed - speeddiff);
+    hal.lmotor.SetSpeed( deltadir > 0 ? currspeed - speeddiff: currspeed + speeddiff);  // give the motors their new speeds
+    hal.rmotor.SetSpeed( deltadir > 0 ? currspeed + speeddiff: currspeed - speeddiff);
 
-    this_thread::sleep_for(waittime);
+    this_thread::sleep_for(waittime);  // wait until the turn has covered the delta
 
-    hal.motor[LEFT].SetSpeed(currspeed);
-    hal.motor[RIGHT].SetSpeed(currspeed);
+    hal.lmotor.SetSpeed(currspeed);  // reset the motors so that the 
+    hal.rmotor.SetSpeed(currspeed);
 
     busy = false;
 

@@ -10,6 +10,8 @@ class IGV{
  public:
 
     IGV(HardwareInterface& hal);
+    ~IGV();
+
     void Setup();
     void Run();
 
@@ -18,5 +20,7 @@ private:
     ObjectDetector objdetector;
     LaneDetector lanedetector;
     MotorController MC;
+    HardwareInterface hal;
+
 };
 

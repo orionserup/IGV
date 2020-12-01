@@ -2,26 +2,31 @@
 
 #include "opencv.hpp"
 #include "hal.hpp"
-#include <vector>
+
+#define x 0
+#define y 1
 
 using namespace std;
 
+struct Lane{
+
+    double slope;
+    uint32_t intercept;
+
+};
 class LaneDetector{
 
 public:
 
     LaneDetector(HardwareInterface& hal);
-    vector<Lane>& DetectLanes();
+    ~LaneDetector();
+
+    uint32_t DetectLanes(array<Lane, 2>& LaneArray);
 
 private:
 
-    vector<Lane> Lanes;
     HardwareInterface& hal;
 
 };
 
-struct Lane{
-    double slope;
-    uint32_t xintercept;
-};
 

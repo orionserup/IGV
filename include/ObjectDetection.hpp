@@ -1,9 +1,10 @@
 #pragma once
  
 #define HAVE_OPENCV_IMGPROC
+#define HAVE_OPENCV_VIDEO
 #define HAVE_OPENCV_PHOTO
 
-#include "opencv.hpp"
+#include "opencv4/opencv2/opencv.hpp"
 #include "hal.hpp"
 #include <vector>
 
@@ -13,7 +14,7 @@ using namespace cv;
 struct Object{
 
     double distance;
-    char angle;
+    Direction angle;
     string classification;
 
 };
