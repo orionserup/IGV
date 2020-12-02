@@ -9,18 +9,11 @@
 #define CENTER 0
 
 using namespace chrono;
-
-typedef unsigned char Speed;
-typedef unsigned char Direction;
-typedef double Distance;
-typedef char DeltaDir;
-
 class MotorController{
 
 public:
 
     MotorController(HardwareInterface& hal);  // by default the motor array comes from the HAL
-    ~MotorController();
 
     void ChangeDirection(DeltaDir deltadir, Speed speeddiff);  // changes the direction in motion
     void SetSpeed(Speed speed); // set the speed

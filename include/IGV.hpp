@@ -10,7 +10,6 @@ class IGV{
  public:
 
     IGV(HardwareInterface& hal);
-    ~IGV();
 
     void Setup();
     void Run();

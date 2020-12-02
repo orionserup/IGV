@@ -1,0 +1,2 @@
+/usr/local/lib/libIGVstaticlib.a
+/usr/local/bin/IGV.exe

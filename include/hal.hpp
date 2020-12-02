@@ -12,6 +12,11 @@ using namespace std;
 enum Location: char{LEFT = 0, RIGHT = 1};
 enum ID : unsigned char{INT = 0, USB = 1};
 
+typedef unsigned char Speed;
+typedef unsigned char Direction;
+typedef double Distance;
+typedef char DeltaDir;
+
 
 /* Hardware Interface Structure
 *
@@ -29,7 +34,6 @@ public:
     public:
 
         Camera(ID id);
-        Camera() = default;
         ~Camera();
 
         inline Mat GetImage() const { return this->Image; }
@@ -47,16 +51,14 @@ public:
     public:
 
         Motor(Location loc);
-        Motor() = default;
-        ~Motor();
 
-        void SetSpeed(char speed);
-        inline char GetSpeed() const { return this->myspeed; } 
-        inline int GetLocation() const { return this->myloc; }
+        void SetSpeed(Speed speed);
+        inline Speed GetSpeed() const { return this->myspeed; } 
+        inline Speed GetLocation() const { return this->myloc; }
 
     private:
 
-        char myspeed;
+        Speed myspeed;
         Location myloc;
 
     };
@@ -65,8 +67,6 @@ public:
 
     public:
 
-        LIDAR();
-        ~LIDAR();
         
 
     }; 
@@ -74,9 +74,6 @@ public:
     class UltraSonic{
 
     public:
-
-        UltraSonic();
-        ~UltraSonic();
 
         double GetDistance(){ return this->distance; }  // returns the probed distance
         void Probe();  // gets a reading and puts it in the distance value
@@ -93,5 +90,9 @@ public:
     Motor lmotor, rmotor;       // motors,
     LIDAR lidar;                // lidar,
     UltraSonic ultra;           // and UltraSonic Sensors so that the other modules can control peripherals without IO manip
+
+private:
+
+
 
 };

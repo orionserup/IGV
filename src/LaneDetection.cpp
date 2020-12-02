@@ -33,13 +33,23 @@ uint32_t LaneDetector::DetectLanes(array<Lane, 2>& LaneArray){
 
     for( int i = 0; i < 2; i++){  // put the two biggest lines in the Lane Vector
 
+        if(linesP[largest[i].second][x] == linesP[largest[i].second + 1][x]){ // if horizontal lines then slope = max double and intercept is least int 
+            
+            slope = DBL_MAX;
+            intercept = INT32_MIN;
+
+        }
+        else{
+
         slope = (linesP[largest[i].second + 1][y] - linesP[largest[i].second][y])  // slope  = deltay/deltax
                 / (linesP[largest[i].second + 1][x] - linesP[largest[i].second][x]);
-        intercept = (uint32_t)(linesP[largest[1].second][y] - slope*linesP[largest[i].second][x]); // derived from point slope formula
+        intercept = (int)(linesP[largest[1].second][y] - slope*linesP[largest[i].second][x]); // derived from point slope formula
+
+        }
         
         LaneArray[i] = { slope, intercept };  // fill in the lanes with their slopes and intercepts
     }
 
-    return linesP.size()/2;
+    return linesP.size()/2;  // return how many lines are seen
 
 }

@@ -8,6 +8,18 @@ MotorController::MotorController(HardwareInterface& hal): hal(hal){
 
 }
 
+/* 
+
+*/
+
+void MotorController::SetSpeed(Speed speed){
+
+    // TODO
+
+    return;
+
+}
+
 
 /* FUNCTION ChangeDirection:
  *

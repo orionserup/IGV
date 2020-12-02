@@ -1,6 +1,5 @@
 #include "hal.hpp"
 
-#ifndef SIMULATION 
 
 HardwareInterface::Camera::Camera(ID id): cap(id){}
 
@@ -13,14 +12,18 @@ void HardwareInterface::Camera::Capture(){
     
 } 
 
+void HardwareInterface::Motor::SetSpeed(Speed speed){
+
+    //TODO 
+
+}
+
 
 void HardwareInterface::UltraSonic::Probe(){}
 
 HardwareInterface::HardwareInterface(): LaneCam(USB), ObjCam(INT), lmotor(LEFT), rmotor(RIGHT){}
 
+HardwareInterface::Motor::Motor(Location loc): myloc(loc){
 
-
-#else
-
-
-#endif
+    
+}
