@@ -1,6 +1,7 @@
 #pragma once
 
 #include "opencv4/opencv2/opencv.hpp"
+#include "HARDWARELIBS/Peripherals.hpp"
 #include <string>
 #include <array>
 
@@ -92,6 +93,8 @@ public:
     UltraSonic ultra;           // and UltraSonic Sensors so that the other modules can control peripherals without IO manip
 
 private:
+
+
 
 
 

@@ -1,2 +1,0 @@
-/usr/bin/ar qc libstaticlib.a CMakeFiles/staticlib.dir/src/BasicNavigation.cpp.o CMakeFiles/staticlib.dir/src/IGV.cpp.o CMakeFiles/staticlib.dir/src/LaneDetection.cpp.o CMakeFiles/staticlib.dir/src/ObjectDetection.cpp.o CMakeFiles/staticlib.dir/src/hal.cpp.o CMakeFiles/staticlib.dir/src/main.cpp.o
-/usr/bin/ranlib libstaticlib.a

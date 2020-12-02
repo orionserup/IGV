@@ -1,0 +1,12 @@
+
+From a terminal install cmake, make and clang
+
+then run:
+
+cmake ..
+
+and then 
+
+make
+
+And its built
