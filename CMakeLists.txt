@@ -19,6 +19,8 @@ set(EXECUTABLE_OUTPUT_PATH ../bin) # put the executable in /bin
 set(LIBRARY_OUTPUT_PATH ../lib)  # put the libraries in /lib
 
 add_executable(IGV.exe ${SOURCES})  # make an executable taking all of the sources 
+add_executable(Test.exe ../test/test.cpp ../src/LaneDetection.cpp)
 target_link_libraries(IGV.exe ${OpenCV_LIBS})  # make sure the opencv libs are included
+target_link_libraries(Test.exe ${OpenCV_LIBS})  # make sure the opencv libs are included
 
 

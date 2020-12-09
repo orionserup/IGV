@@ -1,13 +1,14 @@
-#define SIMULATION 
 
 #include "IGV.hpp"
+
+using namespace std;
+using namespace cv;
+using namespace igv;
 
 int main(int argc, const char** argv){
 
     HardwareInterface hal;
     IGV vehicle(hal);
 
-    vehicle.Setup();
-    vehicle.Run();
-
+    return 0;
 }

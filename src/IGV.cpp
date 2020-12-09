@@ -2,7 +2,9 @@
 
 #include "IGV.hpp"
 
-IGV::IGV(HardwareInterface& hal): lanedetector(hal), objdetector(hal), MC(hal){}
+using namespace igv;
+
+IGV::IGV(HardwareInterface& hal): MC(hal){}
 
 void IGV::Setup(){
 

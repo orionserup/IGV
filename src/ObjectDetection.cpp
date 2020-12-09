@@ -1,9 +1,7 @@
 
 #include "ObjectDetection.hpp"
 
+using namespace igv;
 
-ObjectDetector::ObjectDetector(HardwareInterface& hal): hal(hal){
-
-
-}
+uint32_t DetectObjects(vector<Object>& objects, Mat& image);
 

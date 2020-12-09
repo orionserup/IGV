@@ -1,5 +1,7 @@
 #include "BasicNavigation.hpp"
 
+using namespace igv;
+
 MotorController::MotorController(HardwareInterface& hal): hal(hal){
 
     direction = 0;

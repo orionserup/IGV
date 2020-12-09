@@ -1,17 +1,12 @@
 #include "LaneDetection.hpp"
 
-LaneDetector::LaneDetector(HardwareInterface& hal): hal(hal){}
+using namespace igv;
 
-uint32_t LaneDetector::DetectLanes(array<Lane, 2>& LaneArray){
-    
-    hal.LaneCam.Capture(); // take a picture
-
-    Mat myimage = hal.LaneCam.GetImage();  // get a copy of the image
+uint32_t DetectLanes(array<Lane, 2>& LaneArray, Mat& image){
 
     vector<Vec2f> linesP;  // a vector to fill with line points
 
-    Canny(InputArray(myimage), OutputArray(myimage), 50, 150); // use edge detection
-    HoughLinesP(InputArray(myimage), OutputArray(myimage), 1, CV_PI/180, 50, 50, 10.0f);  // find the lines
+    HoughLinesP(image, linesP, 1, CV_PI/256, 50, 25, 10.0f);  // find the lines
 
     if(linesP.size() < 2) return 0; // if there is less than one line return 0 lanes
 
@@ -29,25 +24,25 @@ uint32_t LaneDetector::DetectLanes(array<Lane, 2>& LaneArray){
     }
 
     double slope;
-    int intercept;
+    uint32_t xintercept;
 
     for( int i = 0; i < 2; i++){  // put the two biggest lines in the Lane Vector
 
         if(linesP[largest[i].second][x] == linesP[largest[i].second + 1][x]){ // if horizontal lines then slope = max double and intercept is least int 
             
             slope = DBL_MAX;
-            intercept = INT32_MIN;
+            xintercept = linesP[largest[i].second][x];
 
         }
         else{
 
         slope = (linesP[largest[i].second + 1][y] - linesP[largest[i].second][y])  // slope  = deltay/deltax
                 / (linesP[largest[i].second + 1][x] - linesP[largest[i].second][x]);
-        intercept = (int)(linesP[largest[1].second][y] - slope*linesP[largest[i].second][x]); // derived from point slope formula
+        xintercept = (uint32_t)(linesP[largest[1].second][x] - linesP[largest[i].second][x]/slope); // derived from point slope formula
 
         }
         
-        LaneArray[i] = { slope, intercept };  // fill in the lanes with their slopes and intercepts
+        LaneArray[i] = { slope, xintercept };  // fill in the lanes with their slopes and intercepts
     }
 
     return linesP.size()/2;  // return how many lines are seen

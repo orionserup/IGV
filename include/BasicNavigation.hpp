@@ -9,6 +9,8 @@
 #define CENTER 0
 
 using namespace chrono;
+
+namespace igv{
 class MotorController{
 
 public:
@@ -30,3 +32,5 @@ private:
     bool busy; 
     
 };
+
+}

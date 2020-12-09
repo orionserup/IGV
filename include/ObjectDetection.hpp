@@ -1,11 +1,13 @@
 #pragma once
 
-#include "opencv4/opencv2/opencv.hpp"
+#include "opencv2/opencv.hpp"
 #include "hal.hpp"
 #include <vector>
 
 using namespace std;
 using namespace cv;
+
+namespace igv {
 
 struct Object{
 
@@ -15,22 +17,9 @@ struct Object{
 
 };
 
-class ObjectDetector{
+uint32_t DetectObjects(vector<Object> &objects, Mat& Image);
 
-public:
-
-    ObjectDetector(HardwareInterface& hal);
-
-    vector<Object>& ReadImage( unsigned char bytemask ) const;
-    Mat* GetImage();
-
-private:
-
-    HardwareInterface& hal;
-    vector<Object> objects;
-
-};
-
+}
 
 
 

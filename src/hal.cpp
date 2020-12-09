@@ -1,14 +1,19 @@
 #include "hal.hpp"
 
+using namespace igv;
 
-HardwareInterface::Camera::Camera(ID id): cap(id){}
-
-HardwareInterface::Camera::~Camera(){}
+HardwareInterface::Camera::Camera(ID id) { 
+    
+    cap.open(id);
+    
+}
 
 void HardwareInterface::Camera::Capture(){ 
     
-    cap >> Image;   // capture an image
-    cvtColor(InputArray(Image), OutputArray(Image), COLOR_BGR2GRAY);  // make it grayscale
+    cap.grab();   // capture an image
+    cap.retrieve(Image);  // get the image
+    if(!Image.empty()) cvtColor(Image, Image, COLOR_BGR2HLS);
+    
     
 } 
 
@@ -21,7 +26,7 @@ void HardwareInterface::Motor::SetSpeed(Speed speed){
 
 void HardwareInterface::UltraSonic::Probe(){}
 
-HardwareInterface::HardwareInterface(): LaneCam(USB), ObjCam(INT), lmotor(LEFT), rmotor(RIGHT){}
+HardwareInterface::HardwareInterface(): LaneCam(USB), ObjCam(USB), lmotor(LEFT), rmotor(RIGHT){}
 
 HardwareInterface::Motor::Motor(Location loc): myloc(loc){
 

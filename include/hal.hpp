@@ -1,6 +1,6 @@
 #pragma once
 
-#include "opencv4/opencv2/opencv.hpp"
+#include "opencv2/opencv.hpp"
 #include "HARDWARELIBS/Peripherals.hpp"
 #include <string>
 #include <array>
@@ -9,6 +9,8 @@
 
 using namespace cv;
 using namespace std;
+
+namespace igv{
 
 enum Location: char{LEFT = 0, RIGHT = 1};
 enum ID : unsigned char{INT = 0, USB = 1};
@@ -35,7 +37,6 @@ public:
     public:
 
         Camera(ID id);
-        ~Camera();
 
         inline Mat GetImage() const { return this->Image; }
         void Capture();
@@ -94,8 +95,9 @@ public:
 
 private:
 
-
-
-
+    Serial serial;
+    I2C i2c;
 
 };
+
+}

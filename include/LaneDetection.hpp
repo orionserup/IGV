@@ -6,24 +6,16 @@
 #define x 0
 #define y 1
 
+namespace igv{
 struct Lane{
 
     double slope;
-    int intercept;
+    uint32_t intercept;
 
 };
-class LaneDetector{
 
-public:
+uint32_t DetectLanes(std::array<Lane, 2>& LaneArray, Mat& image);
 
-    LaneDetector(HardwareInterface& hal);
-
-    uint32_t DetectLanes(std::array<Lane, 2>& LaneArray);
-
-private:
-
-    HardwareInterface& hal;
-
-};
+}
 
 

@@ -5,6 +5,8 @@
 #include "LaneDetection.hpp"
 #include "hal.hpp"
 
+namespace igv{
+
 class IGV{
 
  public:
@@ -16,10 +18,9 @@ class IGV{
 
 private:
 
-    ObjectDetector objdetector;
-    LaneDetector lanedetector;
     MotorController MC;
     HardwareInterface hal;
 
 };
 
+}
