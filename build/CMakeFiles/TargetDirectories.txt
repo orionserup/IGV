@@ -1,0 +1,4 @@
+/home/orion/Documents/Sandbox/IGV/build/CMakeFiles/rebuild_cache.dir
+/home/orion/Documents/Sandbox/IGV/build/CMakeFiles/edit_cache.dir
+/home/orion/Documents/Sandbox/IGV/build/CMakeFiles/IGV.exe.dir
+/home/orion/Documents/Sandbox/IGV/build/CMakeFiles/IGVstatic.dir

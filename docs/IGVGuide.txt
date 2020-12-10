@@ -11,13 +11,15 @@ IGV:
         HardwareInterface:
             Camera
 
-    LineDetector:
+    LaneDetector:
         HardwareInterface:
             Camera
 
     HardwareInterface:
         LIDAR
         UltraSonic
+
+
 
 Functions By Class:
 
@@ -28,7 +30,29 @@ IGV: [IGV.cpp]
 MotorController: [BasicNavigation.cpp]
     ChangeDirection(): Turns the vehicle 
     GetDirection(): returns the current direction of travel: [0, 2pi) -> [0, 256) 
-    SetSpeed(): Sets the speed for the motors speed = [-127, 127]
+    SetSpeed(): Sets the speed for the motors: speed = [-127, 127]
     GetSpeed(): Gets the speed of the motors
-    
+    Go(): Goes in a certain direction for a certain distance
+
+LaneDetector: [LaneDetection.cpp]
+    DetectLanes(): Looks for all of the lines in the frame and returns the two biggest
+
+ObjectDetector: [ObjectDetection.cpp]
+    DetectObjects(): Looks at the frame and fills a vector with objects for every object
+
+Motor: [hal.cpp]
+    SetSpeed(): Sets the speed of a single motor : speed = [-127, 127]
+
+Camera: [hal.cpp]
+    Capture(): Captures the next frame
+    GetImage(): Returns a copy of the last frame
+
+LIDAR: [hal.cpp]
+    Probe():
+
+UltraSonic: [hal.cpp]
+    Probe(): Probe the distance 
+    GetDistance(): Get the distance probed
+
+
     

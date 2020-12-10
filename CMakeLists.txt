@@ -19,7 +19,7 @@ add_library(IGVstatic ${SOURCES})
 
 add_executable(IGV.exe ${SOURCES})  # make an executable taking all of the sources 
 
-target_link_libraries(IGV.exe ${OpenCV_LIBS} IGVstatic )  # make sure the opencv libs are included
+target_link_libraries(IGV.exe ${OpenCV_LIBS})  # make sure the opencv libs are included
 
 
 
