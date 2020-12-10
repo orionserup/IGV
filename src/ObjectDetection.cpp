@@ -3,5 +3,11 @@
 
 using namespace igv;
 
-uint32_t DetectObjects(vector<Object>& objects, Mat& image);
+uint32_t DetectObjects(vector<Object>& objects, Mat& image){
+	
+
+    return 0;
+	
+	
+}
 

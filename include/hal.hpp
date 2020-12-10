@@ -37,6 +37,7 @@ public:
     public:
 
         Camera(ID id);
+        Camera(VideoCapture& capture);
 
         inline Mat GetImage() const { return this->Image; }
         void Capture();
@@ -97,6 +98,7 @@ private:
 
     Serial serial;
     I2C i2c;
+    VideoCapture lanecam, objcam;
 
 };
 

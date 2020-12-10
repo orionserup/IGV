@@ -8,13 +8,18 @@ HardwareInterface::Camera::Camera(ID id) {
     
 }
 
+HardwareInterface::Camera::Camera(VideoCapture& capture){
+    cap = capture;
+}
+
 void HardwareInterface::Camera::Capture(){ 
     
-    cap.grab();   // capture an image
-    cap.retrieve(Image);  // get the image
-    if(!Image.empty()) cvtColor(Image, Image, COLOR_BGR2HLS);
-    
-    
+    if(cap.isOpened()){
+        cap.grab();   // capture an image
+        cap.retrieve(Image);  // get the image
+        if(!Image.empty()) cvtColor(Image, Image, COLOR_BGR2GRAY);
+    }
+
 } 
 
 void HardwareInterface::Motor::SetSpeed(Speed speed){
@@ -26,9 +31,7 @@ void HardwareInterface::Motor::SetSpeed(Speed speed){
 
 void HardwareInterface::UltraSonic::Probe(){}
 
-HardwareInterface::HardwareInterface(): LaneCam(USB), ObjCam(USB), lmotor(LEFT), rmotor(RIGHT){}
+HardwareInterface::HardwareInterface(): 
+    lanecam(USB), objcam(USB), lmotor(LEFT), rmotor(RIGHT), LaneCam(lanecam), ObjCam(objcam){}
 
-HardwareInterface::Motor::Motor(Location loc): myloc(loc){
-
-    
-}
+HardwareInterface::Motor::Motor(Location loc): myloc(loc){}

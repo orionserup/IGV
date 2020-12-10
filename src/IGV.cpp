@@ -1,4 +1,3 @@
-#define SIMULATION
 
 #include "IGV.hpp"
 

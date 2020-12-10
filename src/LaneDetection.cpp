@@ -1,8 +1,24 @@
 #include "LaneDetection.hpp"
 
-using namespace igv;
+ostream& operator<<(ostream& os, const igv::Lane& lane){
+    
+    os << "Slope: " << lane.slope;
+    os << (lane.slope == 0.0f) ? " Y-Intercept: " : " X-Intercept: ";
+    os << lane.intercept << endl;
 
-uint32_t DetectLanes(array<Lane, 2>& LaneArray, Mat& image){
+    return os;
+}
+
+/* Lane Detection Function:
+ * 
+ * Reads an image and finds the largest Lanes and fills an array with the 2 largest
+ * @param: LaneArray: a preexisting array full of lanes that gets modified by the function
+ * @param: image: a preexisting matrix representing an image that gets read for lanes
+ * @retval: returns the number of lanes detected total
+ * 
+ */
+
+uint32_t igv::DetectLanes(array<igv::Lane, 2>& LaneArray, Mat& image){
 
     vector<Vec2f> linesP;  // a vector to fill with line points
 
@@ -24,25 +40,30 @@ uint32_t DetectLanes(array<Lane, 2>& LaneArray, Mat& image){
     }
 
     double slope;
-    uint32_t xintercept;
+    uint32_t intercept;
 
     for( int i = 0; i < 2; i++){  // put the two biggest lines in the Lane Vector
 
-        if(linesP[largest[i].second][x] == linesP[largest[i].second + 1][x]){ // if horizontal lines then slope = max double and intercept is least int 
+        if(linesP[largest[i].second][x] == linesP[largest[i].second + 1][x]){ // if vertical slope is max and xintercept is xintercpt 
             
             slope = DBL_MAX;
-            xintercept = linesP[largest[i].second][x];
+            intercept = linesP[largest[i].second][x];
 
+        }
+        else if(linesP[largest[i].second][y] == linesP[largest[i].second][y]){
+
+            slope = 0.0f;
+            intercept = linesP[largest[i].second][y];
         }
         else{
 
         slope = (linesP[largest[i].second + 1][y] - linesP[largest[i].second][y])  // slope  = deltay/deltax
                 / (linesP[largest[i].second + 1][x] - linesP[largest[i].second][x]);
-        xintercept = (uint32_t)(linesP[largest[1].second][x] - linesP[largest[i].second][x]/slope); // derived from point slope formula
+        intercept = (uint32_t)(linesP[largest[1].second][x] - linesP[largest[i].second][x]/slope); // derived from point slope formula
 
         }
         
-        LaneArray[i] = { slope, xintercept };  // fill in the lanes with their slopes and intercepts
+        LaneArray[i] = { slope, intercept };  // fill in the lanes with their slopes and intercepts
     }
 
     return linesP.size()/2;  // return how many lines are seen

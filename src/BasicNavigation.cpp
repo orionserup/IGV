@@ -1,4 +1,4 @@
-#include "BasicNavigation.hpp"
+#include <BasicNavigation.hpp>
 
 using namespace igv;
 
@@ -60,8 +60,7 @@ void MotorController::ChangeDirection(DeltaDir deltadir, Speed speeddiff){
 
     this_thread::sleep_for(waittime);  // wait until the turn has covered the delta
 
-    hal.lmotor.SetSpeed(currspeed);  // reset the motors so that the 
-    hal.rmotor.SetSpeed(currspeed);
+    SetSpeed(currspeed); // go back to going straight
 
     busy = false;
 

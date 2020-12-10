@@ -1,43 +1,20 @@
+
 #include "test.hpp"
-#include "opencv2/opencv.hpp"
-#include "IGV.hpp"
-#include <iostream>
-#include <fstream>
 
 using namespace std;
 using namespace cv;
 using namespace igv;
 
-bool CameraTest(ofstream& logfile);
-bool MotorTest(ofstream& logfile);
-bool LIDARTest(ofstream& logfile);
-bool USTest(ofstream& logfile);
-bool LaneDetectionTest(ofstream& logfile);
-bool ObjectDetectionTest(ofstream& logfile);
+Test::Test(const char* logfile): logfile(logfile){}
+Test::Test(){}
 
-void errorhandler(int errorcode);
+Test::~Test(){
 
-int main(){
+    logfile.close();
 
-    ofstream logfile("test.log");
-
-    if(logfile.is_open()) logfile << "Test Beginning \n";
-    else{
-        cout << "Cannot Open File 'test.log' \n";
-        return 1;
-    }
-    
-    cout << "HARDWARE TESTS: \n\n ";
-    cout << "Camera Test:            " << CameraTest(logfile) ? "Passed \n": "Failed \n";
-    cout << "Motor Test:             " << MotorTest(logfile) ? "Passed \n" : "Failed \n";
-    cout << "LIDAR Test:             " << LIDARTest(logfile) ? "Passed \n" : "Failed \n";
-    cout << "Ultrasonic Sensor Test: " << USTest(logfile) ? "Passed \n": "Failed \n";
-    cout << "Object Detection Test:  " << ObjectDetectionTest(logfile) ? "Passed \n" : "Failed \n";
-
-    return 0;
 }
 
-bool CameraTest(ofstream& logfile){
+bool Test::CameraTest(){
 
     bool Passed = true;
 
@@ -82,15 +59,32 @@ bool CameraTest(ofstream& logfile){
     return Passed;
 }
 
-bool MotorTest(ofstream& logfile){
+bool Test::LaneDetectionTest(){
 
-}
+    bool passed = true;
 
-bool LIDARTest(ofstream& logfile){
+    logfile << "Opening Image: 'test.png' \n"; 
+	
+	Mat testmat = imread("test.png", IMREAD_GRAYSCALE);  // load the sample image to test and compare
 
-}
+    logfile << "Retrieving the Image \n";
+    logfile <<  "Image Specs: \n" <<
+                "=========================" << 
+                "Is Empty:       " << testmat.empty() << endl << 
+                "Dimensionality: " << testmat.dims << endl <<
+                "Pixel Format:   " << testmat.depth() << endl <<
+                "Size:           " << testmat.size << endl << endl;
 
-bool USTest(ofstream& logfile){
+    if(!testmat.size || !testmat.empty()) passed = false;
+
+    logfile << "Creating Empty Lane Array: Lanes Full of Zeros \n";
+
+	array<Lane, 2> testlanes = { Lane({0, 0}), Lane({0, 0})}; 
+
+    logfile << "Detecting Lanes: \n";
+	// uint32_t numlanes = DetectLanes(testlanes, testmat);
+
+    return passed;
 
 }
 
