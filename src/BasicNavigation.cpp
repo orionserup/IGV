@@ -16,7 +16,8 @@ MotorController::MotorController(HardwareInterface& hal): hal(hal){
 
 void MotorController::SetSpeed(Speed speed){
 
-    // TODO
+    hal.lmotor.SetSpeed(speed);
+    hal.rmotor.SetSpeed(speed);
 
     return;
 
@@ -42,9 +43,9 @@ void MotorController::ChangeDirection(DeltaDir deltadir, Speed speeddiff){
     double ohmega;  // angular velocity in terms of change in direction per second using dir: 0 = 0, 256 = 2pi
     milliseconds waittime; // wait time to travel dir angular distance
 
-    this->direction = abs((uint8_t)this->direction + deltadir) & 0xff;  // update the direction so that its mag is not above 127
+    direction = abs((uint8_t)direction + deltadir) & 0xff;  // update the direction so that its mag is not above 127
 
-    speed &= 0x7f;
+    speed &= 0x7f; // make sure the value is seven bits
 
     if( ((int)speeddiff + currspeed) > 127 ) speeddiff = 127 - currspeed;  // correct the speed diff if too high or low
     if( ((int)currspeed - speeddiff) < -127 ) speeddiff = currspeed - 127;
