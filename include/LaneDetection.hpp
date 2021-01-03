@@ -5,7 +5,9 @@
 
 #define x 0
 #define y 1
+
 namespace igv{
+    
 struct Lane{
 
     double slope;

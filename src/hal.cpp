@@ -32,6 +32,6 @@ void HardwareInterface::Motor::SetSpeed(Speed speed){
 void HardwareInterface::UltraSonic::Probe(){}
 
 HardwareInterface::HardwareInterface(): 
-    lanecam(USB), objcam(USB), lmotor(LEFT), rmotor(RIGHT), LaneCam(lanecam), ObjCam(objcam){}
+    LaneCam(USB), ObjCam(USB), lmotor(LEFT), rmotor(RIGHT){}
 
 HardwareInterface::Motor::Motor(Location loc): myloc(loc){}

@@ -8,7 +8,6 @@ class Test{
 public:
 
     Test(const char* logfile);
-    Test() default;
     ~Test();
 
     bool OpenLogFile(const char* logfile);

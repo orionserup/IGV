@@ -6,7 +6,7 @@ using namespace igv;
 ostream& operator<<(ostream& os, const Lane& lane){
     
     os << "Slope: " << lane.slope;
-    os << (lane.slope == 0.0f) ? " Y-Intercept: " : " X-Intercept: ";
+    os << (lane.slope == 0.0f)? " Y-Intercept: " : " X-Intercept: ";
     os << lane.intercept << endl;
 
     return os;
@@ -29,7 +29,11 @@ uint32_t DetectLanes(array<Lane, 2>& LaneArray, Mat& image){
     if(linesP.size() < 2) return 0; // if there is less than one line return 0 lanes
     
     // store index and magnitiude of largest lines and a temporary magnitude
-    struct {double mag, uint32_t index} largest = {{0.0f,0}, {0.0f,0}};  
+    struct linedata{
+        double mag;
+        uint32_t index;
+    }; 
+    linedata largest[] = {{0.0f,0}, {0.0f,0}};  
     double mag;
     
     for( uint32_t i = 0; i < linesP.size(); i+=2){  // find the two largest lines

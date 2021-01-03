@@ -6,7 +6,6 @@ using namespace cv;
 using namespace igv;
 
 Test::Test(const char* logfile): logfile(logfile){}
-Test::Test(){}
 
 Test::~Test(){
 

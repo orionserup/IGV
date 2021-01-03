@@ -1,7 +1,7 @@
 #pragma once
 
 #include "opencv2/opencv.hpp"
-#include "HARDWARELIBS/Peripherals.hpp"
+#include "Hardware/Peripherals.hpp"
 #include <string>
 #include <array>
 
@@ -96,9 +96,9 @@ public:
 
 private:
 
-    Serial serial;
-    I2C i2c;
-    VideoCapture lanecam, objcam;
+    // Serial serial;
+    // I2C i2c;
+    // VideoCapture lanecam, objcam;
 
 };
 
