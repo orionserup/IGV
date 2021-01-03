@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../lib/libIGVstatic.a CMakeFiles/IGVstatic.dir/src/BasicNavigation.cpp.o CMakeFiles/IGVstatic.dir/src/IGV.cpp.o CMakeFiles/IGVstatic.dir/src/LaneDetection.cpp.o CMakeFiles/IGVstatic.dir/src/ObjectDetection.cpp.o CMakeFiles/IGVstatic.dir/src/hal.cpp.o CMakeFiles/IGVstatic.dir/src/main.cpp.o CMakeFiles/IGVstatic.dir/test/test.cpp.o
-/usr/bin/ranlib ../lib/libIGVstatic.a
