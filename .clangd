@@ -1,2 +1,0 @@
-CompileFlags:
-    Add: [-I /usr/local/include/opencv4 -I ./include -Wall]
