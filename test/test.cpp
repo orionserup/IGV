@@ -66,16 +66,16 @@ bool Test::LaneDetectionTest(){
 	
 	Mat testmat = imread("test.png", IMREAD_GRAYSCALE);  // load the sample image to test and compare
 
-    logfile << "Retrieving the Image \n";
+/*    logfile << "Retrieving the Image \n";
     logfile <<  "Image Specs: \n" <<
                 "=========================" << 
                 "Is Empty:       " << testmat.empty() << endl << 
                 "Dimensionality: " << testmat.dims << endl <<
                 "Pixel Format:   " << testmat.depth() << endl <<
                 "Size:           " << testmat.size << endl << endl;
-
+                
     if(!testmat.size || !testmat.empty()) passed = false;
-
+*/
     logfile << "Creating Empty Lane Array: Lanes Full of Zeros \n";
 
 	array<Lane, 2> testlanes = { Lane({0, 0}), Lane({0, 0})}; 
