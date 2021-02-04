@@ -5,21 +5,18 @@
 #include <string>
 #include <array>
 
-#define WHEELBASE (float)31.0f
-
 using namespace cv;
 using namespace std;
 
-namespace igv{
+namespace igv {
 
-enum Location: char{LEFT = 0, RIGHT = 1};
-enum ID : unsigned char{INT = 0, USB = 1};
-
-typedef unsigned char Speed;
-typedef unsigned char Direction;
+typedef uint8_t Speed;   // special types for easy reading
+typedef uint8_t Direction;
 typedef double Distance;
-typedef char DeltaDir;
+typedef int8_t DeltaDir;
 
+enum Location: uint8_t { LEFT = 0, RIGHT = 1 };
+enum ID : uint8_t { INT = 0, USB = 1 };
 
 /* Hardware Interface Structure
 *
@@ -32,7 +29,8 @@ typedef char DeltaDir;
 class HardwareInterface{  
 
 public:
-    class Camera {  // Camera struct, GetImage Calls to either ROS api or to the nano Camera API
+
+    class Camera {  // Camera Class, GetImage Calls to either ROS api or to the nano Camera API
 
     public:
 
@@ -53,22 +51,24 @@ public:
 
     public:
 
-        Motor(Location loc);
+      Motor(Location loc);
 
-        void SetSpeed(Speed speed);
-        inline Speed GetSpeed() const { return this->myspeed; } 
-        inline Speed GetLocation() const { return this->myloc; }
+      void SetSpeed(Speed speed);
+      inline Speed GetSpeed() const { return this->myspeed; } 
+      inline Location GetLocation() const { return this->myloc; }
 
     private:
 
-        Speed myspeed;
-        Location myloc;
+      Speed myspeed;
+      Location myloc;
 
     };
 
     class LIDAR{
 
     public:
+      
+      void Probe();
 
         
 
@@ -78,12 +78,26 @@ public:
 
     public:
 
-        double GetDistance(){ return this->distance; }  // returns the probed distance
-        void Probe();  // gets a reading and puts it in the distance value
+      double GetDistance(){ return this->distance; }  // returns the probed distance
+      void Probe();  // gets a reading and puts it in the distance value
 
     private:
 
-        double distance;
+      double distance;
+
+    };
+
+    class GPS{
+    
+    public:
+
+      void Probe();
+      double GetLatitude() { return Lat; }
+      double GetLongitude() { return Long; }
+
+    private:
+
+      double Lat, Long;
 
     };
 
@@ -91,14 +105,9 @@ public:
 
     Camera LaneCam, ObjCam;     // the interface holds the cameras,
     Motor lmotor, rmotor;       // motors,
+    GPS gps;                    // GPS modules,
     LIDAR lidar;                // lidar,
     UltraSonic ultra;           // and UltraSonic Sensors so that the other modules can control peripherals without IO manip
-
-private:
-
-    // Serial serial;
-    // I2C i2c;
-    // VideoCapture lanecam, objcam;
 
 };
 

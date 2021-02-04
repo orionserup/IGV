@@ -8,6 +8,11 @@ using namespace cv;
 using namespace igv;
 
 int main(int argc, const char** argv){
+  
+  HardwareInterface hal;
+  IGV igv(hal);
 
+  igv.Setup();
+  igv.Run();
 
 }

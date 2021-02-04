@@ -31,6 +31,8 @@ LaneDetection.hpp
 ../include/LaneDetection.hpp
 hal.hpp
 ../include/hal.hpp
+thread
+-
 
 ../include/LaneDetection.hpp
 opencv2/opencv.hpp

@@ -15,6 +15,7 @@ void HardwareInterface::Camera::Capture() {
     if (!Image.empty())
       cvtColor(Image, Image, COLOR_BGR2GRAY);
   }
+
 }
 
 void HardwareInterface::Motor::SetSpeed(Speed speed) {
@@ -25,8 +26,12 @@ void HardwareInterface::Motor::SetSpeed(Speed speed) {
 void HardwareInterface::UltraSonic::Probe() {}
 
 HardwareInterface::HardwareInterface()
-    : LaneCam(USB), ObjCam(USB), lmotor(LEFT), rmotor(RIGHT) {}
+    : LaneCam(INT), ObjCam(USB), lmotor(LEFT), rmotor(RIGHT) {}
 
 HardwareInterface::Motor::Motor(Location loc) : myloc(loc) {}
+
+void HardwareInterface::GPS::Probe(){}
+
+void HardwareInterface::LIDAR::Probe(){}
 
 #endif

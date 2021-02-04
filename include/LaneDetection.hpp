@@ -3,9 +3,6 @@
 #include "opencv2/opencv.hpp"
 #include "hal.hpp"
 
-#define x 0
-#define y 1
-
 namespace igv{
     
 struct Lane{

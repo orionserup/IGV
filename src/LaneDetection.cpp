@@ -1,12 +1,15 @@
 #include "LaneDetection.hpp"
 
+#define x 0
+#define y 1
+
 using namespace igv;
 
 // Stream operator overload, allows you to print Lanes
 ostream& operator<<(ostream& os, const Lane& lane){
     
-    os << "Slope: " << lane.slope;
-    os << (lane.slope == 0.0f)? " Y-Intercept: " : " X-Intercept: ";
+    os << "Slope: " << lane.slope << endl;
+    os << (lane.slope == 0.0f? " Y-Intercept: " : " X-Intercept: ");
     os << lane.intercept << endl;
 
     return os;
@@ -30,10 +33,12 @@ uint32_t DetectLanes(array<Lane, 2>& LaneArray, Mat& image){
     
     // store index and magnitiude of largest lines and a temporary magnitude
     struct linedata{
-        double mag;
-        uint32_t index;
-    }; 
-    linedata largest[] = {{0.0f,0}, {0.0f,0}};  
+    
+      double mag;
+      uint32_t index;
+    
+    } largest[2] = {{0.0f,0}, {0.0f,0}};
+
     double mag;
     
     for( uint32_t i = 0; i < linesP.size(); i+=2){  // find the two largest lines

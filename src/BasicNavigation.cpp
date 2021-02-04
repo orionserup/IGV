@@ -7,6 +7,7 @@ MotorController::MotorController(HardwareInterface &hal) : hal(hal) {
   direction = 0;
   speed = 0;
   busy = false;
+
 }
 
 /*
@@ -18,7 +19,6 @@ void MotorController::SetSpeed(Speed speed) {
   hal.lmotor.SetSpeed(speed);
   hal.rmotor.SetSpeed(speed);
 
-  return;
 }
 
 /* FUNCTION ChangeDirection:
