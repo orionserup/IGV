@@ -25,8 +25,8 @@ private:
 
   list<thread> activities;
   
-  void LDLoop(hal::Camera& cam);
-  void ODLoop(hal::Camera& cam);
+  void LDLoop(HardwareInterface::Camera& cam);
+  void ODLoop(HardwareInterface::Camera& cam);
 
     
 };
