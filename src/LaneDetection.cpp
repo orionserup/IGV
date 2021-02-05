@@ -1,7 +1,10 @@
 #include "LaneDetection.hpp"
+#include <cmath>
 
-#define x 0
-#define y 1
+#define x0 0
+#define y0 1
+#define x1 2
+#define y1 3
 
 using namespace igv;
 
@@ -15,6 +18,8 @@ ostream& operator<<(ostream& os, const Lane& lane){
     return os;
 }
 
+#ifndef CUDA  // if not using the GPU
+
 /* Lane Detection Function:
  * 
  * Reads an image and finds the largest Lanes and fills an array with the 2 largest
@@ -26,8 +31,12 @@ ostream& operator<<(ostream& os, const Lane& lane){
 
 uint32_t DetectLanes(array<Lane, 2>& LaneArray, Mat& image){
 
-    vector<Vec2f> linesP;  // a vector to fill with line points
-    HoughLinesP(image, linesP, 1, CV_PI/256, 50, 25, 10.0f);  // find the lines
+    Mat gray, edged;
+    cvtColor(image, gray, COLOR_BGR2GRAY);
+    Canny(gray, edged, 50, 200);
+
+    vector<Vec4i> linesP;  // a vector to fill with line points
+    HoughLinesP(gray, linesP, 1, CV_PI/256, 50, 25, 10.0f);  // find the lines
 
     if(linesP.size() < 2) return 0; // if there is less than one line return 0 lanes
     
@@ -41,9 +50,9 @@ uint32_t DetectLanes(array<Lane, 2>& LaneArray, Mat& image){
 
     double mag;
     
-    for( uint32_t i = 0; i < linesP.size(); i+=2){  // find the two largest lines
+    for( uint32_t i = 0; i < linesP.size(); i++){  // find the two largest lines
 
-        mag = linesP[i+i][x] - linesP[i][x] + linesP[i+1][y] - linesP[i][y];  
+        mag = linesP[i][x1] - linesP[i][x0] + linesP[i][y1] - linesP[i][y0];  
 
         if(mag > largest[0].mag) 
             largest[0] = {mag, i}; // if larger than the largest then replace it
@@ -56,27 +65,97 @@ uint32_t DetectLanes(array<Lane, 2>& LaneArray, Mat& image){
 
     for(uint32_t i = 0; i < 2; i++){  // put the two biggest lines in the Lane Vector 
 
-        if(linesP[largest[i].index][x] == linesP[largest[i].index + 1][x]){ // horizontal 
+        if(linesP[largest[i].index][x0] == linesP[largest[i].index][x1]){ // horizontal 
             
             slope = DBL_MAX;
-            intercept = linesP[largest[i].index][x];
+            intercept = linesP[largest[i].index][x0];
         }
-        else if(linesP[largest[i].index][y] == linesP[largest[i].index + 1][y]){ // vertical
+        else if(linesP[largest[i].index][y0] == linesP[largest[i].index][y1]){ // vertical
 
             slope = 0.0f;
-            intercept = linesP[largest[i].index][y];
+            intercept = linesP[largest[i].index][y0];
         }
         else{
         // m = deltay/deltax
-        slope = (linesP[largest[i].index + 1][y] - linesP[largest[i].index][y]) 
-                    / (linesP[largest[i].index + 1][x] - linesP[largest[i].index][x]);
+        slope = (linesP[largest[i].index][y1] - linesP[largest[i].index][y0]) 
+                    / (linesP[largest[i].index][x1] - linesP[largest[i].index][x0]);
         // b = Yo - mXo
-        intercept = (int)(linesP[largest[i].index][x] - slope*linesP[largest[i].index][x]); 
+        intercept = (linesP[largest[i].index][y0] - slope*linesP[largest[i].index][x0]); 
         }
 
-        LaneArray[i].slope = slope;
-        LaneArray[i].intercept = intercept;
+        LaneArray[i] = { slope, intercept };
+
+        #ifdef DEBUG // if debugging then print the image with lines
+
+        line(image, Point(linesP[largest[0].index][x0], Point(lines)), Scalar(0, 0, 255));
+        imshow(image);
+
+        #endif
+
     }
 
-    return linesP.size()/2;  // return how many lines are seen
+    return linesP.size();  // return how many lines are seen
 }
+
+#else
+
+uint32_t DetectLanes(array<Lane, 2>& lanes, Mat& image){
+
+    GpuMat img, edge, lines;
+    vector<uint32_t> votes;
+    vector<Vec2f> linesP;
+
+    uint32_t best[2] = {0};
+    uint32_t index[2];
+
+    img.upload(image);
+
+    gpu::cvtColor(img, img, COLOR_BGR2GRAY);
+    gpu::Canny(img, edge, 50, 200);
+
+    gpu::HoughLines(edge, lines, 1,  CV_PI/128, 10);
+    gpu::HoughLinesDownload(lines, linesP, votes);
+
+    for(uint32_t i = 0; i < linesP.size(), i++){
+        
+        if(votes[i] > best[0]){
+            best[0] = votes[i];
+            index[0] = i;
+        }
+        else if(votes[i] > best[1]){
+            best[1] = votes[i];
+            index[1] = i;
+        }
+    }
+
+    double slope;
+    uint32_t intercept;
+
+    for(uint32_t i = 0; i < 2; i++){
+
+        slope = tan(CV_PI/2 - linesP[index[i]][1]); // y/x = tan(theta)
+        if(linesP[index[i]][1] == || linesP[index[i][1]] == CV_PI/2) 
+            intercept = linesP[index[i][0]];  // if slope is 0 or inf, intercept is rho
+        else intercept = -1*slope*linesP[index[i]][0]/cos(linesP[index[i]][1]);
+
+        lanes[i] = { slope, intercept };
+
+        #ifdef
+
+        
+
+
+
+        #endif
+
+    }
+
+    return linesP.size();
+
+}
+
+
+
+
+
+#endif
