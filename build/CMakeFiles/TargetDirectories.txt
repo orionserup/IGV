@@ -1,0 +1,3 @@
+/home/soobin/Documents/Sandbox/IGV/build/CMakeFiles/rebuild_cache.dir
+/home/soobin/Documents/Sandbox/IGV/build/CMakeFiles/IGV.exe.dir
+/home/soobin/Documents/Sandbox/IGV/build/CMakeFiles/edit_cache.dir

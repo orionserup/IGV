@@ -37,7 +37,7 @@ public:
         Camera(ID id);
         Camera(VideoCapture& capture);
 
-        inline Mat GetImage() const { return this->Image; }
+        inline Mat& GetImage() { return Image; }
         void Capture();
 
     private:

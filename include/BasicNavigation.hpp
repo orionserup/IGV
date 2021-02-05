@@ -7,9 +7,7 @@
 #define WHEELBASE 31.0f
 
 using namespace chrono;
-
 namespace igv {
-
 class MotorController{
 
 public:

@@ -4,6 +4,7 @@
 using namespace igv;
 
 IGV::IGV(HardwareInterface& hal): MC(hal){}
+IGV::IGV(): MC(hal){}
 
 void IGV::Setup(){
 
@@ -18,6 +19,9 @@ void IGV::Setup(){
 
 void IGV::Run(){
 
+  std::vector<Object> objs;
+  std::array<Lane, 2> lanes; 
+
   bool finished = false; 
   while(!finished){
     
@@ -25,3 +29,4 @@ void IGV::Run(){
     
   }
 }
+

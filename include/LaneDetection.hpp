@@ -2,9 +2,7 @@
 
 #include "opencv2/opencv.hpp"
 #include "hal.hpp"
-
 namespace igv{
-    
 struct Lane{
 
     double slope;
