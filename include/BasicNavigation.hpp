@@ -1,21 +1,25 @@
 #pragma once
 
-#include "hal.hpp"
+#include "Defines.hpp"  // project defines
 #include <chrono> // wait funtionality
-#include <thread>
+#include <thread> // parrallel functionality
 
-#define WHEELBASE 31.0f
+#ifndef SIMULATION
+#include "CppLinuxSerial/SerialPort.hpp"
+#include "CppLinuxSerial/Exception.hpp"
 
-using namespace chrono;
+using namespace mn::CppLinuxSerial;
+#endif
 namespace igv {
 class MotorController{
 
 public:
 
-  MotorController(HardwareInterface& hal);  // by default the motor array comes from the HAL
+  MotorController();  // by default the motor array comes from the HAL
 
   void ChangeDirection(DeltaDir deltadir, Speed speeddiff);  // changes the direction in motion
-  void SetSpeed(Speed speed); // set the speed
+  void SetSpeed(Motor motor, Speed speed); // set the speed for one motor
+  void SetSpeed(Speed speed);  // set the speed for both motors
   void Go(Distance dist, Speed speed, Direction dir); // go dist meters, at speed speed in dir direction
     
   Speed GetSpeed() const { return this->speed; }  // gets the current speed
@@ -26,9 +30,14 @@ private:
 
   Direction direction;
   Speed speed;
-  HardwareInterface& hal;
   bool busy; 
-    
+
+  #ifndef SIMULATION
+
+  SerialPort myport;
+
+  #endif
+
 };
 
 }

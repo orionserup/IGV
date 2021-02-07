@@ -2,31 +2,33 @@
 #include "IGV.hpp"
 
 using namespace igv;
+using namespace chrono;
 
-IGV::IGV(HardwareInterface& hal): MC(hal){}
-IGV::IGV(): MC(hal){}
+IGV::IGV():LCam(USB1), OCam(USB2), LD(LCam), OD(OCam){}
 
 void IGV::Setup(){
 
-  hal.LaneCam.Capture();
-  hal.ultra.Probe();
-  hal.ObjCam.Capture();
-  hal.lidar.Probe();
-  hal.gps.Probe();
+  LCam.Capture();
+  us.Probe();
+  OCam.Capture();
+  lidar.Probe();
+  gps.Probe();
 
 }
 
 
 void IGV::Run(){
 
-  std::vector<Object> objs;
-  std::array<Lane, 2> lanes; 
-
-  bool finished = false; 
+  //thread ObjDet();
+  //thread LaneDet(ODLoop);
+  //thread Navigation(NavLoop);
+  
+  bool finished = false;
   while(!finished){
     
     
     
   }
 }
+
 

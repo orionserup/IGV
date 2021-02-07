@@ -1,23 +1,42 @@
-#include <BasicNavigation.hpp>
+#include "BasicNavigation.hpp"
 
 using namespace igv;
+using namespace std;
+using namespace chrono;
 
-MotorController::MotorController(HardwareInterface &hal) : hal(hal) {
+MotorController::MotorController() : 
+    myport("/dev/ttyUSB153", 9600), speed(0), direction(0), busy(false){}
 
-  direction = 0;
-  speed = 0;
-  busy = false;
-
-}
 
 /*
 
 */
 
-void MotorController::SetSpeed(Speed speed) {
+void MotorController::SetSpeed(Motor motor, Speed speed) {
 
-  hal.lmotor.SetSpeed(speed);
-  hal.rmotor.SetSpeed(speed);
+  uint8_t command, magnitude;
+  string msg = " ";
+
+  magnitude = abs(speed) >> 1;
+  
+  if (motor == LEFT)
+    command = speed < 0 ? 63 - magnitude : 64 + magnitude;
+  
+  else if (motor == RIGHT)
+    command = speed < 0 ? 191 - magnitude : 192 + magnitude;
+  
+  command = (!command)? 1: (command == 0xff)? 254: command;
+  
+  msg[0] = command;
+  
+  this->myport.Write(msg);
+
+}
+
+void MotorController::SetSpeed(Speed speed){
+
+  SetSpeed(LEFT, speed);
+  SetSpeed(RIGHT, speed);
 
 }
 
@@ -37,7 +56,7 @@ void MotorController::ChangeDirection(DeltaDir deltadir, Speed speeddiff) {
 
   if (busy || deltadir == 0 || speeddiff == 0) return; // if busy or with bad params exit
 
-  char currspeed = hal.lmotor.GetSpeed(); // get the current motor speed
+  char currspeed = GetSpeed(); // get the current motor speed
   double ohmega; // angular velocity in terms of change in direction per second
                  // using dir: 0 = 0, 256 = 2pi
   milliseconds waittime; // wait time to travel dir angular distance
@@ -52,20 +71,18 @@ void MotorController::ChangeDirection(DeltaDir deltadir, Speed speeddiff) {
   if (((int)currspeed - speeddiff) < -127)
     speeddiff = currspeed - 127;
 
-  ohmega =
-      ((int)speeddiff << 8) /
-      (CV_PI * WHEELBASE); // get tangential speed and convert it to angular
+  ohmega = ((int)speeddiff << 8) / (PI * WHEELBASE); // get tangential speed and convert it to angular
 
   waittime = milliseconds((uint64_t)(1000 * abs(deltadir) /
                                      ohmega)); // calculate wait time in millis
 
   busy = true;
 
-  hal.lmotor.SetSpeed(deltadir > 0 ? currspeed - speeddiff
-                                  : currspeed + speeddiff); // give the motors their new speeds
+  SetSpeed(LEFT, deltadir > 0 ? currspeed - speeddiff
+                              : currspeed + speeddiff); // give the motors their new speeds
   
-  hal.rmotor.SetSpeed(deltadir > 0 ? currspeed + speeddiff
-                                   : currspeed - speeddiff);
+  SetSpeed(RIGHT, deltadir > 0 ? currspeed + speeddiff
+                                : currspeed - speeddiff);
 
   this_thread::sleep_for(waittime); // wait until the turn has covered the delta
 

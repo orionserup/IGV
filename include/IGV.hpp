@@ -1,28 +1,44 @@
 #pragma once
 
+#include "Defines.hpp"
 #include "ObjectDetection.hpp"
 #include "BasicNavigation.hpp"
 #include "LaneDetection.hpp"
-#include "hal.hpp"
+#include "Camera.hpp"
+#include "LIDAR.hpp"
+#include "GPS.hpp"
+#include "Ultrasonic.hpp"
 
-#include <list>
-#include <thread>
+#include <thread>  // multithreading
+
 namespace igv{
+
 class IGV{
 
 public:
 
-  IGV(HardwareInterface& hal);
   IGV();
-
+  
   void Setup();
   void Run();
 
 private:
 
   MotorController MC;
-  HardwareInterface hal;
-    
+  ObjDetector OD;
+  LaneDetector LD;
+  Camera LCam, OCam;
+  LIDAR lidar;
+  GPS gps;
+  UltraSonic us;
+
 };
 
+void ODLoop();
+void LDLoop();
+void GPSLoop();
+void LIDARLoop();
+void NavLoop();
+
 }
+
