@@ -3,10 +3,10 @@ From a terminal install cmake, make and clang
 
 then run:
 
-cmake ..
+cmake .
 
 and then 
 
-make
+make or cmake --build .
 
 And its built
