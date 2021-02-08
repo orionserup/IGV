@@ -1,10 +1,8 @@
 #pragma once
 
-#include "Defines.hpp"
+#include "main.hpp"
 
-#include "opencv2/opencv.hpp"
 #include "Camera.hpp"
-#include <vector>
 
 using namespace std;
 using namespace cv;
@@ -23,19 +21,16 @@ struct Object {
 class ObjDetector{
 
 public:
-  
-  ObjDetector(Camera& cam);
 
   uint32_t DetectObjects(Mat& Image);
-  static uint32_t DetectObjects(vector<Object>& objs, Mat& Image);
+  static uint32_t DetectObjects(list<Object>& objs, Mat& Image);
   bool isBusy() { return this->busy; }
-  vector<Object>& GetObjects() { return objects; }
+  list<Object>& GetObjects() { return objects; }
 
 private:
 
   bool busy;
-  vector<Object> objects;
-  Camera cam;
+  list<Object> objects;
 
 };
 

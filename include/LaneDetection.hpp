@@ -1,10 +1,9 @@
 #pragma once
 
-#include <iostream>
-#include <cmath>
-#include <array>
+#include "main.hpp"
+
 #include "Camera.hpp"
-#include "opencv2/opencv.hpp"
+
 namespace igv{
 
 struct Lane{
@@ -20,8 +19,6 @@ class LaneDetector{
 
 public:
 
-  LaneDetector(Camera& cam);
-
   static uint32_t DetectLanes(std::array<Lane, 2>& LaneArray, cv::Mat& image);
   uint32_t DetectLanes(cv::Mat& Image);
   bool isBusy(){ return busy; }
@@ -30,7 +27,6 @@ public:
 private:
 
   bool busy;
-  Camera cam;
   std::array<Lane, 2> lanes;
 
 };

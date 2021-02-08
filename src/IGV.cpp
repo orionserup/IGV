@@ -4,7 +4,11 @@
 using namespace igv;
 using namespace chrono;
 
-IGV::IGV():LCam(USB1), OCam(USB2), LD(LCam), OD(OCam){}
+#ifndef SIMULATION
+IGV::IGV():LCam(LANECAMPORT), OCam(OBJCAMPORT){}
+#else
+
+#endif
 
 void IGV::Setup(){
 
@@ -13,15 +17,25 @@ void IGV::Setup(){
   OCam.Capture();
   lidar.Probe();
   gps.Probe();
+  LD.DetectLanes(LCam.GetImage());
+  OD.DetectObjects(OCam.GetImage());
 
 }
 
 
 void IGV::Run(){
 
-  //thread ObjDet();
-  //thread LaneDet(ODLoop);
-  //thread Navigation(NavLoop);
+  thread ObjDet([&](){
+    OCam.Capture();
+    OD.DetectObjects(OCam.GetImage());
+    this_thread::sleep_for(milliseconds(1000/ObjCamFPS));
+  });
+
+  thread LaneDet([&](){
+    LCam.Capture();
+    LD.DetectLanes(LCam.GetImage());
+    this_thread::sleep_for(milliseconds(1000/LaneCamFPS));
+  });
   
   bool finished = false;
   while(!finished){
@@ -30,5 +44,7 @@ void IGV::Run(){
     
   }
 }
+
+
 
 

@@ -1,8 +1,7 @@
 
 #pragma once
 
-#include "Defines.hpp"
-#include "opencv2/opencv.hpp"
+#include "main.hpp"
 
 using namespace cv;
 
@@ -12,7 +11,7 @@ class Camera {  // Camera Class, GetImage Calls to either ROS api or to the nano
 
     public:
 
-        Camera(ID id);
+        Camera(int port);
 
         inline Mat& GetImage() { return Image; }
         void Capture();

@@ -1,7 +1,6 @@
 #pragma once
 
-#include <unordered_map>
-#include "Defines.hpp"
+#include "main.hpp"  // all custom types, std libraries and defines
 
 #ifndef SIMULATION
 #include "CppLinuxSerial/Exception.hpp"
@@ -16,6 +15,8 @@ namespace igv{
 class LIDAR{
 
 public:
+
+    LIDAR();
       
     void Probe();
 

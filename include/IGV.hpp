@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Defines.hpp"
 #include "ObjectDetection.hpp"
 #include "BasicNavigation.hpp"
 #include "LaneDetection.hpp"
@@ -8,8 +7,6 @@
 #include "LIDAR.hpp"
 #include "GPS.hpp"
 #include "Ultrasonic.hpp"
-
-#include <thread>  // multithreading
 
 namespace igv{
 
@@ -34,11 +31,11 @@ private:
 
 };
 
-void ODLoop();
-void LDLoop();
-void GPSLoop();
-void LIDARLoop();
-void NavLoop();
+void ODLoop(Camera& ocam, ObjDetector& od);
+void LDLoop(Camera& lcam, LaneDetector& ld);
+void GPSLoop(GPS& gps);
+void LIDARLoop(LIDAR& lidar);
+void USLoop(UltraSonic& us);
 
 }
 

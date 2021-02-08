@@ -1,8 +1,6 @@
 #pragma once
 
-#include "Defines.hpp"  // project defines
-#include <chrono> // wait funtionality
-#include <thread> // parrallel functionality
+#include "main.hpp"  // project defines
 
 #ifndef SIMULATION
 #include "CppLinuxSerial/SerialPort.hpp"

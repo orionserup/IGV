@@ -4,7 +4,7 @@
 
 using namespace igv;
 
-Camera::Camera(ID id) : cap(id) {}
+Camera::Camera(int port) : cap(port) {}
 
 void Camera::Capture() { cap >> this->Image; }
 

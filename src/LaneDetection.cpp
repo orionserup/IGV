@@ -14,8 +14,6 @@ ostream& operator<<(ostream& os, const Lane& lane){
     return os;
 }
 
-LaneDetector::LaneDetector(Camera& cam):cam(cam){}
-
 #ifndef CUDA  // if not using the GPU
 
 /* Lane Detection Function:

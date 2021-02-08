@@ -8,8 +8,10 @@ using namespace igv;
 int main(int argc, const char** argv){
   
   IGV igv;
-
-  igv.Setup();
-  igv.Run();
+  if(argc > 1 && argv[1] == "--setup")
+    igv.Setup();
+  else 
+    igv.Setup();
+    igv.Run();
 
 }

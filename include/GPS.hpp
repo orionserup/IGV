@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Defines.hpp"
+#include "main.hpp"
 #ifndef SIMULATION
 #include "CppLinuxSerial/Exception.hpp"
 #include "CppLinuxSerial/SerialPort.hpp"
@@ -19,6 +19,8 @@ struct GPSData{
 class GPS{
     
 public:
+
+  GPS();
 
   void Probe();
   long double GetLatitude() { return position.Latitude; }
