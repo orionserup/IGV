@@ -29,13 +29,10 @@ private:
   GPS gps;
   UltraSonic us;
 
+  thread ObjDetection, LaneDetection, LidarLoop, GPSLoop, UltraLoop;
+
 };
 
-void ODLoop(Camera& ocam, ObjDetector& od);
-void LDLoop(Camera& lcam, LaneDetector& ld);
-void GPSLoop(GPS& gps);
-void LIDARLoop(LIDAR& lidar);
-void USLoop(UltraSonic& us);
 
 }
 

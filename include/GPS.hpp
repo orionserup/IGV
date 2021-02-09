@@ -26,11 +26,13 @@ public:
   long double GetLatitude() { return position.Latitude; }
   long double GetLongitude() { return position.Longitude; }
   GPSData& GetGPSData() { return position; }
+  bool isBusy(){ return busy; }
 
 private:
 
   GPSData position;
   uint8_t data[255];
+  bool busy;
 
   #ifndef SIMULATION
 

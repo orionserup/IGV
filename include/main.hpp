@@ -19,9 +19,13 @@
 
 // global constants
 #define WHEELBASE .67f  // m
+
 #define LaneCamFPS 10
 #define ObjCamFPS  10
 #define NavRefRate 10
+#define LIDARFPS   1
+#define GPSFPS     .5f
+#define ULTRAFPS   5
 
 #define PI 3.1415926  // m
 #define VSOUND 346.3  // m/s

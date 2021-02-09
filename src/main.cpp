@@ -8,10 +8,12 @@ using namespace igv;
 int main(int argc, const char** argv){
   
   IGV igv;
-  if(argc > 1 && argv[1] == "--setup")
+  if(argc > 1 && strncmp(argv[1], "--setup", strlen(argv[1])))
     igv.Setup();
+    
   else 
     igv.Setup();
-    igv.Run();
+    while(1) 
+      igv.Run();
 
 }

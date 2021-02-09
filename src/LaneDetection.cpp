@@ -7,7 +7,7 @@ using namespace cv;
 // Stream operator overload, allows you to print Lanes
 ostream& operator<<(ostream& os, const Lane& lane){
     
-    os << "Slope: " << lane.slope << endl;
+    os << "Lane Slope: " << lane.slope << endl;
     os << (lane.slope == 0.0f? " Y-Intercept: " : " X-Intercept: ");
     os << lane.intercept << endl;
 
@@ -98,6 +98,8 @@ uint32_t LaneDetector::DetectLanes(array<Lane, 2>& LaneArray, Mat& image){
 
 uint32_t LaneDetector::DetectLanes(Mat& image){
 
+    busy = true;
+
     Mat gray, edged;
     cvtColor(image, gray, COLOR_BGR2GRAY);
     Canny(gray, edged, 50, 200);
@@ -162,6 +164,8 @@ uint32_t LaneDetector::DetectLanes(Mat& image){
 
     }
 
+    busy = false;
+
     return linesP.size();  // return how many lines are seen
 
 }
@@ -170,7 +174,9 @@ uint32_t LaneDetector::DetectLanes(Mat& image){
 
 // Same Algorithm but using GPU
 
-uint32_t DetectLanes(array<Lane, 2>& lanes, Mat& image){
+uint32_t LaneDetector::DetectLanes(array<Lane, 2>& lanes, Mat& image){
+
+    busy = true;
 
     GpuMat img, edge, lines;
     vector<uint32_t> votes;
@@ -221,11 +227,15 @@ uint32_t DetectLanes(array<Lane, 2>& lanes, Mat& image){
 
     }
 
+    busy = false;
+
     return linesP.size();
 
 }
 
-static uint32_t DetectLanes(vector<Lane, 2>& lanes, Mat& image){
+static uint32_t LaneDetector::DetectLanes(vector<Lane, 2>& lanes, Mat& image){
+
+    busy = true;
 
     GpuMat img, edge, lines;
     vector<uint32_t> votes;
@@ -275,6 +285,8 @@ static uint32_t DetectLanes(vector<Lane, 2>& lanes, Mat& image){
         #endif
 
     }
+
+    busy = false;
 
     return linesP.size();
 

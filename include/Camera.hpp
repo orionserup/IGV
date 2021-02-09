@@ -15,10 +15,12 @@ class Camera {  // Camera Class, GetImage Calls to either ROS api or to the nano
 
         inline Mat& GetImage() { return Image; }
         void Capture();
+        bool isBusy(){ return busy; }
 
     private:
         
         Mat Image;
+        bool busy;
 
         #ifndef SIMULATION
 

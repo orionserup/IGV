@@ -11,7 +11,7 @@ namespace igv {
 
 struct Object {
 
-  double distance;
+  Distance distance;
   Direction angle;
   string classification;
 

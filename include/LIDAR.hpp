@@ -19,6 +19,8 @@ public:
     LIDAR();
       
     void Probe();
+    bool isBusy();
+    unordered_map<Direction, Distance>& GetMap() { return mymap; }
 
 private:
     
@@ -28,6 +30,7 @@ private:
 
     #endif
 
+    bool busy;
     unordered_map<Direction, Distance> mymap;
 
 }; 

@@ -4,46 +4,86 @@
 using namespace igv;
 using namespace chrono;
 
+
 #ifndef SIMULATION
-IGV::IGV():LCam(LANECAMPORT), OCam(OBJCAMPORT){}
+IGV::IGV():
+  LCam(LANECAMPORT), OCam(OBJCAMPORT){}
+
 #else
 
 #endif
 
-void IGV::Setup(){
+void IGV::Setup(){ // setup the threads
 
-  LCam.Capture();
-  us.Probe();
-  OCam.Capture();
-  lidar.Probe();
-  gps.Probe();
-  LD.DetectLanes(LCam.GetImage());
-  OD.DetectObjects(OCam.GetImage());
-
-}
-
-
-void IGV::Run(){
-
-  thread ObjDet([&](){
+  ObjDetection = thread([&](){
+    
+    while(1){
+      
     OCam.Capture();
     OD.DetectObjects(OCam.GetImage());
     this_thread::sleep_for(milliseconds(1000/ObjCamFPS));
+  
+    }
   });
 
-  thread LaneDet([&](){
+  LaneDetection = thread([&](){
+    
+    while(1){
+    
     LCam.Capture();
     LD.DetectLanes(LCam.GetImage());
     this_thread::sleep_for(milliseconds(1000/LaneCamFPS));
+    
+    }
   });
+
+  LidarLoop = thread([&](){
+    
+    while(1){
+    
+    lidar.Probe();
+    this_thread::sleep_for(milliseconds(1000/LIDARFPS));
+    
+    }
+  });
+
+  GPSLoop = thread([&](){
   
-  bool finished = false;
-  while(!finished){
+    while(1){
+
+    gps.Probe();
+    this_thread::sleep_for(milliseconds((uint64_t)(1000/GPSFPS)));
     
+    }
+  });
+
+  UltraLoop = thread([&](){  
     
-    
-  }
+    while(1){
+      
+    us.Probe();
+    this_thread::sleep_for(milliseconds(1000/ULTRAFPS));
+  
+    }
+  });
+
+  UltraLoop.yield();  // put the ultrasonic on the buttom of the stack
+  GPSLoop.yield();   // same for the gps
+
 }
+
+void IGV::Run(){
+
+  UltraLoop.yield()  // put the ultrasonic on the buttom of the stack
+  GPSLoop.yield()
+
+  // TODO: Implemetation
+
+
+  
+
+}
+
 
 
 
