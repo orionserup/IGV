@@ -49,6 +49,8 @@ void IGV::Setup(){ // setup the threads
 
   GPSLoop = thread([&](){
   
+    this_thread::yield();
+    
     while(1){
 
     gps.Probe();
@@ -58,6 +60,8 @@ void IGV::Setup(){ // setup the threads
   });
 
   UltraLoop = thread([&](){  
+
+    this_thread::yield();
     
     while(1){
       
@@ -67,15 +71,10 @@ void IGV::Setup(){ // setup the threads
     }
   });
 
-  UltraLoop.yield();  // put the ultrasonic on the buttom of the stack
-  GPSLoop.yield();   // same for the gps
 
 }
 
 void IGV::Run(){
-
-  UltraLoop.yield()  // put the ultrasonic on the buttom of the stack
-  GPSLoop.yield()
 
   // TODO: Implemetation
 

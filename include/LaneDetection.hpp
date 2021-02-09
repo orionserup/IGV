@@ -20,7 +20,8 @@ class LaneDetector{
 public:
 
   static uint32_t DetectLanes(std::array<Lane, 2>& LaneArray, cv::Mat& image);
-  uint32_t DetectLanes(cv::Mat& Image);
+  void DetectLanes(cv::Mat& Image);
+  uint32_t GetNumLanes() { return numlanes; }
   bool isBusy(){ return busy; }
   std::array<Lane, 2>& GetLanes() { return lanes; }
 
@@ -28,6 +29,7 @@ private:
 
   bool busy;
   std::array<Lane, 2> lanes;
+  uint32_t numlanes;
 
 };
   

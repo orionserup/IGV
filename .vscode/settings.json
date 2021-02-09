@@ -8,5 +8,6 @@
         "initializer_list": "cpp",
         "utility": "cpp"
     },
-    "cmake.sourceDirectory": "${workspaceFolder}/build"
+    "cmake.sourceDirectory": "${workspaceFolder}/build",
+    "editor.defaultFormatter": "ms-vscode.cpptools"
 }

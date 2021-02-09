@@ -96,19 +96,21 @@ uint32_t LaneDetector::DetectLanes(array<Lane, 2>& LaneArray, Mat& image){
 
 // same things but not static
 
-uint32_t LaneDetector::DetectLanes(Mat& image){
+void LaneDetector::DetectLanes(Mat& image){
 
     busy = true;
 
     Mat gray, edged;
     cvtColor(image, gray, COLOR_BGR2GRAY);
-    Canny(gray, edged, 50, 200);
+    Canny(gray, edged, 50, 255);
 
     vector<Vec4i> linesP;  // a vector to fill with line points
-    HoughLinesP(gray, linesP, 3, CV_PI/256, 50);  // find the lines
+    HoughLinesP(edged, linesP, 3, CV_PI/256, 50);  // find the lines
 
-    if(linesP.size() < 2) return 0; // if there is less than one line return 0 lanes
-    
+    if(!linesP.size()){
+        this->numlanes = 0;
+        return; // if there is less than one line return 0 lanes
+    }
     // store index and magnitiude of largest lines and a temporary magnitude
     struct linedata{
     
@@ -165,8 +167,7 @@ uint32_t LaneDetector::DetectLanes(Mat& image){
     }
 
     busy = false;
-
-    return linesP.size();  // return how many lines are seen
+    this->numlanes = linesP.size();  // return how many lines are seen
 
 }
 
@@ -193,6 +194,8 @@ uint32_t LaneDetector::DetectLanes(array<Lane, 2>& lanes, Mat& image){
     gpu::HoughLines(edge, lines, 1,  CV_PI/128, 10);
     gpu::HoughLinesDownload(lines, linesP, votes);
 
+    if(!linesP.size()) return 0;
+
     for(uint32_t i = 0; i < linesP.size(), i++){
         
         if(votes[i] > best[0]){
@@ -206,7 +209,7 @@ uint32_t LaneDetector::DetectLanes(array<Lane, 2>& lanes, Mat& image){
     }
 
     double slope;
-    uint32_t intercept;
+    int intercept;
 
     for(uint32_t i = 0; i < 2; i++){
 
@@ -227,13 +230,13 @@ uint32_t LaneDetector::DetectLanes(array<Lane, 2>& lanes, Mat& image){
 
     }
 
+    this->numlanes = linesP.size();
     busy = false;
-
-    return linesP.size();
 
 }
 
-static uint32_t LaneDetector::DetectLanes(vector<Lane, 2>& lanes, Mat& image){
+
+void LaneDetector::DetectLanes(Mat& image){
 
     busy = true;
 
@@ -252,6 +255,11 @@ static uint32_t LaneDetector::DetectLanes(vector<Lane, 2>& lanes, Mat& image){
     gpu::HoughLines(edge, lines, 1,  CV_PI/128, 10);
     gpu::HoughLinesDownload(lines, linesP, votes);
 
+    if(!linesP.size()){
+        this->numlanes = 0;
+        return;
+    }
+
     for(uint32_t i = 0; i < linesP.size(), i++){
         
         if(votes[i] > best[0]){
@@ -265,7 +273,7 @@ static uint32_t LaneDetector::DetectLanes(vector<Lane, 2>& lanes, Mat& image){
     }
 
     double slope;
-    uint32_t intercept;
+    int intercept;
 
     for(uint32_t i = 0; i < 2; i++){
 
@@ -286,12 +294,9 @@ static uint32_t LaneDetector::DetectLanes(vector<Lane, 2>& lanes, Mat& image){
 
     }
 
+    this->numlanes = linesP.size();
     busy = false;
 
-    return linesP.size();
-
 }
-
-
 
 #endif
