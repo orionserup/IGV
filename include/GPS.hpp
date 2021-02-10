@@ -1,9 +1,14 @@
 #pragma once
 
 #include "main.hpp"
+
+#include "TinyGPS++.h"  // GPS utilities
+
 #ifndef SIMULATION
 #include "CppLinuxSerial/Exception.hpp"
 #include "CppLinuxSerial/SerialPort.hpp"
+
+#include <linux/i2c-dev.h>
 
 using namespace mn::CppLinuxSerial;
 #endif
@@ -23,14 +28,14 @@ public:
   GPS();
 
   void Probe();
-  long double GetLatitude() { return position.Latitude; }
-  long double GetLongitude() { return position.Longitude; }
-  GPSData& GetGPSData() { return position; }
+  double GetLatitude() { return gps.location.lat(); }
+  double GetLongitude() { return gps.location.lng(); }
+  Direction GetDirection();
   bool isBusy(){ return busy; }
 
 private:
 
-  GPSData position;
+  TinyGPSPlus gps;
   uint8_t data[255];
   bool busy;
 

@@ -40,6 +40,7 @@
 
 // GPS DEFINES
 #define GPSPORT "/dev/ttyTHS1"
+#define GPSI2C "/dev/i2c-1"
 
 // LIDAR DEFINES
 #define LIDARPORT "/dev/USB"

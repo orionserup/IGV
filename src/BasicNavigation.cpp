@@ -13,8 +13,11 @@ void MotorController::SetSpeed(Speed speed){
 
 #ifndef SIMULATION
 
-MotorController::MotorController() : 
-    myport(MCPORT, B9600), speed(0), direction(0), busy(false){}
+MotorController::MotorController() : myport(MCPORT, B9600){
+  busy = false;
+  speed = 0;
+  direction = 0;
+}
 
 
 /*
@@ -40,6 +43,7 @@ void MotorController::SetSpeed(Motor motor, Speed speed) {
   this->myport.Write(msg);
 
 }
+
 /* FUNCTION ChangeDirection:
  *
  * Completes a turn while moving, if speediff = current speed it turns in place
@@ -54,13 +58,13 @@ void MotorController::SetSpeed(Motor motor, Speed speed) {
 
 void MotorController::ChangeDirection(DeltaDir deltadir, Speed speeddiff) {
 
-  if (busy || !deltadir|| !speeddiff) return; // if busy or with bad params exit
+  if (busy || !deltadir || !speeddiff) return; // if busy or with bad params exit
 
   double ohmega; // angular velocity in terms of change in direction per second
                  // using dir: 0 = 0, 256 = 2pi
   milliseconds waittime; // wait time to travel dir angular distance
 
-  direction = abs(int(direction + deltadir)) & 0x7f; // update the direction so that its mag is not above 127
+  direction += deltadir; // update the direction 
 
   speed &= 0x7f; // make sure the value is seven bits
 
@@ -70,7 +74,7 @@ void MotorController::ChangeDirection(DeltaDir deltadir, Speed speeddiff) {
   if (((int)this->speed - speeddiff) < -127)
     speeddiff = this->speed - 127;
 
-  ohmega = ((int)speeddiff << 8) / (PI * WHEELBASE); // get tangential speed and convert it to angular
+  ohmega = ((int)speeddiff << 7) / (PI * WHEELBASE); // get tangential speed and convert it to angular
 
   waittime = milliseconds((uint64_t)(1000 * abs(deltadir) / ohmega)); // calculate wait time in millis
 
