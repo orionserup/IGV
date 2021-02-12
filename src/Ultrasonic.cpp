@@ -12,6 +12,8 @@ UltraSonic::UltraSonic(){
 }
 
 void UltraSonic::Probe() {
+    
+    busy = true;
 
     GPIO::output(ULTRA_OUT, GPIO::HIGH);  // trigger a pulse
     auto start = chrono::system_clock::now();  // get the current time
@@ -21,7 +23,9 @@ void UltraSonic::Probe() {
     chrono::duration<double> timediff = end - start; // calculate the difference
 
     this->distance = VSOUND_D2*timediff.count(); // v = d/t -> d = v*t: t = timediff/2, v = speed of sound
-    GPIO::output(ULTRA_OUT, GPIO::LOW);
+    GPIO::output(ULTRA_OUT, GPIO::LOW);  // reset
+
+    busy = false;
 
 }
 

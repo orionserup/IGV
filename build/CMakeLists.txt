@@ -25,8 +25,9 @@ add_executable(IGV.exe ${SOURCES})  # make an executable taking all of the sourc
 #add_executable(Test.exe ${TESTSOURCES})
 
 target_link_libraries(IGV.exe ${OpenCV_LIBS})  # make sure the opencv libs are included
-target_link_libraries(IGV.exe /usr/local/lib/libCppLinuxSerial.a)
-target_link_libraries(IGV.exe /usr/local/lib/libJetsonGPIO.a)
+target_link_libraries(IGV.exe /usr/local/lib/libCppLinuxSerial.a)  # include the serial functionality
+target_link_libraries(IGV.exe /usr/local/lib/libJetsonGPIO.a)   # include the gpio functionality
+target_link_libraries(IGV.exe /usr/local/lib/libTinyGPS++.a)   # include the gps functionality
 
 
 
