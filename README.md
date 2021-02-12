@@ -10,4 +10,8 @@ https://github.com/mikalhart/TinyGPSPlus
 Serial Communication Provided by:
 https://github.com/gbmhunter/CppLinuxSerial
 
+Jetson Nano GPIO Functionality Given by:
+https://github.com/pjueon/JetsonGPIO
+
+
 
