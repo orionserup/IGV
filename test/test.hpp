@@ -2,13 +2,13 @@
 #include "IGV.hpp"
 #include <iostream>
 #include <fstream>
-#include <opencv2/opencv.hpp>
 
 class Test{
 
 public:
 
     Test(const char* logfile);
+    Test() = default;
     ~Test();
 
     bool OpenLogFile(const char* logfile);
@@ -19,6 +19,8 @@ public:
     bool CameraTest();
     bool MotorTest();
     bool LIDARTest();
+    bool GPSTest();
+    bool AccelerometerTest();
     bool USTest();
     bool LaneDetectionTest();
     bool ObjectDetectionTest();

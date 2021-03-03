@@ -34,6 +34,8 @@ private:
 
   SerialPort myport;
 
+  #else
+
   #endif
 
 };

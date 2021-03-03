@@ -13,30 +13,26 @@
 using namespace mn::CppLinuxSerial;
 #endif
 
-using namespace igv;
-
-struct GPSData{
-
-  long double Latitude, Longitude;
-
-};
+namespace igv{
 
 class GPS{
-    
+  
 public:
 
   GPS();
 
-  void Probe();
-  double GetLatitude() { return gps.location.lat(); }
-  double GetLongitude() { return gps.location.lng(); }
-  Direction GetDirection();
-  bool isBusy(){ return busy; }
+  Direction GetBearingTo(double lat, double lon);
+  double GetDistanceTo(double lat, double lon);
 
+  void Probe();
+  double GetLatitude() { return CurrLat; }
+  double GetLongitude() { return CurrLong; }
+  bool isBusy(){ return busy; }
+  
 private:
 
   TinyGPSPlus gps;
-  uint8_t data[255];
+  double CurrLat, CurrLong;
   bool busy;
 
   #ifndef SIMULATION
@@ -46,5 +42,7 @@ private:
   #endif
 
 };
+
+}
 
 

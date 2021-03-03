@@ -5,7 +5,7 @@ using namespace std;
 using namespace cv;
 
 // Stream operator overload, allows you to print Lanes
-ostream& operator<<(ostream& os, const Lane& lane){
+ostream& igv::operator<<(ostream& os, Lane& lane){
     
     os << "Lane Slope: " << lane.slope << endl;
     os << (lane.slope == 0.0f? " Y-Intercept: " : " X-Intercept: ");

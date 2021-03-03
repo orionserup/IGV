@@ -17,8 +17,8 @@ bool Test::CameraTest(){
 
     bool Passed = true;
 
-    logfile << "Creating USB Camera Object \n";
-    HardwareInterface::Camera cam1(USB);
+    logfile << "Creating Lane Camera Object \n";
+    Camera cam1(LANECAMPORT);
 
     logfile << "Taking a Picture \n";
     cam1.Capture();
@@ -37,8 +37,8 @@ bool Test::CameraTest(){
     if(testimage.empty() || !testimage.size) Passed = false;
     else Passed = true;
 
-    logfile << "Creating Internal Camera Object \n";
-    HardwareInterface::Camera cam2(INT);
+    logfile << "Creating Object Camera Object \n";
+    Camera cam2(OBJCAMPORT);
 
     logfile << "Taking a Picture: \n";
     cam2.Capture();
@@ -66,7 +66,7 @@ bool Test::LaneDetectionTest(){
 	
 	Mat testmat = imread("test.png", IMREAD_GRAYSCALE);  // load the sample image to test and compare
 
-/*    logfile << "Retrieving the Image \n";
+    logfile << "Retrieving the Image \n";
     logfile <<  "Image Specs: \n" <<
                 "=========================" << 
                 "Is Empty:       " << testmat.empty() << endl << 
@@ -75,15 +75,23 @@ bool Test::LaneDetectionTest(){
                 "Size:           " << testmat.size << endl << endl;
                 
     if(!testmat.size || !testmat.empty()) passed = false;
-*/
+
     logfile << "Creating Empty Lane Array: Lanes Full of Zeros \n";
 
 	array<Lane, 2> testlanes = { Lane({0, 0}), Lane({0, 0})}; 
 
     logfile << "Detecting Lanes: \n";
-	// uint32_t numlanes = DetectLanes(testlanes, testmat);
+	uint32_t numlanes = LaneDetector::DetectLanes(testlanes, testmat);
+
+    logfile << "Printing Lanes: \n";
+    for(Lane lane: testlanes){
+        logfile << lane;
+    }
+
+
 
     return passed;
 
 }
 
+bool Test::RunAllTests(){}

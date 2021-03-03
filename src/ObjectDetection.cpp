@@ -4,7 +4,7 @@
 using namespace igv;
 
 // Stream operator allows the lanes to be printed to file of stdout
-ostream& operator<<(ostream& os, Object& obj){
+ostream& igv::operator<<(ostream& os, Object& obj){
 
     os << "Object Type " << obj.classification << endl;
     os << "At Angle " << obj.angle << endl;

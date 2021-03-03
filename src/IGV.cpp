@@ -59,7 +59,7 @@ void IGV::Setup(){ // setup the threads
     }
   });
 
-  UltraLoop = thread([&](){  
+  SensorLoop = thread([&](){  
 
     this_thread::yield();
     

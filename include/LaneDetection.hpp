@@ -11,7 +11,7 @@ struct Lane{
   double slope;
   int intercept;
 
-  friend std::ostream& operator<<(std::ostream& os, const Lane& lane);
+  friend std::ostream& operator<<(std::ostream& os, Lane& lane);
 
 };
 
@@ -23,7 +23,7 @@ public:
   void DetectLanes(cv::Mat& Image);
   uint32_t GetNumLanes() { return numlanes; }
   bool isBusy(){ return busy; }
-  std::array<Lane, 2>& GetLanes() { return lanes; }
+  Lane GetLane(LaneNum num) { return lanes[num]; }
 
 private:
 

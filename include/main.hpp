@@ -10,6 +10,7 @@
 #include <cmath>
 #include <chrono>
 #include <thread>
+#include <bits/stdc++.h>
 
 #ifdef DEBUG
 #include <assert.h>
@@ -40,7 +41,6 @@
 
 // GPS DEFINES
 #define GPSPORT "/dev/ttyTHS1"
-#define GPSI2C "/dev/i2c-1"
 
 // LIDAR DEFINES
 #define LIDARPORT "/dev/USB"
@@ -66,10 +66,10 @@ typedef uint8_t Direction;
 typedef int8_t DeltaDir;
 typedef double Distance;  // Multi use define
 
+
+// Custom Enum Types for Clarity
 enum Motor: bool {LEFT = false, RIGHT = true};
-
-
-
+enum LaneNum : bool{ LO = false, L1 = true };
 
 
 }

@@ -6,7 +6,7 @@
 #include "Camera.hpp"
 #include "LIDAR.hpp"
 #include "GPS.hpp"
-#include "Ultrasonic.hpp"
+#include "Sensors.hpp"
 
 namespace igv{
 
@@ -29,7 +29,7 @@ private:
   GPS gps;
   UltraSonic us;
 
-  thread ObjDetection, LaneDetection, LidarLoop, GPSLoop, UltraLoop;
+  thread ObjDetection, LaneDetection, LidarLoop, GPSLoop, SensorLoop;
 
 };
 
