@@ -25,14 +25,19 @@ ostream& igv::operator<<(ostream& os, Lane& lane){
  * 
  */
 
-uint32_t LaneDetector::DetectLanes(array<Lane, 2>& LaneArray, Mat& image){
+uint32_t LaneDetector::DetectLanes(array<Lane, 4>& LaneArray, Mat& image){
+
+    #ifdef DEBUG
+    Mat imgcopy;
+    image.copyTo(imgcopy);
+    #endif
 
     Mat gray, edged;
     cvtColor(image, gray, COLOR_BGR2GRAY);
-    Canny(gray, edged, 50, 200);
+    Canny(gray, edged, 150, 180);
 
     vector<Vec4i> linesP;  // a vector to fill with line points
-    HoughLinesP(gray, linesP, 3, CV_PI/256, 25);  // find the lines
+    HoughLinesP(edged, linesP, 1, CV_PI/256, 40, 30, 3);  // find the lines
 
     if(linesP.size() < 2) return 0; // if there is less than one line return 0 lanes
     
@@ -42,7 +47,7 @@ uint32_t LaneDetector::DetectLanes(array<Lane, 2>& LaneArray, Mat& image){
       double mag;
       uint32_t index;
     
-    } largest[2] = {{0.0f,0}, {0.0f,0}};
+    } largest[4] = {{0.0f,0}, {0.0f,0}, {0.0f, 0}, {0.0f, 0}};
 
     double mag;
     
@@ -54,12 +59,16 @@ uint32_t LaneDetector::DetectLanes(array<Lane, 2>& LaneArray, Mat& image){
             largest[0] = {mag, i}; // if larger than the largest then replace it
         else if(mag > largest[1].mag) 
             largest[1] = {mag, i}; // same here except second largest
+        else if(mag > largest[2].mag)
+            largest[2] = {mag, i};
+        else if(mag > largest[3].mag)
+            largest[3] = {mag, i};
     }
 
     double slope; // temporary slope value
     int intercept; // temporary intercept value
 
-    for(uint32_t i = 0; i < 2; i++){  // put the two biggest lines in the Lane Vector 
+    for(uint32_t i = 0; i < 4 && i < linesP.size(); i++){  // put the two biggest lines in the Lane Vector 
 
         if(linesP[largest[i].index][X0] == linesP[largest[i].index][X1]){ // horizontal 
             
@@ -83,13 +92,18 @@ uint32_t LaneDetector::DetectLanes(array<Lane, 2>& LaneArray, Mat& image){
 
         #ifdef DEBUG // if debugging then print the image with lines
 
-        line(image, Point(linesP[largest[i].index][X0], linesP[largest[i].index][Y0]), 
+        line(imgcopy, Point(linesP[largest[i].index][X0], linesP[largest[i].index][Y0]), 
                     Point(linesP[largest[i].index][X1], linesP[largest[i].index][Y1]), Scalar(0, 0, 255));
-        imshow("Lane Detected Image", image);
-
+        
         #endif
 
     }
+      
+    #ifdef DEBUG
+    imwrite("../test/StaticLDEdged.png", edged);
+    imwrite("../test/StaticLDGray.png", gray);
+    imwrite("../test/StaticLDed.png", imgcopy);
+    #endif
 
     return linesP.size();  // return how many lines are seen
 }
@@ -99,13 +113,18 @@ uint32_t LaneDetector::DetectLanes(array<Lane, 2>& LaneArray, Mat& image){
 void LaneDetector::DetectLanes(Mat& image){
 
     busy = true;
+    
+    #ifdef DEBUG
+    Mat imgcopy;
+    image.copyTo(imgcopy);
+    #endif
 
     Mat gray, edged;
     cvtColor(image, gray, COLOR_BGR2GRAY);
-    Canny(gray, edged, 50, 255);
+    Canny(gray, edged, 180, 180 );
 
     vector<Vec4i> linesP;  // a vector to fill with line points
-    HoughLinesP(edged, linesP, 3, CV_PI/256, 50);  // find the lines
+    HoughLinesP(edged, linesP, 2, CV_PI/256, 20);  // find the lines
 
     if(!linesP.size()){
         this->numlanes = 0;
@@ -117,7 +136,7 @@ void LaneDetector::DetectLanes(Mat& image){
       double mag;
       uint32_t index;
     
-    } largest[2] = {{0.0f,0}, {0.0f,0}};
+    } largest[4] = {{0.0f,0}, {0.0f,0}, {0.0f, 0}, {0.0f, 0}};
 
     double mag;
     
@@ -129,12 +148,16 @@ void LaneDetector::DetectLanes(Mat& image){
             largest[0] = {mag, i}; // if larger than the largest then replace it
         else if(mag > largest[1].mag) 
             largest[1] = {mag, i}; // same here except second largest
+        else if(mag > largest[2].mag)
+            largest[2] = {mag, i};
+        else if(mag > largest[3].mag)
+            largest[3] = {mag, i};
     }
 
     double slope; // temporary slope value
     int intercept; // temporary intercept value
 
-    for(uint32_t i = 0; i < 2; i++){  // put the two biggest lines in the Lane Vector 
+    for(uint32_t i = 0; i < 4 && i < linesP.size(); i++){  // put the two biggest lines in the Lane Vector 
 
         if(linesP[largest[i].index][X0] == linesP[largest[i].index][X1]){ // horizontal 
             
@@ -154,17 +177,22 @@ void LaneDetector::DetectLanes(Mat& image){
         intercept = (linesP[largest[i].index][Y0] - slope*linesP[largest[i].index][X0]); 
         }
 
-        this->lanes[i] = { slope, intercept };
+        this->lanes[i] = (Lane){ slope, intercept };
 
         #ifdef DEBUG // if debugging then print the image with lines
-
-        line(image, Point(linesP[largest[i].index][X0], linesP[largest[i].index][Y0]),
+          
+        line(imgcopy, Point(linesP[largest[i].index][X0], linesP[largest[i].index][Y0]), 
                     Point(linesP[largest[i].index][X1], linesP[largest[i].index][Y1]), Scalar(0, 0, 255));
-        imshow("Lane Detected Image", image);
 
         #endif
 
     }
+      
+    #ifdef DEBUG
+    imwrite("../test/LDed.png", imgcopy);
+    imwrite("../test/LDEdged.png", edged);
+    imwrite("../test/LDGray.png", gray);
+    #endif
 
     busy = false;
     this->numlanes = linesP.size();  // return how many lines are seen

@@ -1,0 +1,29 @@
+Opening Image: 'test.jpg' 
+Retrieving the Image 
+Image Specs: 
+=========================
+Is Empty:       0
+Dimensionality: 2
+Pixel Format:   0
+Size:           321 x 428
+
+Creating Empty Lane Array: Lanes Full of Zeros 
+Detecting Lanes: 
+Printing Lanes: 
+Total Lanes Found: Static Call: 42 Object Call: 3803
+Lane Slope: 0
+ Y-Intercept: 150
+Lane Slope: 0
+ Y-Intercept: 197
+Lane Slope: 0
+ Y-Intercept: 170
+Lane Slope: 0
+ Y-Intercept: 235
+Lane Slope: 0
+ Y-Intercept: 195
+Lane Slope: 0
+ Y-Intercept: 256
+Lane Slope: 1.79769e+308
+ X-Intercept: 106
+Lane Slope: 0
+ Y-Intercept: 179

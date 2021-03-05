@@ -1,0 +1,7 @@
+/home/soobin/Documents/Sandbox/IGV/build/CMakeFiles/install/strip.dir
+/home/soobin/Documents/Sandbox/IGV/build/CMakeFiles/install/local.dir
+/home/soobin/Documents/Sandbox/IGV/build/CMakeFiles/IGV.dir
+/home/soobin/Documents/Sandbox/IGV/build/CMakeFiles/install.dir
+/home/soobin/Documents/Sandbox/IGV/build/CMakeFiles/edit_cache.dir
+/home/soobin/Documents/Sandbox/IGV/build/CMakeFiles/rebuild_cache.dir
+/home/soobin/Documents/Sandbox/IGV/build/CMakeFiles/list_install_components.dir

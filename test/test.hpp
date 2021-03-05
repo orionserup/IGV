@@ -20,10 +20,9 @@ public:
     bool MotorTest();
     bool LIDARTest();
     bool GPSTest();
-    bool AccelerometerTest();
-    bool USTest();
     bool LaneDetectionTest();
     bool ObjectDetectionTest();
+    bool SensorsTest();
 
 private:
 
