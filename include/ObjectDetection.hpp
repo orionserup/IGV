@@ -15,9 +15,9 @@ struct Object {
   Direction angle;
   string classification;
 
-  friend ostream& operator<<(ostream& os, Object& obj);
-
 };
+
+ostream& operator<<(ostream& os, Object& obj);
 
 class ObjDetector{
 

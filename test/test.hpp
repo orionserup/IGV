@@ -20,7 +20,7 @@ public:
     bool MotorTest();
     bool LIDARTest();
     bool GPSTest();
-    bool LaneDetectionTest();
+    bool LaneDetectionTest(string filename);
     bool ObjectDetectionTest();
     bool SensorsTest();
 

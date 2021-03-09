@@ -17,20 +17,17 @@ int main(int argc, char** argv){
 
     if(argc > 2){
       
-      string obj;
+      string obj, filename;
 
       for(int i = 2; i < argc; i++){
         
         obj = argv[i];
-
-        cout << obj << endl;
-
+        
         if(!obj.compare("all"))           test.RunAllTests();
         else if(!obj.compare("cam"))      test.CameraTest();
         else if(!obj.compare("motor"))    test.MotorTest();
         else if(!obj.compare("od"))       test.ObjectDetectionTest();
-        else if(!obj.compare("ld"))       test.LaneDetectionTest();
-        else if(!obj.compare("sensors"))  test.SensorsTest();
+        else if(!obj.compare("ld"))       test.LaneDetectionTest("../test/test.jpeg");
         else if(!obj.compare("lidar"))    test.LIDARTest();
         else if(!obj.compare("gps"))      test.GPSTest();
         else cout << "Invalid Option: " << obj << endl;

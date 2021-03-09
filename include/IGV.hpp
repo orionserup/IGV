@@ -18,6 +18,12 @@ public:
   
   void Setup();
   void Run();
+  
+  friend void ObjDetection(IGV* igv);
+  friend void LaneDetection(IGV* igv);
+  friend void LidarLoop(IGV* igv);
+  friend void GPSLoop(IGV* igv);
+  friend void SensorLoop(IGV* igv);
 
 private:
 
@@ -29,10 +35,13 @@ private:
   GPS gps;
   UltraSonic us;
 
-  thread ObjDetection, LaneDetection, LidarLoop, GPSLoop, SensorLoop;
-
 };
 
+void ObjDetection(IGV* igv);
+void LaneDetection(IGV* igv);
+void LidarLoop(IGV* igv);
+void GPSLoop(IGV* igv);
+void SensorLoop(IGV* igv);
 
 }
 

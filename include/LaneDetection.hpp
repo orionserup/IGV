@@ -1,7 +1,6 @@
 #pragma once
 
 #include "main.hpp"
-
 #include "Camera.hpp"
 
 namespace igv{
@@ -11,9 +10,9 @@ struct Lane{
   double slope;
   int intercept;
 
-  friend std::ostream& igv::operator<<(std::ostream& os, Lane& lane);
-
 };
+
+std::ostream& operator<<(std::ostream& os, Lane& lane);
 
 class LaneDetector{
 

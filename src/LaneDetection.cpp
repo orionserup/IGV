@@ -14,11 +14,11 @@ ostream& igv::operator<<(ostream& os, Lane& lane){
     return os;
 }
 
-#ifndef CUDA  // if not using the GPU
+#ifndef __NVCC__   // if not using the GPU
 
 /* Lane Detection Function:
  * 
- * Reads an image and finds the largest Lanes and fills an array with the 2 largest
+ * Reads an image and finds the largest Lanes and fills an array with the 4 largest
  * @param: LaneArray: a preexisting array full of lanes that gets modified by the function
  * @param: image: a preexisting matrix representing an image that gets read for lanes
  * @retval: returns the number of lanes detected total
@@ -34,12 +34,12 @@ uint32_t LaneDetector::DetectLanes(array<Lane, 4>& LaneArray, Mat& image){
 
     Mat gray, edged;
     cvtColor(image, gray, COLOR_BGR2GRAY);
-    Canny(gray, edged, 150, 180);
+    Canny(gray, edged, 200, 200 );
 
     vector<Vec4i> linesP;  // a vector to fill with line points
-    HoughLinesP(edged, linesP, 1, CV_PI/256, 40, 30, 3);  // find the lines
+    HoughLinesP(edged, linesP, 1, CV_PI/256, 80, 80, 10);  // find the lines
 
-    if(linesP.size() < 2) return 0; // if there is less than one line return 0 lanes
+    if(linesP.size() < 1) return 0; // if there is less than one line return 0 lanes
     
     // store index and magnitiude of largest lines and a temporary magnitude
     struct linedata{
@@ -100,8 +100,6 @@ uint32_t LaneDetector::DetectLanes(array<Lane, 4>& LaneArray, Mat& image){
     }
       
     #ifdef DEBUG
-    imwrite("../test/StaticLDEdged.png", edged);
-    imwrite("../test/StaticLDGray.png", gray);
     imwrite("../test/StaticLDed.png", imgcopy);
     #endif
 
@@ -190,8 +188,6 @@ void LaneDetector::DetectLanes(Mat& image){
       
     #ifdef DEBUG
     imwrite("../test/LDed.png", imgcopy);
-    imwrite("../test/LDEdged.png", edged);
-    imwrite("../test/LDGray.png", gray);
     #endif
 
     busy = false;
