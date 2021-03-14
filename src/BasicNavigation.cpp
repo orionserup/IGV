@@ -4,10 +4,7 @@ using namespace igv;
 using namespace std;
 using namespace chrono;
 
-/*!
-  * \fn MotorController::SetSpeed
-  * \brief Set the Speed of both motors
-  */
+
 void MotorController::SetSpeed(Speed speed){
 
   SetSpeed(LEFT, speed);
@@ -17,20 +14,12 @@ void MotorController::SetSpeed(Speed speed){
 
 #ifndef SIMULATION
 
-/*!
-  * \fn MotorController::MotorController()
-  * \brief Creates A Motor Controller Object
-*/
 MotorController::MotorController() : myport(MCPORT, B9600){
   busy = false;
   speed = 0;
   direction = 0;
 }
 
-/*!
-  * \fn MotorController::SetSpeed(Motor motor, Speed speed)
-  * \brief Sets the Speed of a motor
-*/
 void MotorController::SetSpeed(Motor motor, Speed speed) {
 
   uint8_t command = 0;
@@ -51,13 +40,6 @@ void MotorController::SetSpeed(Motor motor, Speed speed) {
 
 }
 
-/*!  
-  *  \fn MotorController::ChangeDirection(DeltaDir deltadir, Speed speeddiff)
-  *  \brief Completes a turn while moving 
-  * 
-  *  The slower the speed and faster the speeddiff the faster and less wide the
-  *  turn
-  */
 
 void MotorController::ChangeDirection(DeltaDir deltadir, Speed speeddiff) {
 

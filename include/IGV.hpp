@@ -8,15 +8,36 @@
 #include "GPS.hpp"
 #include "Sensors.hpp"
 
+/*!
+* \namespace igv
+* \brief namespace for this project
+*/
 namespace igv{
 
+/*!
+* \class IGV 
+* \brief The Complete Vehicle Class 
+*/
 class IGV{
 
 public:
 
+  /*!
+  * \fn IGV()
+  * \brief Constructs an IGV object
+  */
   IGV();
   
+  /*!
+  * \fn Setup()
+  * \brief Starts all Sensors and Probes them all
+  */
   void Setup();
+
+  /*!
+  * \fn Run()
+  * \brief Starts running autonomously
+  */
   void Run();
   
   friend void ObjDetection(IGV* igv);
