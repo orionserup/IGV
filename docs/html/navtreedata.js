@@ -2,19 +2,14 @@ var NAVTREE =
 [
   [ "IGV", "index.html", [
     [ "Files", null, [
-      [ "File List", "files.html", "files" ],
-      [ "File Members", "globals.html", [
-        [ "All", "globals.html", null ],
-        [ "Functions", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", null ]
-      ] ]
+      [ "File List", "files.html", "files" ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"BasicNavigation_8cpp.html"
+"BasicNavigation_8cpp_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -24,7 +24,7 @@ class MotorController{
 
 public:
 
-  /** 
+  /**
    * @file BasicNavigation.cpp
   *  @fn MotorController()
   *  @brief Creates A Motor Controller Object
@@ -47,7 +47,7 @@ public:
 
   void ChangeDirection(DeltaDir deltadir, Speed speeddiff);  // changes the direction in motion
   
-  /**
+  /*!
   * @file BasicNavigation.cpp
   * @fn SetSpeed(Motor motor, Speed speed)
   * @brief Sets the Speed of a motor
@@ -106,7 +106,7 @@ public:
    * 
    * @return bool 
    */
-  
+
   inline bool isBusy() const { return busy; }
 
 private:
