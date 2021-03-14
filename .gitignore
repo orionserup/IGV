@@ -6,8 +6,4 @@ Makefile
 CMakeFiles/
 html/
 bin/
-*.png
-*.jpg
-*.jpeg
-*.log
-.*/
+.vscode/
