@@ -7,8 +7,16 @@
 using namespace std;
 using namespace cv;
 
+/*!
+* \namespace igv
+* \brief Namespace for the Project
+*/
 namespace igv {
 
+/*!
+* \struct Object
+* \brief Holds Data about Objects 
+*/
 struct Object {
 
   Distance distance;
@@ -17,6 +25,13 @@ struct Object {
 
 };
 
+/*!
+* \fn operator<<(ostream& os, Object& obj)
+* \brief Output Stream Operator to print Objects
+* \param os Output Stream Object
+* \param obj Object to Print Out
+* \return ostream& 
+*/
 ostream& operator<<(ostream& os, Object& obj);
 
 class ObjDetector{
