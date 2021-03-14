@@ -3,7 +3,8 @@ build/cmake_install.cmake
 build/install_manifest.txt
 build/compile_commmands.json
 build/Makefile 
-lib
+build/CMakeFiles
+docs/html
 bin
 test/*.png
 test/*.jpg
