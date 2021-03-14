@@ -1,0 +1,91 @@
+\hypertarget{main_8cpp}{}\section{/home/soobin/\+Documents/\+Sandbox/\+I\+G\+V/src/main.cpp File Reference}
+\label{main_8cpp}\index{/home/soobin/\+Documents/\+Sandbox/\+I\+G\+V/src/main.\+cpp@{/home/soobin/\+Documents/\+Sandbox/\+I\+G\+V/src/main.\+cpp}}
+{\ttfamily \#include \char`\"{}I\+G\+V.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}test.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$string$>$}\newline
+Include dependency graph for main.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{main_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{main.\+cpp@{main.\+cpp}!main@{main}}
+\index{main@{main}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Definition at line \hyperlink{main_8cpp_source_l00010}{10} of file \hyperlink{main_8cpp_source}{main.\+cpp}.
+
+
+\begin{DoxyCode}
+00010                                \{
+00011 
+00012 \textcolor{preprocessor}{#ifdef DEBUG}
+00013 
+00014   \textcolor{keywordflow}{if}(argc > 1)\{
+00015 
+00016     \textcolor{keywordflow}{if}(!(\textcolor{keywordtype}{string}(argv[1])).compare(\textcolor{stringliteral}{"--setup"}))\{
+00017 
+00018       IGV \hyperlink{namespaceigv}{igv};
+00019       igv.Setup();
+00020 
+00021     \}
+00022 
+00023     \textcolor{keywordflow}{else}\{
+00024 
+00025       cout << \textcolor{stringliteral}{"Testing Window"} << endl;
+00026 
+00027       Test test(\textcolor{stringliteral}{"../test/test.log"});
+00028 
+00029       \textcolor{keywordflow}{if}(argc > 2)\{
+00030       
+00031         \textcolor{keywordtype}{string} obj, filename;
+00032 
+00033         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 2; i < argc; i++)\{
+00034         
+00035           obj = argv[i];
+00036         
+00037           \textcolor{keywordflow}{if}(!obj.compare(\textcolor{stringliteral}{"all"}))           test.RunAllTests();
+00038           \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(!obj.compare(\textcolor{stringliteral}{"cam"}))      test.CameraTest();
+00039           \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(!obj.compare(\textcolor{stringliteral}{"motor"}))    test.MotorTest();
+00040           \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(!obj.compare(\textcolor{stringliteral}{"od"}))       test.ObjectDetectionTest();
+00041           \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(!obj.compare(\textcolor{stringliteral}{"ld"}))       test.LaneDetectionTest(\textcolor{stringliteral}{"../test/test.jpeg"});
+00042           \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(!obj.compare(\textcolor{stringliteral}{"lidar"}))    test.LIDARTest();
+00043           \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(!obj.compare(\textcolor{stringliteral}{"gps"}))      test.GPSTest();
+00044           \textcolor{keywordflow}{else} cout << \textcolor{stringliteral}{"Invalid Option: "} << obj << endl;
+00045       
+00046         \} 
+00047       \}
+00048     \}
+00049   \}
+00050 
+00051   \textcolor{keywordflow}{else} 
+00052     cout  << \textcolor{stringliteral}{"Welcome to the IGV Help Menu\(\backslash\)n"}
+00053           << \textcolor{stringliteral}{"'--test' Runs the Tests to specify which one put options after:\(\backslash\)n"}
+00054           << \textcolor{stringliteral}{"\(\backslash\)t'cam', 'gps', 'all', 'motor', 'lidar', 'ld', 'od', 'sensors'\(\backslash\)n"};
+00055 
+00056     
+00057   \textcolor{keywordflow}{return} EXIT\_SUCCESS;
+00058   
+00059 \textcolor{preprocessor}{#endif}
+00060 
+00061   IGV igv;
+00062 
+00063   igv.Setup();
+00064   igv.Run();
+00065 
+00066 \}
+\end{DoxyCode}

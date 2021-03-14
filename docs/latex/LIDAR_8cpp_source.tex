@@ -1,0 +1,24 @@
+\hypertarget{LIDAR_8cpp_source}{}\section{L\+I\+D\+A\+R.\+cpp}
+\label{LIDAR_8cpp_source}\index{/home/soobin/\+Documents/\+Sandbox/\+I\+G\+V/src/\+L\+I\+D\+A\+R.\+cpp@{/home/soobin/\+Documents/\+Sandbox/\+I\+G\+V/src/\+L\+I\+D\+A\+R.\+cpp}}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{"LIDAR.hpp"}
+00002 
+00003 \textcolor{keyword}{using} \textcolor{keyword}{namespace} igv;
+00004 
+00005 \textcolor{preprocessor}{#}\textcolor{preprocessor}{ifndef} \textcolor{preprocessor}{SIMULATION}
+00006 \textcolor{keyword}{using} \textcolor{keyword}{namespace} mn::CppLinuxSerial;
+00007 
+00008 LIDAR::LIDAR(): myport(LIDARPORT, B9600)\{\}
+00009 
+00010 \textcolor{keywordtype}{void} LIDAR::Probe()\{
+00011 
+00012 
+00013 \}
+00014 
+00015 \textcolor{preprocessor}{#}\textcolor{preprocessor}{else}
+00016 
+00017 
+00018 
+00019 \textcolor{preprocessor}{#}\textcolor{preprocessor}{endif}
+\end{DoxyCode}

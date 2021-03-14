@@ -1,0 +1,29 @@
+\hypertarget{GPS_8cpp_source}{}\section{G\+P\+S.\+cpp}
+\label{GPS_8cpp_source}\index{/home/soobin/\+Documents/\+Sandbox/\+I\+G\+V/src/\+G\+P\+S.\+cpp@{/home/soobin/\+Documents/\+Sandbox/\+I\+G\+V/src/\+G\+P\+S.\+cpp}}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{"GPS.hpp"}
+00002 
+00003 \textcolor{preprocessor}{#}\textcolor{preprocessor}{ifndef} \textcolor{preprocessor}{SIMULATION}
+00004 \textcolor{keyword}{using} \textcolor{keyword}{namespace} mn::CppLinuxSerial;
+00005 \textcolor{keyword}{using} \textcolor{keyword}{namespace} igv;
+00006 
+00007 GPS::GPS(): myport(GPSPORT, B9600)\{\}
+00008 
+00009 \textcolor{keywordtype}{void} GPS::Probe()\{
+00010 
+00011 \}
+00012 
+00013 Direction GPS::GetBearingTo(\textcolor{keywordtype}{double} lat, \textcolor{keywordtype}{double} lon)\{
+00014     \textcolor{keywordflow}{return} \textcolor{keyword}{this}->gps.courseTo(\textcolor{keyword}{this}->CurrLat, \textcolor{keyword}{this}->CurrLong, lat, lon);
+00015 \}
+00016 
+00017 \textcolor{keywordtype}{double} GPS::GetDistanceTo(\textcolor{keywordtype}{double} lat, \textcolor{keywordtype}{double} lon)\{
+00018     \textcolor{keywordflow}{return} \textcolor{keyword}{this}->gps.distanceBetween(\textcolor{keyword}{this}->CurrLat, \textcolor{keyword}{this}->CurrLong,lat,lon);
+00019 \}
+00020 
+00021 \textcolor{preprocessor}{#}\textcolor{preprocessor}{else}
+00022 
+00023 
+00024 \textcolor{preprocessor}{#}\textcolor{preprocessor}{endif}
+\end{DoxyCode}

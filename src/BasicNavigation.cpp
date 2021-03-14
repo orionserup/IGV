@@ -4,10 +4,8 @@ using namespace igv;
 using namespace std;
 using namespace chrono;
 
-/**
-  * @file BasicNavigation.cpp
-  * @fn SetSpeed(Speed speed)
-  * 
+/*!
+  * @brief Set the Speed of both motors
   * @param speed The Speed to set it to [-127, 127]
   */
 void MotorController::SetSpeed(Speed speed){
@@ -19,9 +17,7 @@ void MotorController::SetSpeed(Speed speed){
 
 #ifndef SIMULATION
 
-/**
-  * @file BasicNavigation.cpp
-  * @fn MotorController()
+/*!
   * @brief Creates A Motor Controller Object
 */
 MotorController::MotorController() : myport(MCPORT, B9600){
@@ -30,9 +26,7 @@ MotorController::MotorController() : myport(MCPORT, B9600){
   direction = 0;
 }
 
-/**
-  * @file BasicNavigation.cpp
-  * @fn SetSpeed(Motor motor, Speed speed)
+/*!
   * @brief Sets the Speed of a motor
   * 
   * @param motor The Motor to Set the Speed of
@@ -58,9 +52,7 @@ void MotorController::SetSpeed(Motor motor, Speed speed) {
 
 }
 
-/**
-  *  @file BasicNavigation.cpp 
-  *  @fn ChangeDirection:
+/*!
   *  @brief Completes a turn while moving 
   * 
   *  @param deltadir Change in direction, [0, 2pi] -> [0, 256]

@@ -1,0 +1,57 @@
+\hypertarget{ObjectDetection_8cpp_source}{}\section{Object\+Detection.\+cpp}
+\label{ObjectDetection_8cpp_source}\index{/home/soobin/\+Documents/\+Sandbox/\+I\+G\+V/src/\+Object\+Detection.\+cpp@{/home/soobin/\+Documents/\+Sandbox/\+I\+G\+V/src/\+Object\+Detection.\+cpp}}
+
+\begin{DoxyCode}
+00001 
+00002 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{"ObjectDetection.hpp"}
+00003 
+00004 \textcolor{keyword}{using} \textcolor{keyword}{namespace} igv;
+00005 
+00006 \textcolor{comment}{// Stream operator allows the lanes to be printed to file of stdout}
+00007 ostream& igv::operator<<(ostream& os, Object& obj)\{
+00008 
+00009     os << \textcolor{stringliteral}{"Object Type "} << obj.classification << endl;
+00010     os << \textcolor{stringliteral}{"At Angle "} << obj.angle << endl;
+00011     os << \textcolor{stringliteral}{"With Distance "} << obj.distance << endl;
+00012 
+00013     \textcolor{keywordflow}{return} os;
+00014 \}
+00015 
+00016 \textcolor{preprocessor}{#}\textcolor{preprocessor}{ifndef} \textcolor{preprocessor}{CUDA}  \textcolor{comment}{// if not using the GPU}
+00017 
+00018 uint32\_t ObjDetector::DetectObjects(list<Object>& objects, Mat& image)\{
+00019 
+00020     \textcolor{keywordflow}{return} objects.size();
+00021 
+00022 \}
+00023 
+00024 uint32\_t ObjDetector::DetectObjects(Mat& Image)\{
+00025 
+00026     busy = \textcolor{keyword}{true};
+00027 
+00028     busy = \textcolor{keyword}{false};
+00029 
+00030     \textcolor{keywordflow}{return} \textcolor{keyword}{this}->objects.size();
+00031 \}
+00032 
+00033 \textcolor{preprocessor}{#}\textcolor{preprocessor}{else}
+00034 
+00035 uint32\_t ObjDetector::DetectObjects(list<Object>& objs, Mat& Image)\{
+00036 
+00037     \textcolor{keywordflow}{return} objs.size();
+00038 
+00039 \}
+00040 
+00041 
+00042 uint32\_t ObjDetector::DetectObjects(Mat& Image)\{
+00043 
+00044     busy = \textcolor{keyword}{true};
+00045 
+00046     busy = \textcolor{keyword}{false};
+00047 
+00048     \textcolor{keywordflow}{return} objs.size();
+00049 
+00050 \}
+00051 
+00052 \textcolor{preprocessor}{#}\textcolor{preprocessor}{endif}
+\end{DoxyCode}

@@ -1,0 +1,71 @@
+\hypertarget{IGV_8cpp_source}{}\section{I\+G\+V.\+cpp}
+\label{IGV_8cpp_source}\index{/home/soobin/\+Documents/\+Sandbox/\+I\+G\+V/src/\+I\+G\+V.\+cpp@{/home/soobin/\+Documents/\+Sandbox/\+I\+G\+V/src/\+I\+G\+V.\+cpp}}
+
+\begin{DoxyCode}
+00001 
+00002 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{"IGV.hpp"}
+00003 
+00004 \textcolor{keyword}{using} \textcolor{keyword}{namespace} igv;
+00005 \textcolor{keyword}{using} \textcolor{keyword}{namespace} chrono;
+00006 
+00007 \textcolor{preprocessor}{#}\textcolor{preprocessor}{ifndef} \textcolor{preprocessor}{SIMULATION}
+00008 IGV::IGV() : LCam(LANECAMPORT), OCam(OBJCAMPORT)\{\}
+00009 
+00010 \textcolor{preprocessor}{#}\textcolor{preprocessor}{else}
+00011 
+00012 \textcolor{preprocessor}{#}\textcolor{preprocessor}{endif}
+00013 
+00014 \textcolor{keywordtype}{void} IGV::Setup()\{ \textcolor{comment}{// setup the threads }
+00015 
+00016   thread od(ObjDetection, \textcolor{keyword}{this});
+00017   thread ld(LaneDetection, \textcolor{keyword}{this});
+00018   thread sens(SensorLoop, \textcolor{keyword}{this});
+00019   thread lid(LidarLoop, \textcolor{keyword}{this});
+00020   thread gpsl(GPSLoop, \textcolor{keyword}{this});
+00021 
+00022   ld.join();
+00023   od.join();
+00024   sens.join();
+00025   lid.join();
+00026   gpsl.join();
+00027 
+00028 \}
+00029 
+00030 \textcolor{keywordtype}{void} IGV::Run()
+00031 \{
+00032 
+00033   \textcolor{comment}{// TODO: Implemetation}
+00034 \}
+00035 
+00036 \textcolor{keywordtype}{void} igv::ObjDetection(IGV* igv)\{
+00037 
+00038   igv->OCam.Capture();
+00039   igv->OD.DetectObjects(igv->OCam.GetImage());
+00040 
+00041 \}
+00042 
+00043 \textcolor{keywordtype}{void} igv::LaneDetection(IGV* igv)\{
+00044 
+00045   igv->LCam.Capture();
+00046   igv->LD.DetectLanes(igv->LCam.GetImage());
+00047 
+00048 \}
+00049 
+00050 \textcolor{keywordtype}{void} igv::LidarLoop(IGV* igv) \{
+00051 
+00052   igv->lidar.Probe();
+00053 
+00054 \}
+00055 
+00056 \textcolor{keywordtype}{void} igv::GPSLoop(IGV* igv)\{
+00057 
+00058   igv->gps.Probe();
+00059 
+00060 \}
+00061 
+00062 \textcolor{keywordtype}{void} igv::SensorLoop(IGV* igv)\{
+00063 
+00064   igv->us.Probe();
+00065 
+00066 \}
+\end{DoxyCode}
