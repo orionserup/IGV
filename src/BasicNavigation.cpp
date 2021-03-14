@@ -5,8 +5,8 @@ using namespace std;
 using namespace chrono;
 
 /*!
-  * @brief Set the Speed of both motors
-  * @param speed The Speed to set it to [-127, 127]
+  * \fn MotorController::SetSpeed
+  * \brief Set the Speed of both motors
   */
 void MotorController::SetSpeed(Speed speed){
 
@@ -18,7 +18,8 @@ void MotorController::SetSpeed(Speed speed){
 #ifndef SIMULATION
 
 /*!
-  * @brief Creates A Motor Controller Object
+  * \fn MotorController::MotorController()
+  * \brief Creates A Motor Controller Object
 */
 MotorController::MotorController() : myport(MCPORT, B9600){
   busy = false;
@@ -27,10 +28,8 @@ MotorController::MotorController() : myport(MCPORT, B9600){
 }
 
 /*!
-  * @brief Sets the Speed of a motor
-  * 
-  * @param motor The Motor to Set the Speed of
-  * @param speed The Speed to Set it to
+  * \fn MotorController::SetSpeed(Motor motor, Speed speed)
+  * \brief Sets the Speed of a motor
 */
 void MotorController::SetSpeed(Motor motor, Speed speed) {
 
@@ -52,14 +51,12 @@ void MotorController::SetSpeed(Motor motor, Speed speed) {
 
 }
 
-/*!
-  *  @brief Completes a turn while moving 
+/*!  
+  *  \fn MotorController::ChangeDirection(DeltaDir deltadir, Speed speeddiff)
+  *  \brief Completes a turn while moving 
   * 
-  *  @param deltadir Change in direction, [0, 2pi] -> [0, 256]
-  *  @param speeddiff How much to take off of the motor speed [0, 127]
-  * 
-  *  !The slower the speed and faster the speeddiff the faster and less wide the
-  *  !turn
+  *  The slower the speed and faster the speeddiff the faster and less wide the
+  *  turn
   */
 
 void MotorController::ChangeDirection(DeltaDir deltadir, Speed speeddiff) {
