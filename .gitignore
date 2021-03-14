@@ -10,3 +10,4 @@ test/*.png
 test/*.jpg
 test/*.jpeg
 test/*.log
+.vscode
