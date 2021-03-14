@@ -56,18 +56,6 @@ CMAKE_BINARY_DIR = /home/soobin/Documents/Sandbox/IGV/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
-
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -79,6 +67,18 @@ install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
 
 # Special rule for the target install
 install: preinstall
@@ -157,6 +157,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named libIGV.so
+
+# Build rule for target.
+libIGV.so: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 libIGV.so
+.PHONY : libIGV.so
+
+# fast build rule for target.
+libIGV.so/fast:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/build
+.PHONY : libIGV.so/fast
+
+#=============================================================================
 # Target rules for targets named IGV
 
 # Build rule for target.
@@ -175,6 +188,7 @@ home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.o: home/soobin/Documents/S
 
 # target to build an object file
 home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp.o:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp.o
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp.o
 .PHONY : home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp.o
 
@@ -184,6 +198,7 @@ home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.i: home/soobin/Documents/S
 
 # target to preprocess a source file
 home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp.i:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp.i
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp.i
 .PHONY : home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp.i
 
@@ -193,6 +208,7 @@ home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.s: home/soobin/Documents/S
 
 # target to generate assembly for a file
 home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp.s:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp.s
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp.s
 .PHONY : home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp.s
 
@@ -202,6 +218,7 @@ home/soobin/Documents/Sandbox/IGV/src/Camera.o: home/soobin/Documents/Sandbox/IG
 
 # target to build an object file
 home/soobin/Documents/Sandbox/IGV/src/Camera.cpp.o:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/src/Camera.cpp.o
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Camera.cpp.o
 .PHONY : home/soobin/Documents/Sandbox/IGV/src/Camera.cpp.o
 
@@ -211,6 +228,7 @@ home/soobin/Documents/Sandbox/IGV/src/Camera.i: home/soobin/Documents/Sandbox/IG
 
 # target to preprocess a source file
 home/soobin/Documents/Sandbox/IGV/src/Camera.cpp.i:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/src/Camera.cpp.i
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Camera.cpp.i
 .PHONY : home/soobin/Documents/Sandbox/IGV/src/Camera.cpp.i
 
@@ -220,6 +238,7 @@ home/soobin/Documents/Sandbox/IGV/src/Camera.s: home/soobin/Documents/Sandbox/IG
 
 # target to generate assembly for a file
 home/soobin/Documents/Sandbox/IGV/src/Camera.cpp.s:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/src/Camera.cpp.s
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Camera.cpp.s
 .PHONY : home/soobin/Documents/Sandbox/IGV/src/Camera.cpp.s
 
@@ -229,6 +248,7 @@ home/soobin/Documents/Sandbox/IGV/src/GPS.o: home/soobin/Documents/Sandbox/IGV/s
 
 # target to build an object file
 home/soobin/Documents/Sandbox/IGV/src/GPS.cpp.o:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/src/GPS.cpp.o
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/GPS.cpp.o
 .PHONY : home/soobin/Documents/Sandbox/IGV/src/GPS.cpp.o
 
@@ -238,6 +258,7 @@ home/soobin/Documents/Sandbox/IGV/src/GPS.i: home/soobin/Documents/Sandbox/IGV/s
 
 # target to preprocess a source file
 home/soobin/Documents/Sandbox/IGV/src/GPS.cpp.i:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/src/GPS.cpp.i
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/GPS.cpp.i
 .PHONY : home/soobin/Documents/Sandbox/IGV/src/GPS.cpp.i
 
@@ -247,6 +268,7 @@ home/soobin/Documents/Sandbox/IGV/src/GPS.s: home/soobin/Documents/Sandbox/IGV/s
 
 # target to generate assembly for a file
 home/soobin/Documents/Sandbox/IGV/src/GPS.cpp.s:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/src/GPS.cpp.s
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/GPS.cpp.s
 .PHONY : home/soobin/Documents/Sandbox/IGV/src/GPS.cpp.s
 
@@ -256,6 +278,7 @@ home/soobin/Documents/Sandbox/IGV/src/IGV.o: home/soobin/Documents/Sandbox/IGV/s
 
 # target to build an object file
 home/soobin/Documents/Sandbox/IGV/src/IGV.cpp.o:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/src/IGV.cpp.o
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/IGV.cpp.o
 .PHONY : home/soobin/Documents/Sandbox/IGV/src/IGV.cpp.o
 
@@ -265,6 +288,7 @@ home/soobin/Documents/Sandbox/IGV/src/IGV.i: home/soobin/Documents/Sandbox/IGV/s
 
 # target to preprocess a source file
 home/soobin/Documents/Sandbox/IGV/src/IGV.cpp.i:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/src/IGV.cpp.i
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/IGV.cpp.i
 .PHONY : home/soobin/Documents/Sandbox/IGV/src/IGV.cpp.i
 
@@ -274,6 +298,7 @@ home/soobin/Documents/Sandbox/IGV/src/IGV.s: home/soobin/Documents/Sandbox/IGV/s
 
 # target to generate assembly for a file
 home/soobin/Documents/Sandbox/IGV/src/IGV.cpp.s:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/src/IGV.cpp.s
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/IGV.cpp.s
 .PHONY : home/soobin/Documents/Sandbox/IGV/src/IGV.cpp.s
 
@@ -283,6 +308,7 @@ home/soobin/Documents/Sandbox/IGV/src/LIDAR.o: home/soobin/Documents/Sandbox/IGV
 
 # target to build an object file
 home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp.o:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp.o
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp.o
 .PHONY : home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp.o
 
@@ -292,6 +318,7 @@ home/soobin/Documents/Sandbox/IGV/src/LIDAR.i: home/soobin/Documents/Sandbox/IGV
 
 # target to preprocess a source file
 home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp.i:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp.i
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp.i
 .PHONY : home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp.i
 
@@ -301,6 +328,7 @@ home/soobin/Documents/Sandbox/IGV/src/LIDAR.s: home/soobin/Documents/Sandbox/IGV
 
 # target to generate assembly for a file
 home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp.s:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp.s
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp.s
 .PHONY : home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp.s
 
@@ -310,6 +338,7 @@ home/soobin/Documents/Sandbox/IGV/src/LaneDetection.o: home/soobin/Documents/San
 
 # target to build an object file
 home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp.o:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp.o
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp.o
 .PHONY : home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp.o
 
@@ -319,6 +348,7 @@ home/soobin/Documents/Sandbox/IGV/src/LaneDetection.i: home/soobin/Documents/San
 
 # target to preprocess a source file
 home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp.i:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp.i
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp.i
 .PHONY : home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp.i
 
@@ -328,6 +358,7 @@ home/soobin/Documents/Sandbox/IGV/src/LaneDetection.s: home/soobin/Documents/San
 
 # target to generate assembly for a file
 home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp.s:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp.s
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp.s
 .PHONY : home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp.s
 
@@ -337,6 +368,7 @@ home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.o: home/soobin/Documents/S
 
 # target to build an object file
 home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp.o:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp.o
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp.o
 .PHONY : home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp.o
 
@@ -346,6 +378,7 @@ home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.i: home/soobin/Documents/S
 
 # target to preprocess a source file
 home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp.i:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp.i
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp.i
 .PHONY : home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp.i
 
@@ -355,6 +388,7 @@ home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.s: home/soobin/Documents/S
 
 # target to generate assembly for a file
 home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp.s:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp.s
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp.s
 .PHONY : home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp.s
 
@@ -364,6 +398,7 @@ home/soobin/Documents/Sandbox/IGV/src/Sensors.o: home/soobin/Documents/Sandbox/I
 
 # target to build an object file
 home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp.o:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp.o
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp.o
 .PHONY : home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp.o
 
@@ -373,6 +408,7 @@ home/soobin/Documents/Sandbox/IGV/src/Sensors.i: home/soobin/Documents/Sandbox/I
 
 # target to preprocess a source file
 home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp.i:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp.i
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp.i
 .PHONY : home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp.i
 
@@ -382,6 +418,7 @@ home/soobin/Documents/Sandbox/IGV/src/Sensors.s: home/soobin/Documents/Sandbox/I
 
 # target to generate assembly for a file
 home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp.s:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp.s
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp.s
 .PHONY : home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp.s
 
@@ -391,6 +428,7 @@ home/soobin/Documents/Sandbox/IGV/src/main.o: home/soobin/Documents/Sandbox/IGV/
 
 # target to build an object file
 home/soobin/Documents/Sandbox/IGV/src/main.cpp.o:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/src/main.cpp.o
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/main.cpp.o
 .PHONY : home/soobin/Documents/Sandbox/IGV/src/main.cpp.o
 
@@ -400,6 +438,7 @@ home/soobin/Documents/Sandbox/IGV/src/main.i: home/soobin/Documents/Sandbox/IGV/
 
 # target to preprocess a source file
 home/soobin/Documents/Sandbox/IGV/src/main.cpp.i:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/src/main.cpp.i
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/main.cpp.i
 .PHONY : home/soobin/Documents/Sandbox/IGV/src/main.cpp.i
 
@@ -409,6 +448,7 @@ home/soobin/Documents/Sandbox/IGV/src/main.s: home/soobin/Documents/Sandbox/IGV/
 
 # target to generate assembly for a file
 home/soobin/Documents/Sandbox/IGV/src/main.cpp.s:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/src/main.cpp.s
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/main.cpp.s
 .PHONY : home/soobin/Documents/Sandbox/IGV/src/main.cpp.s
 
@@ -418,6 +458,7 @@ home/soobin/Documents/Sandbox/IGV/test/test.o: home/soobin/Documents/Sandbox/IGV
 
 # target to build an object file
 home/soobin/Documents/Sandbox/IGV/test/test.cpp.o:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/test/test.cpp.o
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/test/test.cpp.o
 .PHONY : home/soobin/Documents/Sandbox/IGV/test/test.cpp.o
 
@@ -427,6 +468,7 @@ home/soobin/Documents/Sandbox/IGV/test/test.i: home/soobin/Documents/Sandbox/IGV
 
 # target to preprocess a source file
 home/soobin/Documents/Sandbox/IGV/test/test.cpp.i:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/test/test.cpp.i
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/test/test.cpp.i
 .PHONY : home/soobin/Documents/Sandbox/IGV/test/test.cpp.i
 
@@ -436,6 +478,7 @@ home/soobin/Documents/Sandbox/IGV/test/test.s: home/soobin/Documents/Sandbox/IGV
 
 # target to generate assembly for a file
 home/soobin/Documents/Sandbox/IGV/test/test.cpp.s:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/home/soobin/Documents/Sandbox/IGV/test/test.cpp.s
 	$(MAKE) -f CMakeFiles/IGV.dir/build.make CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/test/test.cpp.s
 .PHONY : home/soobin/Documents/Sandbox/IGV/test/test.cpp.s
 
@@ -445,8 +488,9 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install/strip"
 	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... libIGV.so"
 	@echo "... IGV"
 	@echo "... install"
 	@echo "... edit_cache"

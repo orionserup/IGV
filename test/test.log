@@ -1,29 +1,30 @@
-Opening Image: 'test.jpg' 
-Retrieving the Image 
+Opening Image: << filename << endlRetrieving the Image 
 Image Specs: 
 =========================
 Is Empty:       0
 Dimensionality: 2
 Pixel Format:   0
-Size:           321 x 428
+Size:           900 x 1200
 
 Creating Empty Lane Array: Lanes Full of Zeros 
 Detecting Lanes: 
 Printing Lanes: 
-Total Lanes Found: Static Call: 42 Object Call: 3803
+Total Lanes Found: Static Call: 60 Object Call: 12778
+Static Lanes: 
 Lane Slope: 0
- Y-Intercept: 150
+ Y-Intercept: 490
 Lane Slope: 0
- Y-Intercept: 197
+ Y-Intercept: 482
 Lane Slope: 0
- Y-Intercept: 170
+ Y-Intercept: 586
 Lane Slope: 0
- Y-Intercept: 235
+ Y-Intercept: 576
+Object Lanes: 
 Lane Slope: 0
- Y-Intercept: 195
+ Y-Intercept: 491
 Lane Slope: 0
- Y-Intercept: 256
-Lane Slope: 1.79769e+308
- X-Intercept: 106
+ Y-Intercept: 146
 Lane Slope: 0
- Y-Intercept: 179
+ Y-Intercept: 709
+Lane Slope: 0
+ Y-Intercept: 623

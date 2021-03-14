@@ -60,15 +60,15 @@ include CMakeFiles/IGV.dir/flags.make
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp.o: CMakeFiles/IGV.dir/flags.make
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp.o: /home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/soobin/Documents/Sandbox/IGV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp.o"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp.o -c /home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp
+	/usr/bin/aarch64-linux-gnu-g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp.o -c /home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp > CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp.i
+	/usr/bin/aarch64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp > CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp.i
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp.s
+	/usr/bin/aarch64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp.s
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp.o.requires:
 
@@ -84,15 +84,15 @@ CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/BasicNavigation.cpp.o.p
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Camera.cpp.o: CMakeFiles/IGV.dir/flags.make
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Camera.cpp.o: /home/soobin/Documents/Sandbox/IGV/src/Camera.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/soobin/Documents/Sandbox/IGV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Camera.cpp.o"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Camera.cpp.o -c /home/soobin/Documents/Sandbox/IGV/src/Camera.cpp
+	/usr/bin/aarch64-linux-gnu-g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Camera.cpp.o -c /home/soobin/Documents/Sandbox/IGV/src/Camera.cpp
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Camera.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Camera.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/soobin/Documents/Sandbox/IGV/src/Camera.cpp > CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Camera.cpp.i
+	/usr/bin/aarch64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/soobin/Documents/Sandbox/IGV/src/Camera.cpp > CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Camera.cpp.i
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Camera.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Camera.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/soobin/Documents/Sandbox/IGV/src/Camera.cpp -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Camera.cpp.s
+	/usr/bin/aarch64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/soobin/Documents/Sandbox/IGV/src/Camera.cpp -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Camera.cpp.s
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Camera.cpp.o.requires:
 
@@ -108,15 +108,15 @@ CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Camera.cpp.o.provides.b
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/GPS.cpp.o: CMakeFiles/IGV.dir/flags.make
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/GPS.cpp.o: /home/soobin/Documents/Sandbox/IGV/src/GPS.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/soobin/Documents/Sandbox/IGV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/GPS.cpp.o"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/GPS.cpp.o -c /home/soobin/Documents/Sandbox/IGV/src/GPS.cpp
+	/usr/bin/aarch64-linux-gnu-g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/GPS.cpp.o -c /home/soobin/Documents/Sandbox/IGV/src/GPS.cpp
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/GPS.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/GPS.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/soobin/Documents/Sandbox/IGV/src/GPS.cpp > CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/GPS.cpp.i
+	/usr/bin/aarch64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/soobin/Documents/Sandbox/IGV/src/GPS.cpp > CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/GPS.cpp.i
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/GPS.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/GPS.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/soobin/Documents/Sandbox/IGV/src/GPS.cpp -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/GPS.cpp.s
+	/usr/bin/aarch64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/soobin/Documents/Sandbox/IGV/src/GPS.cpp -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/GPS.cpp.s
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/GPS.cpp.o.requires:
 
@@ -132,15 +132,15 @@ CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/GPS.cpp.o.provides.buil
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/IGV.cpp.o: CMakeFiles/IGV.dir/flags.make
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/IGV.cpp.o: /home/soobin/Documents/Sandbox/IGV/src/IGV.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/soobin/Documents/Sandbox/IGV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/IGV.cpp.o"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/IGV.cpp.o -c /home/soobin/Documents/Sandbox/IGV/src/IGV.cpp
+	/usr/bin/aarch64-linux-gnu-g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/IGV.cpp.o -c /home/soobin/Documents/Sandbox/IGV/src/IGV.cpp
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/IGV.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/IGV.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/soobin/Documents/Sandbox/IGV/src/IGV.cpp > CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/IGV.cpp.i
+	/usr/bin/aarch64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/soobin/Documents/Sandbox/IGV/src/IGV.cpp > CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/IGV.cpp.i
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/IGV.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/IGV.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/soobin/Documents/Sandbox/IGV/src/IGV.cpp -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/IGV.cpp.s
+	/usr/bin/aarch64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/soobin/Documents/Sandbox/IGV/src/IGV.cpp -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/IGV.cpp.s
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/IGV.cpp.o.requires:
 
@@ -156,15 +156,15 @@ CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/IGV.cpp.o.provides.buil
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp.o: CMakeFiles/IGV.dir/flags.make
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp.o: /home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/soobin/Documents/Sandbox/IGV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp.o"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp.o -c /home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp
+	/usr/bin/aarch64-linux-gnu-g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp.o -c /home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp > CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp.i
+	/usr/bin/aarch64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp > CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp.i
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp.s
+	/usr/bin/aarch64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp.s
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp.o.requires:
 
@@ -180,15 +180,15 @@ CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LIDAR.cpp.o.provides.bu
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp.o: CMakeFiles/IGV.dir/flags.make
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp.o: /home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/soobin/Documents/Sandbox/IGV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp.o"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp.o -c /home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp
+	/usr/bin/aarch64-linux-gnu-g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp.o -c /home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp > CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp.i
+	/usr/bin/aarch64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp > CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp.i
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp.s
+	/usr/bin/aarch64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp.s
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp.o.requires:
 
@@ -204,15 +204,15 @@ CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/LaneDetection.cpp.o.pro
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp.o: CMakeFiles/IGV.dir/flags.make
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp.o: /home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/soobin/Documents/Sandbox/IGV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp.o"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp.o -c /home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp
+	/usr/bin/aarch64-linux-gnu-g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp.o -c /home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp > CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp.i
+	/usr/bin/aarch64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp > CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp.i
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp.s
+	/usr/bin/aarch64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp.s
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp.o.requires:
 
@@ -228,15 +228,15 @@ CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/ObjectDetection.cpp.o.p
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp.o: CMakeFiles/IGV.dir/flags.make
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp.o: /home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/soobin/Documents/Sandbox/IGV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp.o"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp.o -c /home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp
+	/usr/bin/aarch64-linux-gnu-g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp.o -c /home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp > CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp.i
+	/usr/bin/aarch64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp > CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp.i
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp.s
+	/usr/bin/aarch64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp.s
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp.o.requires:
 
@@ -252,15 +252,15 @@ CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/Sensors.cpp.o.provides.
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/main.cpp.o: CMakeFiles/IGV.dir/flags.make
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/main.cpp.o: /home/soobin/Documents/Sandbox/IGV/src/main.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/soobin/Documents/Sandbox/IGV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/main.cpp.o"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/main.cpp.o -c /home/soobin/Documents/Sandbox/IGV/src/main.cpp
+	/usr/bin/aarch64-linux-gnu-g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/main.cpp.o -c /home/soobin/Documents/Sandbox/IGV/src/main.cpp
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/main.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/soobin/Documents/Sandbox/IGV/src/main.cpp > CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/main.cpp.i
+	/usr/bin/aarch64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/soobin/Documents/Sandbox/IGV/src/main.cpp > CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/main.cpp.i
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/main.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/soobin/Documents/Sandbox/IGV/src/main.cpp -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/main.cpp.s
+	/usr/bin/aarch64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/soobin/Documents/Sandbox/IGV/src/main.cpp -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/main.cpp.s
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/main.cpp.o.requires:
 
@@ -276,15 +276,15 @@ CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/main.cpp.o.provides.bui
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/test/test.cpp.o: CMakeFiles/IGV.dir/flags.make
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/test/test.cpp.o: /home/soobin/Documents/Sandbox/IGV/test/test.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/soobin/Documents/Sandbox/IGV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/test/test.cpp.o"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/test/test.cpp.o -c /home/soobin/Documents/Sandbox/IGV/test/test.cpp
+	/usr/bin/aarch64-linux-gnu-g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/test/test.cpp.o -c /home/soobin/Documents/Sandbox/IGV/test/test.cpp
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/test/test.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/test/test.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/soobin/Documents/Sandbox/IGV/test/test.cpp > CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/test/test.cpp.i
+	/usr/bin/aarch64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/soobin/Documents/Sandbox/IGV/test/test.cpp > CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/test/test.cpp.i
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/test/test.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/test/test.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/soobin/Documents/Sandbox/IGV/test/test.cpp -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/test/test.cpp.s
+	/usr/bin/aarch64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/soobin/Documents/Sandbox/IGV/test/test.cpp -o CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/test/test.cpp.s
 
 CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/test/test.cpp.o.requires:
 
@@ -324,9 +324,6 @@ IGV_EXTERNAL_OBJECTS =
 /home/soobin/Documents/Sandbox/IGV/bin/IGV: CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/src/main.cpp.o
 /home/soobin/Documents/Sandbox/IGV/bin/IGV: CMakeFiles/IGV.dir/home/soobin/Documents/Sandbox/IGV/test/test.cpp.o
 /home/soobin/Documents/Sandbox/IGV/bin/IGV: CMakeFiles/IGV.dir/build.make
-/home/soobin/Documents/Sandbox/IGV/bin/IGV: /usr/local/lib/libJetsonGPIO.a
-/home/soobin/Documents/Sandbox/IGV/bin/IGV: /usr/local/lib/libTinyGPS++.a
-/home/soobin/Documents/Sandbox/IGV/bin/IGV: /usr/local/lib/libCppLinuxSerial.a
 /home/soobin/Documents/Sandbox/IGV/bin/IGV: /usr/local/lib/libopencv_gapi.so.4.5.1
 /home/soobin/Documents/Sandbox/IGV/bin/IGV: /usr/local/lib/libopencv_highgui.so.4.5.1
 /home/soobin/Documents/Sandbox/IGV/bin/IGV: /usr/local/lib/libopencv_ml.so.4.5.1
@@ -334,12 +331,15 @@ IGV_EXTERNAL_OBJECTS =
 /home/soobin/Documents/Sandbox/IGV/bin/IGV: /usr/local/lib/libopencv_photo.so.4.5.1
 /home/soobin/Documents/Sandbox/IGV/bin/IGV: /usr/local/lib/libopencv_stitching.so.4.5.1
 /home/soobin/Documents/Sandbox/IGV/bin/IGV: /usr/local/lib/libopencv_video.so.4.5.1
-/home/soobin/Documents/Sandbox/IGV/bin/IGV: /usr/local/lib/libopencv_calib3d.so.4.5.1
+/home/soobin/Documents/Sandbox/IGV/bin/IGV: /usr/local/lib/libopencv_videoio.so.4.5.1
+/home/soobin/Documents/Sandbox/IGV/bin/IGV: /usr/local/lib/libTinyGPS++.a
+/home/soobin/Documents/Sandbox/IGV/bin/IGV: /usr/local/lib/libCppLinuxSerial.a
+/home/soobin/Documents/Sandbox/IGV/bin/IGV: /usr/local/lib/libJetsonGPIO.a
 /home/soobin/Documents/Sandbox/IGV/bin/IGV: /usr/local/lib/libopencv_dnn.so.4.5.1
+/home/soobin/Documents/Sandbox/IGV/bin/IGV: /usr/local/lib/libopencv_imgcodecs.so.4.5.1
+/home/soobin/Documents/Sandbox/IGV/bin/IGV: /usr/local/lib/libopencv_calib3d.so.4.5.1
 /home/soobin/Documents/Sandbox/IGV/bin/IGV: /usr/local/lib/libopencv_features2d.so.4.5.1
 /home/soobin/Documents/Sandbox/IGV/bin/IGV: /usr/local/lib/libopencv_flann.so.4.5.1
-/home/soobin/Documents/Sandbox/IGV/bin/IGV: /usr/local/lib/libopencv_videoio.so.4.5.1
-/home/soobin/Documents/Sandbox/IGV/bin/IGV: /usr/local/lib/libopencv_imgcodecs.so.4.5.1
 /home/soobin/Documents/Sandbox/IGV/bin/IGV: /usr/local/lib/libopencv_imgproc.so.4.5.1
 /home/soobin/Documents/Sandbox/IGV/bin/IGV: /usr/local/lib/libopencv_core.so.4.5.1
 /home/soobin/Documents/Sandbox/IGV/bin/IGV: CMakeFiles/IGV.dir/link.txt

@@ -60,6 +60,43 @@ CMAKE_SOURCE_DIR = /home/soobin/Documents/Sandbox/IGV/build
 CMAKE_BINARY_DIR = /home/soobin/Documents/Sandbox/IGV/build
 
 #=============================================================================
+# Target rules for target CMakeFiles/libIGV.so.dir
+
+# All Build rule for target.
+CMakeFiles/libIGV.so.dir/all:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/depend
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/soobin/Documents/Sandbox/IGV/build/CMakeFiles --progress-num=12,13,14,15,16,17,18,19,20,21,22 "Built target libIGV.so"
+.PHONY : CMakeFiles/libIGV.so.dir/all
+
+# Include target in all.
+all: CMakeFiles/libIGV.so.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/libIGV.so.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/soobin/Documents/Sandbox/IGV/build/CMakeFiles 11
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/libIGV.so.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/soobin/Documents/Sandbox/IGV/build/CMakeFiles 0
+.PHONY : CMakeFiles/libIGV.so.dir/rule
+
+# Convenience name for target.
+libIGV.so: CMakeFiles/libIGV.so.dir/rule
+
+.PHONY : libIGV.so
+
+# clean rule for target.
+CMakeFiles/libIGV.so.dir/clean:
+	$(MAKE) -f CMakeFiles/libIGV.so.dir/build.make CMakeFiles/libIGV.so.dir/clean
+.PHONY : CMakeFiles/libIGV.so.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/libIGV.so.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/IGV.dir
 
 # All Build rule for target.
