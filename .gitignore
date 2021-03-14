@@ -4,6 +4,5 @@ install_manifest.txt
 compile_commmands.json
 Makefile 
 CMakeFiles/
-html/
 bin/
 .vscode/
