@@ -44,15 +44,18 @@ void MotorController::SetSpeed(Motor motor, Speed speed) {
 
 }
 
-/* FUNCTION ChangeDirection:
+/* 
+ *  /file BasicNavigation.cpp 
+ *  /function ChangeDirection:
  *
- * Completes a turn while moving, if speediff = current speed it turns in place
- * The slower the speed and faster the speeddiff the faster and less wide the
- * turn
+ *  /brief Completes a turn while moving 
+ *  /description if speediff = current speed it turns in place
+ *  The slower the speed and faster the speeddiff the faster and less wide the
+ *  turn
  *
- * @params deltadir: change in direction, [0, 2pi] -> [0, 256]
- * @params speeddiff: How much to take off of the motor speed [0, 127]
- * @return void
+ *  /params deltadir: change in direction, [0, 2pi] -> [0, 256]
+ *  /params speeddiff: How much to take off of the motor speed [0, 127]
+ *  /retval void
  *
  */
 
