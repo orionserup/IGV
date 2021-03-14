@@ -4,6 +4,12 @@ using namespace igv;
 using namespace std;
 using namespace chrono;
 
+/**
+  * @file BasicNavigation.cpp
+  * @fn SetSpeed(Speed speed)
+  * 
+  * @param speed The Speed to set it to [-127, 127]
+  */
 void MotorController::SetSpeed(Speed speed){
 
   SetSpeed(LEFT, speed);
@@ -13,14 +19,25 @@ void MotorController::SetSpeed(Speed speed){
 
 #ifndef SIMULATION
 
-
+/**
+  * @file BasicNavigation.cpp
+  * @fn MotorController()
+  * @brief Creates A Motor Controller Object
+*/
 MotorController::MotorController() : myport(MCPORT, B9600){
   busy = false;
   speed = 0;
   direction = 0;
 }
 
-
+/**
+  * @file BasicNavigation.cpp
+  * @fn SetSpeed(Motor motor, Speed speed)
+  * @brief Sets the Speed of a motor
+  * 
+  * @param motor The Motor to Set the Speed of
+  * @param speed The Speed to Set it to
+*/
 void MotorController::SetSpeed(Motor motor, Speed speed) {
 
   uint8_t command = 0;
@@ -40,6 +57,18 @@ void MotorController::SetSpeed(Motor motor, Speed speed) {
   this->myport.Write(msg);
 
 }
+
+/**
+  *  @file BasicNavigation.cpp 
+  *  @fn ChangeDirection:
+  *  @brief Completes a turn while moving 
+  * 
+  *  @param deltadir Change in direction, [0, 2pi] -> [0, 256]
+  *  @param speeddiff How much to take off of the motor speed [0, 127]
+  * 
+  *  !The slower the speed and faster the speeddiff the faster and less wide the
+  *  !turn
+  */
 
 void MotorController::ChangeDirection(DeltaDir deltadir, Speed speeddiff) {
 
