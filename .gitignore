@@ -4,10 +4,10 @@ install_manifest.txt
 compile_commmands.json
 Makefile 
 CMakeFiles/
-docs/html/
+html/
 bin/
 *.png
 *.jpg
 *.jpeg
 *.log
-.vscode/
+.*/
