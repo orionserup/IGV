@@ -1,4 +1,9 @@
-
+/**
+ * @file IGV.cpp
+ * @brief Contains Macro Behavior Implementation
+ * @author Orion Serup
+ * @bug None
+ */ 
 #include "IGV.hpp"
 
 using namespace igv;
@@ -27,10 +32,10 @@ void IGV::Setup(){ // setup the threads
 
 }
 
-void IGV::Run()
-{
+void IGV::Run(){
 
   // TODO: Implemetation
+
 }
 
 void igv::ObjDetection(IGV* igv){

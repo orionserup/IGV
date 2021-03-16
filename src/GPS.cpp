@@ -1,4 +1,9 @@
-#include "GPS.hpp"
+/**
+ * @file GPS.cpp
+ * @author Orion Serup
+ * @brief Contains the GPS Functionality Implementation
+ * @bug None
+ */
 
 #ifndef SIMULATION
 using namespace mn::CppLinuxSerial;

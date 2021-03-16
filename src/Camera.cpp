@@ -1,3 +1,9 @@
+/**
+ * @file Camera.cpp
+ * @author Orion Serup
+ * @brief Contains the Implementation of the Camera Functionality
+ * @bug None
+ */
 
 #include "Camera.hpp"
 #ifndef SIMULATION

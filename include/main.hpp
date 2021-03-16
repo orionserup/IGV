@@ -1,3 +1,9 @@
+/**
+ * @file main.hpp
+ * @brief Contains all Constants and Standard Functionality
+ * @author Orion Serup
+ * @bug None
+ */
 
 #pragma once 
 
@@ -82,9 +88,8 @@
 /// UltraSonic GPIO Out Pin
 #define ULTRA_OUT 12
 
-/*!
-* \namespace igv
-* \brief Namespace for this project
+/**
+* @brief Namespace for this project
 */
 namespace igv{
 

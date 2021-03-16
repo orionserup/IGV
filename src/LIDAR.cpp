@@ -1,3 +1,10 @@
+/**
+ * @file LIDAR.cpp
+ * @brief Constains all of the LIDAR functionality
+ * @author Orion Serup
+ * @bug None
+ */
+
 #include "LIDAR.hpp"
 
 using namespace igv;

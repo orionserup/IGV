@@ -1,4 +1,9 @@
-
+/**
+ * @file ObjectDetection.cpp
+ * @author Orion Serup
+ * @brief Contains all of the Object Detection Functionality Implementation
+ * @bug None
+ */
 #include "ObjectDetection.hpp"
 
 using namespace igv;

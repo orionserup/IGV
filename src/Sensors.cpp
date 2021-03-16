@@ -1,4 +1,9 @@
-#include "Sensors.hpp"
+/**
+ * @file Sensors.cpp
+ * @author Orion Serup
+ * @brief Contains all of the Sensor Functionality Implementation
+ * @bug None 
+ */
 
 #ifndef SIMULATION
 using namespace mn::CppLinuxSerial;

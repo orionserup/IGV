@@ -1,3 +1,9 @@
+/**
+ * @file Camera.hpp
+ * @brief Holds the Camera Implementation
+ * @author Orion Serup
+ * @bug None 
+ */
 
 #pragma once
 
@@ -5,7 +11,7 @@
 
 using namespace cv;
 
-/*!
+/*@
  * \namespace igv
  * \brief Namespace for this project
  */

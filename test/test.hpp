@@ -3,6 +3,8 @@
 #include <iostream>
 #include <fstream>
 
+namespace igv{
+
 class Test{
 
 public:
@@ -29,3 +31,5 @@ private:
     ofstream logfile;
 
 };
+
+}

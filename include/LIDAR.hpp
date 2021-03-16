@@ -1,3 +1,9 @@
+/**
+ * @file LIDAR.hpp
+ * @brief Holds the Prototypes for the LIDAR Functionality
+ * @author Orion Serup
+ * @bug None
+ */
 #pragma once
 
 #include "main.hpp"  // all custom types, std libraries and defines
@@ -11,42 +17,36 @@ using namespace mn::CppLinuxSerial;
 using namespace std;
 
 /*!
-* \namespace igv
 * \brief Namespace for this project
 */
 namespace igv{
 
-/*!
-* \class LIDAR
-* \brief Container Class for LIDAR, acts as HAL
+/**
+* @brief Container Class for LIDAR, acts as HAL
 */
 class LIDAR{
 
 public:
 
-    /*!
-    * \fn LIDAR()
-    * \brief Constructs a LIDAR Object
+    /**
+    * @brief Constructs a LIDAR Object
     */
     LIDAR();
 
-    /*!
-    * \fn Probe()
-    * \brief Probes the Surroundings and Writes the Data to a Map
+    /**
+    * @brief Probes the Surroundings and Writes the Data to a Map
     */  
     void Probe();
     
-    /*!
-    * \fn isBusy()
-    * \brief Returns if the LIDAR is still probing
-    * \returns bool
+    /**
+    * @brief Returns if the LIDAR is still probing
+    * @returns bool
     */
     bool isBusy();
     
-    /*!
-    * \fn GetMap()
-    * \brief Returns the Depth Map for the Surroundings
-    * \return unordered_map<Direction, Distance>&
+    /**
+    * @brief Returns the Depth Map for the Surroundings
+    * @return unordered_map<Direction, Distance>&
     */
     unordered_map<Direction, Distance>& GetMap() { return mymap; }
 

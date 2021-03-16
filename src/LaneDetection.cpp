@@ -1,3 +1,10 @@
+/**
+ * @file LaneDetection.cpp
+ * @author Orion Serup
+ * @brief  Contains the Lane Detection Functionality Implementation
+ * @bug None 
+ */
+
 #include "LaneDetection.hpp"
 
 using namespace igv;
@@ -106,7 +113,11 @@ uint32_t LaneDetector::DetectLanes(array<Lane, 4>& LaneArray, Mat& image){
 }
 
 // same things but not static
-
+/**
+ * @brief 
+ * 
+ * @param image 
+ */
 void LaneDetector::DetectLanes(Mat& image){
 
     busy = true;

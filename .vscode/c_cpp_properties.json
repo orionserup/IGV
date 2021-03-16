@@ -5,7 +5,8 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "/usr/local/include/opencv4",
-                "/usr/local/include/"
+                "/usr/local/include/",
+                "/usr/include"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",

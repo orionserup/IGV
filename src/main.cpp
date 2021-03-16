@@ -1,4 +1,10 @@
-
+/**
+ * @file main.cpp
+ * @brief Contains the Global Entry Point
+ * @author Orion Serup
+ * @bug None
+ */
+ 
 #include "IGV.hpp"
 #include "test.hpp"
 #include <string>
@@ -7,6 +13,12 @@ using namespace std;
 using namespace cv;
 using namespace igv;
 
+/**
+ * @brief Global Entry Point
+ * @param argc Number of Arguments from CLI
+ * @param argv Strings from the CLI
+ * @returns int exit code
+*/
 int main(int argc, char** argv){
 
 #ifdef DEBUG

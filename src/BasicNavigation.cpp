@@ -1,10 +1,17 @@
+/**
+ * @file BasicNavigation.cpp
+ * @brief Contains the Motor Implementation
+ * @author Orion Serup
+ * @bug None
+ */
+
 #include "BasicNavigation.hpp"
 
 using namespace igv;
 using namespace std;
 using namespace chrono;
 
-
+/** @copydoc SetSpeed(Speed speed) */
 void MotorController::SetSpeed(Speed speed){
 
   SetSpeed(LEFT, speed);
@@ -14,11 +21,8 @@ void MotorController::SetSpeed(Speed speed){
 
 #ifndef SIMULATION
 
-MotorController::MotorController() : myport(MCPORT, B9600){
-  busy = false;
-  speed = 0;
-  direction = 0;
-}
+MotorController::MotorController() : 
+  myport(MCPORT, B9600), busy(false), speed(0), direction(0){}
 
 void MotorController::SetSpeed(Motor motor, Speed speed) {
 
@@ -39,7 +43,6 @@ void MotorController::SetSpeed(Motor motor, Speed speed) {
   this->myport.Write(msg);
 
 }
-
 
 void MotorController::ChangeDirection(DeltaDir deltadir, Speed speeddiff) {
 
