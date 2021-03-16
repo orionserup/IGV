@@ -11,15 +11,15 @@
 
 using namespace cv;
 
-/*@
- * \namespace igv
- * \brief Namespace for this project
+/**
+ * @namespace igv
+ * @brief Namespace for this project
  */
 namespace igv{
 
-/*!
- * \class Camera 
- * \brief Camera Container Class to hold and take images with
+/**
+ * @class Camera 
+ * @brief Camera Container Class to hold and take images with
  */
 class Camera {  // Camera Class, GetImage Calls to either ROS api or to the nano Camera API
 
