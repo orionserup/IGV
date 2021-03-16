@@ -4,7 +4,7 @@ using namespace igv;
 using namespace std;
 using namespace cv;
 
-// Stream operator overload, allows you to print Lanes
+/// Stream operator overload, allows you to print Lanes
 ostream& igv::operator<<(ostream& os, Lane& lane){
     
     os << "Lane Slope: " << lane.slope << endl;
@@ -16,15 +16,14 @@ ostream& igv::operator<<(ostream& os, Lane& lane){
 
 #ifndef __NVCC__   // if not using the GPU
 
-/* Lane Detection Function:
+/** Lane Detection Function:
  * 
  * Reads an image and finds the largest Lanes and fills an array with the 4 largest
- * @param: LaneArray: a preexisting array full of lanes that gets modified by the function
- * @param: image: a preexisting matrix representing an image that gets read for lanes
- * @retval: returns the number of lanes detected total
+ * @param LaneArray: a preexisting array full of lanes that gets modified by the function
+ * @param image: a preexisting matrix representing an image that gets read for lanes
+ * @returns uint32_t
  * 
  */
-
 uint32_t LaneDetector::DetectLanes(array<Lane, 4>& LaneArray, Mat& image){
 
     #ifdef DEBUG
