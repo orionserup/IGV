@@ -5,6 +5,37 @@
  * @bug None
  */
 
+/** 
+ * @mainpage UCI IGV 2020 - 2021
+ * @authors Orion Serup (Lead Dev)
+ * @authors Gabriel Enciso (Team Lead)
+ * 
+ * This Project is the UCI Intelligent Vehicle Project
+ * for the Intelligent Vehicle Competition.
+ * 
+ * The Goal of this project is to create a fully autonomous vehicle
+ * that detectes and stay within lanes, detects and avoids objects; it also uses LIDAR,
+ * GPS, and other Sensors to be aware of its surroundings.
+ * 
+ * The Project is in partnership with Northrup Grummon.
+ * 
+ * @ref Contributions
+ * 
+ */
+
+/** 
+ * @page Contributions
+ * @details Thanks to the following GitHub Users for creating code that is used in this Project.
+ * 
+ * For the Serial Library: gbmhunter.
+ * 
+ * For the JetsonGPIO Library: pjueon.
+ * 
+ * For the GPS Library: mikalhart.
+ * 
+ * For OpenCV: The OpenCV team (opencv).
+ */
+
 #pragma once
 
 #include "ObjectDetection.hpp"
@@ -41,6 +72,12 @@ public:
   * @brief Starts running autonomously
   */
   void Run();
+
+  /**
+   * @briefw
+   * @
+   *
+   */
   
   friend void ObjDetection(IGV* igv);
   friend void LaneDetection(IGV* igv);

@@ -29,12 +29,18 @@ struct Lane{
  * @brief Prints a Lane to an Output Stream
  * @param os Output Stream Object
  * @param lane Lane to Print
- * @returns std::ostream&
+ * @returns Output stream reference
  */
 std::ostream& operator<<(std::ostream& os, Lane& lane);
 
 /**
 * @brief Class that Detects Lanes From Images
+*
+* This Class has both a static function as well as a member function to 
+* Detect Lanes from a standard opencv image type. They have similar algoritms 
+* and nearly the same runtime, if possible, use the member function as it is 
+* thread safe.
+*
 */
 class LaneDetector{
 

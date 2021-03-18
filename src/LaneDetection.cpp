@@ -209,7 +209,7 @@ void LaneDetector::DetectLanes(Mat& image){
 
 // Same Algorithm but using GPU
 
-uint32_t LaneDetector::DetectLanes(array<Lane, 2>& lanes, Mat& image){
+uint32_t LaneDetector::DetectLanes(array<Lane, 4>& lanes, Mat& image){
 
     busy = true;
 
@@ -283,8 +283,8 @@ void LaneDetector::DetectLanes(Mat& image){
 
     img.upload(image);
 
-    gpu::cvtColor(img, img, COLOR_BGR2GRAY);
-    gpu::Canny(img, edge, 50, 200);
+    cuda::cvtColor(img, img, COLOR_BGR2GRAY);
+   cuda::Canny(img, edge, 50, 200);
 
     gpu::HoughLines(edge, lines, 1,  CV_PI/128, 10);
     gpu::HoughLinesDownload(lines, linesP, votes);

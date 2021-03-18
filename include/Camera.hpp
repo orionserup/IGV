@@ -25,21 +25,23 @@ class Camera {  // Camera Class, GetImage Calls to either ROS api or to the nano
 
     public:
 
-        /*!
-        * \fn Camera(int port)
-        * \brief Opens a camera on the video port
+        /**
+        * @fn Camera
+        * @brief Constructs Camera from the Video Port
+        * @param port Video Port to Open
         */ 
         Camera(int port);
 
         /*!
-        * \fn inline Mat& GetImage()
-        * \brief Gets the Captured Image
+        * @fn inline Mat& GetImage()
+        * @brief Gets the Captured Image
+        * @returns Stored Image
         */
         inline Mat& GetImage() { return Image; }
         
-        /*!
-        * \fn void Capture()
-        * \brief Captures an image and puts it in the this->Image
+        /**
+        * @fn Capture()
+        * @brief Captures an image and puts it in the Image
         */
         void Capture();
 

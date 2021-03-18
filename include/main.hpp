@@ -23,9 +23,12 @@
 #endif
 
 #include "opencv2/opencv.hpp"
+#ifdef CUDA
+#include "opencv2/"
+
 
 // global constants
-/// Width of Robot
+/// Width of Robot (Wheel Base)
 #define WHEELBASE .67f  // m
 
 /// How Often to Capture an Image
@@ -55,6 +58,14 @@
 #define LANECAMPORT 1
 // Port of the Object Cam
 #define OBJCAMPORT 0
+/// Image Width From Lane Cam
+#define LANECAMWIDTH
+/// Image Height from Lane Cam
+#define LANECAMHEIGHT
+/// Image Width from Object Cam 
+#define OBJCAMWIDTH
+/// Image Height from Object Cam
+#define OBJCAMHEIGHT
 
 // MOTOR CONTROLLER DEFINES
 /// Port of the MotorController Serial
