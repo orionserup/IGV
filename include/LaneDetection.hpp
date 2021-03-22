@@ -8,7 +8,6 @@
 #pragma once
 
 #include "main.hpp"
-#include "Camera.hpp"
 
 /**
 * @brief namespace for this project
@@ -20,8 +19,8 @@ namespace igv{
 */
 struct Lane{
 
-  double slope;
-  int intercept;
+  double slope;  ///< slope of the line
+  int intercept; ///< x or y intercept depending on the slope
 
 };
 
@@ -34,14 +33,14 @@ struct Lane{
 std::ostream& operator<<(std::ostream& os, Lane& lane);
 
 /**
-* @brief Class that Detects Lanes From Images
-*
-* This Class has both a static function as well as a member function to 
-* Detect Lanes from a standard opencv image type. They have similar algoritms 
-* and nearly the same runtime, if possible, use the member function as it is 
-* thread safe.
-*
-*/
+ * @class LaneDetector 
+ * @brief Class that Detects Lanes From Images
+ *
+ * This Class has both a static function as well as a member function to 
+ * Detect Lanes from a standard opencv image type. They have similar algoritms 
+ * and nearly the same runtime, if possible, use the member function as it is 
+ * thread safe.
+ */
 class LaneDetector{
 
 public:
@@ -63,21 +62,21 @@ public:
 
   /**
   * @brief Return the Number of Lanes Detected
-  * @returns uint32_t
+  * @returns uint32_t: The number of Lanes Detected
   */
-  uint32_t GetNumLanes() { return numlanes; }
+  uint32_t GetNumLanes() const { return numlanes; }
   
   /**
   * @brief Return if the Lane Detector is Busy
-  * @returns bool
+  * @returns bool: If the LaneDetector is Busy with an Operation
   */
-  bool isBusy(){ return busy; }
+  bool isBusy() const { return busy; }
   
   /**
   * @brief Return the Array full of detected Lanes
-  * @returns std::array<Lane, 4>&
+  * @returns Array of Lanes used to hold lanes
   */
-  std::array<Lane, 4>& GetLanes() { return lanes; }
+  std::array<Lane, 4>& GetLanes() const { return lanes; }
 
 private:
 

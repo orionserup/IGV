@@ -45,7 +45,7 @@ public:
     * @brief Returns the Depth Map for the Surroundings
     * @return unordered_map<Direction, Distance> Depth Map
     */
-    unordered_map<Direction, Distance>& GetMap() { return mymap; }
+    unordered_map<Direction, Distance>& GetMap() const { return mymap; }
 
 private:
     

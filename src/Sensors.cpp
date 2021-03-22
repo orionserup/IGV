@@ -15,7 +15,6 @@ void Magno::Probe(){
 
 }
 
-
 UltraSonic::UltraSonic(){
 
     GPIO::setmode(GPIO::BOARD);

@@ -40,12 +40,16 @@ void IGV::Run(){
 
 void igv::ObjDetection(IGV* igv){
 
+  assert(igv);
+
   igv->OCam.Capture();
   igv->OD.DetectObjects(igv->OCam.GetImage());
 
 }
 
 void igv::LaneDetection(IGV* igv){
+
+  assert(igv);
 
   igv->LCam.Capture();
   igv->LD.DetectLanes(igv->LCam.GetImage());
@@ -54,17 +58,23 @@ void igv::LaneDetection(IGV* igv){
 
 void igv::LidarLoop(IGV* igv) {
   
+  assert(igv);
+
   igv->lidar.Probe();
 
 }
 
 void igv::GPSLoop(IGV* igv){
   
+  assert(igv);
+
   igv->gps.Probe();
 
 }
 
 void igv::SensorLoop(IGV* igv){
+  
+  assert(igv);
   
   igv->us.Probe();
 
