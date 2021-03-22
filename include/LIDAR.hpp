@@ -16,9 +16,6 @@ using namespace mn::CppLinuxSerial;
 #endif
 using namespace std;
 
-/*!
-* \brief Namespace for this project
-*/
 namespace igv{
 
 /**
@@ -40,13 +37,13 @@ public:
     
     /**
     * @brief Returns if the LIDAR is still probing
-    * @returns bool
+    * @returns bool: If the LIDAR is busy Probing
     */
     bool isBusy();
     
     /**
     * @brief Returns the Depth Map for the Surroundings
-    * @return unordered_map<Direction, Distance>&
+    * @return unordered_map<Direction, Distance> Depth Map
     */
     unordered_map<Direction, Distance>& GetMap() { return mymap; }
 

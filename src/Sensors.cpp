@@ -5,6 +5,8 @@
  * @bug None 
  */
 
+#include "Sensors.hpp"
+
 #ifndef SIMULATION
 using namespace mn::CppLinuxSerial;
 using namespace igv;

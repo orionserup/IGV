@@ -1,7 +1,6 @@
 #pragma once
 
 #include "main.hpp"
-
 #include "Camera.hpp"
 
 using namespace std;
@@ -20,7 +19,7 @@ namespace igv {
 struct Object {
 
   Distance distance;
-  Direction angle;
+  Direction leftedge, rightedge;
   string classification;
 
 };
@@ -38,9 +37,25 @@ class ObjDetector{
 
 public:
 
-  uint32_t DetectObjects(Mat& Image);
+  /**
+   * @brief Detects Objects and stores data in private members
+   * 
+   * @param Image 
+   * @return void
+   */
+  void DetectObjects(Mat& Image);
+
+  /**
+   * @brief 
+   * 
+   * @param objs 
+   * @param Image 
+   * @return uint32_t 
+   */
   static uint32_t DetectObjects(list<Object>& objs, Mat& Image);
+
   bool isBusy() { return this->busy; }
+
   uint32_t GetNumObjects() { return numobjects; }
   list<Object>& GetObjects() { return objects; }
 

@@ -71,16 +71,14 @@ public:
   double GetLongitude() { return CurrLong; }
   
   /*!
-  * \fn bool isBusy()
-  * \brief Checks if the GPS is busy probing
-  * \threadsafe 
-  * \reentrant
+  * @fn bool isBusy()
+  * @brief Checks if the GPS is busy probing
   */
   bool isBusy(){ return busy; }
   
 private:
 
-  TinyGPSPlus gps;
+  TinyGPSPlus gps; 
   double CurrLat, CurrLong;
   bool busy;
 
