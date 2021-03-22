@@ -26,21 +26,18 @@ MotorController::MotorController() :
 
 void MotorController::SetSpeed(Motor motor, Speed speed) {
 
-  uint8_t command = 0;
-  string msg = " ";
+  uint8_t* command = {0}
   uint8_t magnitude = abs(speed) >> 1;
   
   if (motor == LEFT)
-    command = speed < 0 ? 63 - magnitude : 64 + magnitude;
+    *command = speed < 0 ? 63 - magnitude : 64 + magnitude;
   
   else
-    command = speed < 0 ? 191 - magnitude : 192 + magnitude;
+    *command = speed < 0 ? 191 - magnitude : 192 + magnitude;
   
-  command = (!command)? 1: (command == 0xff)? 254: command;
+  *command = (!*command)? 1: (command == 0xff)? 254: command;
   
-  msg[0] = command;
-  
-  this->myport.Write(msg);
+  this->myport.Write(command);
 
 }
 

@@ -43,12 +43,18 @@ public:
   /** 
   * @fn Direction GetBearingTo(double lat, double lon)
   * @brief Gets the direction to that lattitude and longitude
+  * @param lat Lattitude of coordinate to Get Bearing to
+  * @param lon Longitude of coordinate to Get Bearing to
+  * @returns Direction to that point
   */
   Direction GetBearingTo(double lat, double lon);
   
   /**
   * @fn Distance GetDistanceTo(double lat, double long)
   * @brief Gets the Distance from current location to a fixed lattitude and longitude
+  * @param lat Lattitude of coordinate to Get Distance to
+  * @param lon Longitude of coordinate to Get Distance to
+  * @returns Distance to the Point
   */ 
   Distance GetDistanceTo(double lat, double lon);
 
@@ -61,20 +67,21 @@ public:
   /**
   * @fn double GetLatitude()
   * @brief Returns the Current Latitude
+  * @returns Current Latitude
   */
   double GetLatitude() { return CurrLat; }
   
   /**
   * @fn double GetLongitude()
   * @brief Returns the Current Longitude
+  * @returns Current Longitude
   */
   double GetLongitude() { return CurrLong; }
   
-  /*!
-  * \fn bool isBusy()
-  * \brief Checks if the GPS is busy probing
-  * \threadsafe 
-  * \reentrant
+  /**
+  * @fn bool isBusy()
+  * @brief Checks if the GPS is busy probing
+  * @returns bool: If the GPS is busy with an operation
   */
   bool isBusy(){ return busy; }
   

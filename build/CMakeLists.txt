@@ -13,12 +13,12 @@ project(IGV LANGUAGES CXX VERSION 1.2)  # this project is called IGV and Version
 #--------------------------- COMPILE CONFIGURATION ------------------------------------# 
 #======================================================================================#
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 set(CMAKE_CXX_FLAGS "-Wall -pthread ") # all errors on and treat it like a dll but an executable
 set(CMAKE_CXX_FLAGS_DEBUG "-g -DDEBUG") # have a debug option
-set(CMAKE_CXX_FLAGS_RELEASE "-Ofast") # have an optimized version for the release
+set(CMAKE_CXX_FLAGS_RELEASE "-Ofast -DNDEBUG") # have an optimized version for the release
 
 #========================================================================================#
 

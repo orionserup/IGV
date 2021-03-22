@@ -7,24 +7,21 @@
 
 #pragma once 
 
-#include <stdint.h>
 #include <array>
 #include <list>
+#include <vector>
 #include <unordered_map>
 #include <string>
-#include <iostream>
 #include <cmath>
 #include <chrono>
 #include <thread>
-#include <bits/stdc++.h>
-
-#ifdef DEBUG
 #include <assert.h>
-#endif
 
 #include "opencv2/opencv.hpp"
+
 #ifdef CUDA
 #include "opencv2/"
+#endif
 
 
 // global constants

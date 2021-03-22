@@ -5,14 +5,14 @@ using namespace std;
 using namespace cv;
 using namespace igv;
 
-Test::Test(const char *logfile) : logfile(logfile) {}
+Test::Test(const char* logfile) : logfile(logfile) {}
 
 Test::~Test() { logfile.close(); }
 
-bool Test::CameraTest()
-{
+bool Test::CameraTest(){
 
   bool Passed = true;
+  auto begin = chrono::system_clock::now();
 
   logfile << "Creating Lane Camera Object \n";
   Camera cam1(LANECAMPORT);
@@ -28,13 +28,9 @@ bool Test::CameraTest()
           << "Is Empty:       " << testimage.empty() << endl
           << "Dimensionality: " << testimage.dims << endl
           << "Pixel Format:   " << testimage.depth() << endl
-          << "Size:           " << testimage.size << endl
-          << endl;
+          << "Size:           " << testimage.size << endl << endl;
 
-  if (testimage.empty() || !testimage.size)
-    Passed = false;
-  else
-    Passed = true;
+  if (testimage.empty() || !testimage.size) Passed = false;
 
   logfile << "Creating Object Camera Object \n";
   Camera cam2(OBJCAMPORT);
@@ -42,66 +38,74 @@ bool Test::CameraTest()
   logfile << "Taking a Picture: \n";
   cam2.Capture();
 
-  logfile << "Retrieving the Image \n";
-  logfile << "Image Specs: \n"
+  logfile << "Retrieving the Image " << endl
+          << "Image Specs: " << endl
           << "========================="
           << "Is Empty:       " << testimage.empty() << endl
           << "Dimensionality: " << testimage.dims << endl
           << "Pixel Format:   " << testimage.depth() << endl
-          << "Size:           " << testimage.size << endl
-          << endl
-          << endl;
+          << "Size:           " << testimage.size << endl << endl;
 
-  if (testimage.empty() || !testimage.size)
-    Passed = false;
-  else
-    Passed = true;
+  if (testimage.empty() || !testimage.size) Passed = false;
+
+  auto end = chrono::system_clock::now();
+
+  chrono::duration<chrono::milliseconds> time = end - begin;
+
+  logfile << "Camera Test: " << (Passed? "PASSED": "FAILED") << endl;
+  logfile << "Test Completed in " << time.count() << "Milliseconds\n"; 
 
   return Passed;
 }
 
-bool Test::LaneDetectionTest(string filename)
-{
+bool Test::LaneDetectionTest(string filename){
 
   bool passed = true;
 
   LaneDetector ld;
 
-  logfile << "Opening Image: << filename << endl";
+  logfile << "Opening Image: " << filename << endl;
   Mat testmat = imread(filename); // load the sample image to test and compare
 
-  logfile << "Retrieving the Image \n";
-  logfile << "Image Specs: \n"
+  logfile << "Retrieving the Image" << endl
+          << "Image Specs: " << endl
           << "=========================" << endl
           << "Is Empty:       " << testmat.empty() << endl
           << "Dimensionality: " << testmat.dims << endl
           << "Pixel Format:   " << testmat.depth() << endl
           << "Size:           " << testmat.size << endl << endl;
 
-  if (!testmat.size || testmat.empty())
-    passed = false;
+  if (!testmat.size || testmat.empty()) passed = false;
 
   logfile << "Creating Empty Lane Array: Lanes Full of Zeros \n";
-  array<Lane, 4> testlanes = {Lane({0, 0}), Lane({0, 0})};
+  array<Lane, 4> testlanes = {0};
 
   logfile << "Detecting Lanes: \n";
 
+  auto staticbegin = chrono::system_clock::now();
   uint32_t numlanes = LaneDetector::DetectLanes(testlanes, testmat);
-  ld.DetectLanes(testmat);
+  duration<chrono::nanoseconds> statictime = chrono::system_clock::now() - staticbegin;
 
-  logfile << "Printing Lanes: \n";
-  logfile << "Total Lanes Found: Static Call: " << numlanes
-          << " Object Call: " << ld.GetNumLanes() << endl;
+  auto begin = chrono::system_clock::now();
+  ld.DetectLanes(testmat);
+  duration<chrono::nanoseconds> time = chrono::system_clock::now() - begin;
+
+  logfile << "Printing Lanes: " << endl
+          << "Total Lanes Found:" << endl 
+          << "Static Call: " << numlanes
+          << "Object Call: " << ld.GetNumLanes() << endl << endl
+          << "Time Taken For Tests: " << endl
+          << "Static Time: " << statictime.count() << "ns" << endl 
+          << "Object Time: " << time.count() << "ns" << endl << endl;
 
   logfile << "Static Lanes: " << endl;
-  for (Lane lane : testlanes)
-    logfile << lane;
+  for (Lane lane : testlanes) logfile << lane;
 
   logfile << "Object Lanes: " << endl;
-  for (Lane lane : ld.GetLanes())
-    logfile << lane;
+  for (Lane lane : ld.GetLanes()) logfile << lane;
 
   return passed;
+
 }
 
 bool Test::LIDARTest() { return true; }
@@ -114,8 +118,7 @@ bool Test::MotorTest() { return true; }
 
 bool Test::ObjectDetectionTest() { return true; }
 
-bool Test::RunAllTests()
-{
+bool Test::RunAllTests(){
 
   bool senstest = SensorsTest();
   bool motortest = MotorTest();
