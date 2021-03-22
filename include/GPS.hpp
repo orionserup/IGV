@@ -78,18 +78,12 @@ public:
   */
   double GetLongitude() { return CurrLong; }
   
-<<<<<<< HEAD
-  /*!
-  * @fn bool isBusy()
-  * @brief Checks if the GPS is busy probing
-=======
   /**
   * @fn bool isBusy()
   * @brief Checks if the GPS is busy probing
   * @returns bool: If the GPS is busy with an operation
->>>>>>> 72cc7470e803a47481bac4173ab46f32d84bf5a1
   */
-  bool isBusy(){ return busy; }
+  bool isBusy() const { return busy; }
   
 private:
 

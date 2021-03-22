@@ -85,24 +85,33 @@ public:
   void Run();
 
   /**
-<<<<<<< HEAD
    * @brief Detects Objects
    * @param igv Pointer to an IGV instance
-   * 
-=======
-   * @brief 
-   * 
-   *
->>>>>>> 72cc7470e803a47481bac4173ab46f32d84bf5a1
    */
   friend void ObjDetection(IGV* igv);
 
+  /**
+   * @brief Detects Lanes using the Land Detector in the IGV
+   * @param  igv: Pointer to IGV to use
+   */
   friend void LaneDetection(IGV* igv);
   
+  /**
+   * @brief Probes the LIDAR
+   * @param  igv: Pointer to IGV to use
+   */
   friend void LidarLoop(IGV* igv);
   
+  /**
+   * @brief  Probes the GPS 
+   * @param  igv: Pointer to vehicle to use
+   */
   friend void GPSLoop(IGV* igv);
   
+  /**
+   * @brief Probes all of the misc sensors  
+   * @param  igv: Pointer to vehicle to use
+   */
   friend void SensorLoop(IGV* igv);
 
 private:

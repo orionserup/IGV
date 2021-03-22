@@ -76,13 +76,13 @@ public:
   * @brief Return the Array full of detected Lanes
   * @returns Array of Lanes used to hold lanes
   */
-  std::array<Lane, 4>& GetLanes() const { return lanes; }
+  const std::array<Lane, 4>& GetLanes() const { return lanes; }
 
 private:
 
-  bool busy;
-  std::array<Lane, 4> lanes;
-  uint32_t numlanes;
+  bool busy;  ///< If the Lane Detector is busy with an operation
+  std::array<Lane, 4> lanes;  ///< Array full of viable lanes
+  uint32_t numlanes;  ///< Total Number of Lanes Detected
 
 };
   
