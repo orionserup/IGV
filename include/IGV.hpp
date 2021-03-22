@@ -74,15 +74,18 @@ public:
   void Run();
 
   /**
-   * @briefw
-   * @
+   * @brief 
+   * 
    *
    */
-  
   friend void ObjDetection(IGV* igv);
+
   friend void LaneDetection(IGV* igv);
+  
   friend void LidarLoop(IGV* igv);
+  
   friend void GPSLoop(IGV* igv);
+  
   friend void SensorLoop(IGV* igv);
 
 private:

@@ -8,11 +8,8 @@
 
 #include "main.hpp"
 
-#include "Camera.hpp"
-
 using namespace std;
 using namespace cv;
-
 
 namespace igv {
 
@@ -66,21 +63,21 @@ public:
    * @brief Returns if the Object Detector is Busy with an Operation
    * @return bool: if the Object is Busy
    */
-  bool isBusy() { return this->busy; }
+  const bool isBusy() { return this->busy; }
 
   /**
    * @fn GetNumObjects
    * @brief Get the Number of Objects Found
    * @return uint32_t: Number of Objects Found
    */
-  uint32_t GetNumObjects() { return objects.size(); }
+  const uint32_t GetNumObjects() { return objects.size(); }
 
   /**
    * @fn GetObjects
    * @brief Returns a reference to a List Full of Objects
    * @return list<Object>&: List of Objects
    */
-  list<Object>& GetObjects() { return objects; }
+  list<Object>& GetObjects() const { return objects; }
 
 private:
 

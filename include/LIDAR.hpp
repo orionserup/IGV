@@ -16,9 +16,6 @@ using namespace mn::CppLinuxSerial;
 #endif
 using namespace std;
 
-/*!
-* \brief Namespace for this project
-*/
 namespace igv{
 
 /**
@@ -48,7 +45,7 @@ public:
     * @brief Returns the Depth Map for the Surroundings
     * @return unordered_map<Direction, Distance>&
     */
-    unordered_map<Direction, Distance>& GetMap() { return mymap; }
+    unordered_map<Direction, Distance>& GetMap() const { return mymap; }
 
 private:
     

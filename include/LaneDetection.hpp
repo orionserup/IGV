@@ -8,7 +8,6 @@
 #pragma once
 
 #include "main.hpp"
-#include "Camera.hpp"
 
 /**
 * @brief namespace for this project
@@ -20,8 +19,8 @@ namespace igv{
 */
 struct Lane{
 
-  double slope;  /// slope of the line
-  int intercept; /// x or y intercept depending on the slope
+  double slope;  ///< slope of the line
+  int intercept; ///< x or y intercept depending on the slope
 
 };
 
@@ -65,19 +64,19 @@ public:
   * @brief Return the Number of Lanes Detected
   * @returns uint32_t: The number of Lanes Detected
   */
-  uint32_t GetNumLanes() { return numlanes; }
+  uint32_t GetNumLanes() const { return numlanes; }
   
   /**
   * @brief Return if the Lane Detector is Busy
   * @returns bool: If the LaneDetector is Busy with an Operation
   */
-  bool isBusy(){ return busy; }
+  bool isBusy() const { return busy; }
   
   /**
   * @brief Return the Array full of detected Lanes
   * @returns Array of Lanes used to hold lanes
   */
-  std::array<Lane, 4>& GetLanes() { return lanes; }
+  std::array<Lane, 4>& GetLanes() const { return lanes; }
 
 private:
 

@@ -23,7 +23,6 @@
 #include "opencv2/"
 #endif
 
-
 // global constants
 /// Width of Robot (Wheel Base)
 #define WHEELBASE .67f  // m
@@ -85,10 +84,6 @@
 #define X1 2
 /// Y1 Index
 #define Y1 3
-/// R Index
-#define _R 0
-/// Theta Index
-#define _THETA 1
 
 // ULTRASONIC DEFINES
 /// UltraSonic GPIO In Pin
@@ -96,9 +91,6 @@
 /// UltraSonic GPIO Out Pin
 #define ULTRA_OUT 12
 
-/**
-* @brief Namespace for this project
-*/
 namespace igv{
 
 // NAVIGATION DEFINES

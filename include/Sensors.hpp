@@ -58,7 +58,7 @@ public:
 
     UltraSonic();
 
-    double GetDistance(){ return this->distance; }  // returns the probed distance
+    const double GetDistance(){ return this->distance; }  // returns the probed distance
     void Probe();  // gets a reading and puts it in the distance value
 
     bool isBusy() { return busy; }
