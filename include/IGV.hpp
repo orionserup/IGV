@@ -60,7 +60,7 @@
 /**
 * @brief namespace for this project
 */
-namespace igv{
+namespace igv {
 
 /**
 * @brief The Complete Vehicle Class 
@@ -84,35 +84,6 @@ public:
   */
   void Run();
 
-  /**
-   * @brief Detects Objects
-   * @param igv Pointer to an IGV instance
-   */
-  friend void ObjDetection(IGV* igv);
-
-  /**
-   * @brief Detects Lanes using the Land Detector in the IGV
-   * @param  igv: Pointer to IGV to use
-   */
-  friend void LaneDetection(IGV* igv);
-  
-  /**
-   * @brief Probes the LIDAR
-   * @param  igv: Pointer to IGV to use
-   */
-  friend void LidarLoop(IGV* igv);
-  
-  /**
-   * @brief  Probes the GPS 
-   * @param  igv: Pointer to vehicle to use
-   */
-  friend void GPSLoop(IGV* igv);
-  
-  /**
-   * @brief Probes all of the misc sensors  
-   * @param  igv: Pointer to vehicle to use
-   */
-  friend void SensorLoop(IGV* igv);
 
 private:
 
@@ -125,12 +96,6 @@ private:
   UltraSonic us;
 
 };
-
-void ObjDetection(IGV* igv);
-void LaneDetection(IGV* igv);
-void LidarLoop(IGV* igv);
-void GPSLoop(IGV* igv);
-void SensorLoop(IGV* igv);
 
 }
 

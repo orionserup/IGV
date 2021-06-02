@@ -9,7 +9,7 @@
 #include "main.hpp"
 
 #ifndef SIMULATION
-#include "JetsonGPIO.h"
+//#include "JetsonGPIO.h"
 #include "CppLinuxSerial/Exception.hpp"
 #include "CppLinuxSerial/SerialPort.hpp"
 
@@ -58,7 +58,7 @@ public:
 
     UltraSonic();
 
-    const double GetDistance(){ return this->distance; }  // returns the probed distance
+    double GetDistance(){ return this->distance; }  // returns the probed distance
     void Probe();  // gets a reading and puts it in the distance value
 
     bool isBusy() { return busy; }

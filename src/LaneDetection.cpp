@@ -11,8 +11,14 @@ using namespace igv;
 using namespace std;
 using namespace cv;
 
-/// Stream operator overload, allows you to print Lanes
-ostream &igv::operator<<(ostream &os, Lane &lane)
+/**
+ * @brief  
+ * @note   
+ * @param  &os: 
+ * @param  &lane: 
+ * @retval 
+ */
+ostream& igv::operator<<(ostream &os, Lane &lane)
 {
 
     os << "Lane Slope: " << lane.slope << endl;
@@ -22,7 +28,7 @@ ostream &igv::operator<<(ostream &os, Lane &lane)
     return os;
 }
 
-#ifndef __NVCC__ // if not using the GPU
+#ifndef CUDA // if not using the GPU
 
 /** Lane Detection Function:
  * 
@@ -40,8 +46,8 @@ uint32_t LaneDetector::DetectLanes(array<Lane, 4> &LaneArray, Mat &image)
     image.copyTo(imgcopy);
 #endif
 
-    Mat gray(LANECAMWIDTH, LANECAMHEIGHT);
-    Mat edged(LANECAMWIDTH, LANECAMHEIGHT);
+    Mat gray;
+    Mat edged;
 
     cvtColor(image, gray, COLOR_BGR2GRAY);
     Canny(gray, edged, 200, 200);
@@ -226,67 +232,15 @@ void LaneDetector::DetectLanes(Mat &image)
 uint32_t LaneDetector::DetectLanes(array<Lane, 4> &lanes, Mat &image)
 {
 
-    busy = true;
+    cuda::GpuMat img(LANECAMWIDTH, LANECAMWIDTH, CV_8UC1);
+    cuda::GpuMat gray(LANECAMWIDTH, LANECAMHEIGHT, CV_8UC1);
 
-    GpuMat img(LANECAMWIDTH, LANECAMHEIGHT, CV_8U);
-    GpuMat edge(LANECAMWIDTH, LANECAMHEIGHT, CV_8U);
-    GpuMat gray(LANECAMWIDTH, LANECAMHEIGHT, CV_8U);
-
-    GpuMat lines;
-    
-    vector<uint32_t> votes;
-    vector<Vec2f> linesP;
-
-    uint32_t best[2] = {0};
-    uint32_t index[2];
-
-    img.upload(image);
-
-    gpu::cvtColor(img, gray, COLOR_BGR2GRAY);
-    gpu::Canny(img, edge, 50, 200);
-
-    gpu::HoughLines(edge, lines, 1, CV_PI / 128, 10);
-    gpu::HoughLinesDownload(lines, linesP, votes);
-
-    if (!linesP.size())msg[0] = command;
-        return 0;
-
-    for (uint32_t i = 0; i < linesP.size(), i++)
-    {
-
-        if (votes[i] > best[0])
-        {
-            best[0] = votes[i];
-            index[0] = i;
-        }
-        else if (votes[i] > best[1])
-        {
-            best[1] = votes[i];
-            index[1] = i;
-        }
-    }
-
-    double slope;
-    int intercept;
-
-    for (uint32_t i = 0; i < 2; i++)
-    {
-
-        slope = tan(CV_PI / 2 - linesP[index[i]][1]); // y/x = tan(theta)
-        if (linesP[index[i]][1] == || linesP[index[i][1]] == CV_PI / 2)
-            intercept = linesP[index[i][0]]; // if slope is 0 or inf, intercept is rho
-        else
-            intercept = -1 * slope * linesP[index[i]][0] / cos(linesP[index[i]][1]);
-
-        lanes[i] = {slope, intercept};
+    cuda::GpuMat lanes;
 
 #ifdef
 
 #endif
     }
-
-    this->numlanes = linesP.size();
-    busy = false;
 }
 
 void LaneDetector::DetectLanes(Mat &image)

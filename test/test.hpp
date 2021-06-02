@@ -47,6 +47,11 @@ public:
      */
     bool Ready();
 
+    /**
+     * @brief  
+     * @note   
+     * @retval 
+     */
     bool RunAllTests();
 
     /**

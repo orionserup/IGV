@@ -25,7 +25,7 @@
 
 // global constants
 /// Width of Robot (Wheel Base)
-#define WHEELBASE .67f  // m
+#define WHEELBASE .67f  // meters
 
 /// How Often to Capture an Image
 #define LaneCamFPS 10
@@ -41,7 +41,7 @@
 #define ULTRAFPS   5
 
 /// PI
-#define PI 3.1415926  // m
+#define PI 3.1415926 
 
 /// SPEED OF SOUND
 #define VSOUND 346.3  // m/s
@@ -63,9 +63,17 @@
 /// Image Height from Object Cam
 #define OBJCAMHEIGHT
 
+#ifdef SABERTOOTH
 // MOTOR CONTROLLER DEFINES
 /// Port of the MotorController Serial
 #define MCPORT "/dev/USB"
+ 
+#elif defined(PHIDGET)
+
+#define LEFTMOTORPORT 0
+#define RIGHTMOTORPORT 1
+
+#endif
 
 // GPS DEFINES
 /// GPS UART PORT
@@ -84,6 +92,9 @@
 #define X1 2
 /// Y1 Index
 #define Y1 3
+
+#define SPEED_MAX INT8_MAX
+#define SPEED_MIN INT8_MIN
 
 // ULTRASONIC DEFINES
 /// UltraSonic GPIO In Pin

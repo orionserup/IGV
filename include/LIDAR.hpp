@@ -9,11 +9,10 @@
 #include "main.hpp"  // all custom types, std libraries and defines
 
 #ifndef SIMULATION
-#include "CppLinuxSerial/Exception.hpp"
-#include "CppLinuxSerial/SerialPort.hpp"
+#include "CYdLidar.h"
 
-using namespace mn::CppLinuxSerial;
 #endif
+
 using namespace std;
 
 namespace igv{
@@ -45,18 +44,18 @@ public:
     * @brief Returns the Depth Map for the Surroundings
     * @return unordered_map<Direction, Distance> Depth Map
     */
-    unordered_map<Direction, Distance>& GetMap() const { return mymap; }
+    LaserScan& GetMap() { return scan; }
 
 private:
     
     #ifndef SIMULATION
 
-    SerialPort myport;
+    CYdLidar mylidar;
+    LaserScan scan;
 
     #endif
 
     bool busy;
-    unordered_map<Direction, Distance> mymap;
 
 }; 
 

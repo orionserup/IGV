@@ -1,5 +1,5 @@
-# IGV@UCI
-Intelligent Ground Vehicle Project at the University of California Irvine
+# IGV @ UCI
+Intelligent Ground Vehicle Project at the University of California, Irvine
 
 ## Description
 The IGV Project at UCI is a multidisciplinary project to build a self driving vehicle that competes in the IGVC (Intelligent Ground Vehicle Competition). The vehicle uses cameras, LIDAR, Ultrasonic sensors, accelerometers, GPS's, and other sensors to navigate itself through a course.     

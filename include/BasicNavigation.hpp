@@ -10,10 +10,19 @@
 #include "main.hpp"  // project defines
 
 #ifndef SIMULATION
+
+#ifdef SABERTOOTH
 #include "CppLinuxSerial/SerialPort.hpp"
 #include "CppLinuxSerial/Exception.hpp"
 
 using namespace mn::CppLinuxSerial;
+
+#elif defined(PHIDGET)
+
+#include "phidget22.h"
+
+#endif
+
 #endif
 
 /**
@@ -40,6 +49,23 @@ public:
   *  @brief Creates A Motor Controller Object
   */
   MotorController();  // by default the motor array comes from the HAL
+
+  /**
+  * @brief Destroy the Motor Controller object
+  * 
+  */
+  ~MotorController();
+
+  #ifdef PHIDGET
+
+  /**
+   * @brief  Creates a Motor Controller Object for the Phidget Implementation
+   * @param  leftport: The Hub port of the left motor
+   * @param  rightport: The Hub port of the right motor
+   */
+  MotorController(const uint8_t leftport, const uint8_t rightport);
+
+  #endif
 
   
   /**
@@ -106,9 +132,15 @@ private:
 
   #ifndef SIMULATION
 
+  #ifdef SABERTOOTH
+
   SerialPort myport;
 
-  #else
+  #elif defined(PHIDGET)
+
+  PhidgetBLDCMotorHandle left, right; // left and right motors
+
+  #endif
 
   #endif
 

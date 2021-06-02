@@ -11,7 +11,6 @@ using namespace igv;
 using namespace std;
 using namespace chrono;
 
-/** @copydoc SetSpeed(Speed speed) */
 void MotorController::SetSpeed(Speed speed){
 
   SetSpeed(LEFT, speed);
@@ -20,6 +19,8 @@ void MotorController::SetSpeed(Speed speed){
 }
 
 #ifndef SIMULATION
+
+#ifdef SABERTOOTH
 
 MotorController::MotorController() : 
   myport(MCPORT, B9600), busy(false), speed(0), direction(0){}
@@ -78,5 +79,68 @@ void MotorController::ChangeDirection(DeltaDir deltadir, Speed speeddiff) {
   busy = false;
 
 }
+#endif
+
+#ifdef PHIDGET
+
+static void HandlePhidgetError();
+
+MotorController::MotorController(const uint8_t leftport, const uint8_t rightport){
+
+  //Create your Phidget channels
+	PhidgetBLDCMotor_create(&this->left);
+  PhidgetBLDCMotor_create(&this->right);
+
+  //Set addressing parameters to specify which channel to open (if any)
+	if(Phidget_setHubPort((PhidgetHandle)this->left, leftport) != EPHIDGET_OK)
+    HandlePhidgetError();
+  
+  //Set addressing parameters to specify which channel to open (if any)
+	if(Phidget_setHubPort((PhidgetHandle)this->right, rightport) != EPHIDGET_OK)
+    HandlePhidgetError();
+
+}
+
+MotorController::MotorController(): MotorController(LEFTMOTORPORT, RIGHTMOTORPORT) {}
+
+void MotorController::SetSpeed(const Motor motor, const Speed speed) {
+
+  PhidgetBLDCMotorHandle bldc = motor == LEFT? this->left: this->right;
+  Speed realspeed = motor == LEFT? speed: speed * -1;
+
+  if(PhidgetBLDCMotor_setTargetVelocity(bldc, realspeed) != EPHIDGET_OK)
+    HandlePhidgetError();
+
+}
+
+
+MotorController::~MotorController() {
+
+  //Close your Phidgets once the program is done.
+  if(Phidget_close((PhidgetHandle)this->right) != EPHIDGET_OK) 
+    HandlePhidgetError();
+
+  //Close your Phidgets once the program is done.
+  if(Phidget_close((PhidgetHandle)this->left) != EPHIDGET_OK) 
+    HandlePhidgetError();
+
+  PhidgetBLDCMotor_delete(&this->left);
+  PhidgetBLDCMotor_delete(&this->right);
+
+}
+
+void HandlePhidgetError() {
+    
+  PhidgetReturnCode errorCode;
+	const char * errorString;
+	char errorDetail[100];
+	size_t errorDetailLen = 100;
+
+  Phidget_getLastError(&errorCode, &errorString, errorDetail, &errorDetailLen);
+	cout << "Error" << errorCode << ": " << errorString;
+
+}
+
+#endif
 
 #endif

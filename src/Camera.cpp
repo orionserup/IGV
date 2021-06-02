@@ -6,6 +6,7 @@
  */
 
 #include "Camera.hpp"
+
 #ifndef SIMULATION
 
 using namespace igv;
