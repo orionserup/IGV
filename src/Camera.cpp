@@ -13,7 +13,12 @@ using namespace igv;
 
 Camera::Camera(int port): cap(port) {}
 
-void Camera::Capture() { cap >> this->Image; }
+void Camera::Capture() { 
+    
+    if(cap.grab())
+        cap.retrieve(this->Image);
+    
+}
 
 #else
 

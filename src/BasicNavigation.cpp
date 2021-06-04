@@ -16,29 +16,7 @@ void MotorController::SetSpeed(Speed speed){
   SetSpeed(LEFT, speed);
   SetSpeed(RIGHT, speed);
 
-}
-
-#ifndef SIMULATION
-
-#ifdef SABERTOOTH
-
-MotorController::MotorController() : 
-  myport(MCPORT, B9600), busy(false), speed(0), direction(0){}
-
-void MotorController::SetSpeed(Motor motor, Speed speed) {
-
-  uint8_t* command = {0}
-  uint8_t magnitude = abs(speed) >> 1;
-  
-  if (motor == LEFT)
-    *command = speed < 0 ? 63 - magnitude : 64 + magnitude;
-  
-  else
-    *command = speed < 0 ? 191 - magnitude : 192 + magnitude;
-  
-  *command = (!*command)? 1: (command == 0xff)? 254: command;
-  
-  this->myport.Write(command);
+  this->speed = speed;
 
 }
 
@@ -79,6 +57,31 @@ void MotorController::ChangeDirection(DeltaDir deltadir, Speed speeddiff) {
   busy = false;
 
 }
+
+#ifndef SIMULATION
+
+#ifdef SABERTOOTH
+
+MotorController::MotorController() : 
+  myport(MCPORT, B9600), busy(false), speed(0), direction(0){}
+
+void MotorController::SetSpeed(Motor motor, Speed speed) {
+
+  uint8_t* command = {0}
+  uint8_t magnitude = abs(speed) >> 1;
+  
+  if (motor == LEFT)
+    *command = speed < 0 ? 63 - magnitude : 64 + magnitude;
+  
+  else
+    *command = speed < 0 ? 191 - magnitude : 192 + magnitude;
+  
+  *command = (!*command)? 1: (command == 0xff)? 254: command;
+  
+  this->myport.Write(command);
+
+}
+
 #endif
 
 #ifdef PHIDGET
@@ -99,16 +102,21 @@ MotorController::MotorController(const uint8_t leftport, const uint8_t rightport
 	if(Phidget_setHubPort((PhidgetHandle)this->right, rightport) != EPHIDGET_OK)
     HandlePhidgetError();
 
+  Phidget_openWaitForAttachment((PhidgetHandle)this->right, 5500);
+  Phidget_openWaitForAttachment((PhidgetHandle)this->left, 5500);
+
+
 }
 
 MotorController::MotorController(): MotorController(LEFTMOTORPORT, RIGHTMOTORPORT) {}
+
 
 void MotorController::SetSpeed(const Motor motor, const Speed speed) {
 
   PhidgetBLDCMotorHandle bldc = motor == LEFT? this->left: this->right;
   Speed realspeed = motor == LEFT? speed: speed * -1;
 
-  if(PhidgetBLDCMotor_setTargetVelocity(bldc, realspeed) != EPHIDGET_OK)
+  if(PhidgetBLDCMotor_setTargetVelocity(bldc, realspeed/128.0f) != EPHIDGET_OK)
     HandlePhidgetError();
 
 }
@@ -128,6 +136,15 @@ MotorController::~MotorController() {
   PhidgetBLDCMotor_delete(&this->right);
 
 }
+
+// void MotorController::SetSpeed(Motor motor, Speed speed){
+
+//   PhidgetBLDCHandle realmotor = (motor == LEFT? this->left: this->right);
+//   Speed realspeed = (motor == LEFT? speed: speed * -1);
+
+//   PhidgetBLDCMotor_setTargetVelocity(realmotor, realspeed/255.0f);
+
+// }
 
 void HandlePhidgetError() {
     

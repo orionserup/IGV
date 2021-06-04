@@ -1,0 +1,37 @@
+Opening Image: ../test/test.jpeg
+Retrieving the Image
+Image Specs: 
+=========================
+Is Empty:       0
+Dimensionality: 2
+Pixel Format:   0
+Size:           900 x 1200
+
+Creating Empty Lane Array: Lanes Full of Zeros 
+Detecting Lanes: 
+Printing Lanes: 
+Total Lanes Found:
+Static Call: 60Object Call: 12778
+
+Time Taken For Tests: 
+Static Time: 113212617ns
+Object Time: 216227392ns
+
+Static Lanes: 
+Lane Slope: 0
+ Y-Intercept: 490
+Lane Slope: 0
+ Y-Intercept: 482
+Lane Slope: 0
+ Y-Intercept: 586
+Lane Slope: 0
+ Y-Intercept: 576
+Object Lanes: 
+Lane Slope: 0
+ Y-Intercept: 491
+Lane Slope: 0
+ Y-Intercept: 146
+Lane Slope: 0
+ Y-Intercept: 709
+Lane Slope: 0
+ Y-Intercept: 623

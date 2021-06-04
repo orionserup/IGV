@@ -11,8 +11,7 @@ using namespace igv;
 using namespace cv;
 
 // Stream operator allows the lanes to be printed to file of stdout
-ostream& igv::operator<<(ostream &os, Object &obj)
-{
+ostream& igv::operator<<(ostream &os, Object &obj){
 
     os << "Object Type " << obj.classification << endl;
     os << "At Left Angle " << obj.leftedge << endl;
@@ -24,36 +23,57 @@ ostream& igv::operator<<(ostream &os, Object &obj)
 
 #ifndef CUDA // if not using the GPU
 
-uint32_t ObjDetector::DetectObjects(list<Object> &objects, Mat &image1, Mat& image2)
+uint32_t ObjDetector::DetectObjects(list<Object> &objects, Mat &imageL, Mat& imageR)
 {
 
-    Ptr<FastFeatureDetector> fd = FastFeatureDetector::create(20);
+    Ptr<StereoBM> bm = StereoBM::create(15, 25);
 
-    std::vector<KeyPoint> keypoints[2];
+    Mat diff, grayL, grayR;
 
-    fd->detect(image1, keypoints[0]);
-    fd->detect(image2, keypoints[1]);
+    cvtColor(imageL, grayL, COLOR_RGB2GRAY);
+    cvtColor(imageR, grayR, COLOR_RGB2GRAY);
+
+    bm->compute(grayL, grayR, diff);
+
+    SimpleBlobDetector::Params blobparams;
+
+    blobparams.filterByColor = true;
+    blobparams.minThreshold = 10.0f;
+    blobparams.minArea = 20.0f;
+    blobparams.blobColor = 255; 
+
+    Ptr<SimpleBlobDetector> bd = SimpleBlobDetector::create(blobparams);
+
+    std::vector<KeyPoint> kps;
+
+    bd->detect(diff, kps);
+
+    for(KeyPoint kp: kps)
+        
 
     #ifdef DEBUG
+
+    imshow("Disparity Map", diff);
+    waitKey(0);
     
-    Mat dest;
-    drawKeypoints(image, keypoints, dest);
-    imshow("Key Points on Image", dest);
-
     #endif
-
-    for(uint8_t i = 0; i < MIN(keypoints[0].size(), keypoints[1].size()); i++) {
-
-        objects[i]
-
-    }
 
     return objects.size();
 }
 
-void ObjDetector::DetectObjects(Mat &Image)
+void ObjDetector::DetectObjects(Mat& ImageL, Mat& ImageR)
 {
 
+
+    #ifdef DEBUG
+    
+    Mat dest;
+
+    drawKeypoints(Image, keypoints[0], dest);
+    imshow("Key Points on Image", dest);
+    waitKey(0);
+
+    #endif
 
 }
 

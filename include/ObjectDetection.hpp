@@ -49,7 +49,7 @@ public:
    * @param Image 
    * @return void
    */
-  void DetectObjects(Mat& Image);
+  void DetectObjects(Mat& ImageL, Mat& ImageR);
   
    /*
    * @fn DetectObjects
@@ -58,7 +58,7 @@ public:
    * @param Image Image to Detect Objects From
    * @return uint32_t: Number of Objects Found 
    */
-  static uint32_t DetectObjects(list<Object>& objs, Mat& Image);
+  static uint32_t DetectObjects(vector<Object>& objs, Mat& ImageL, Mat& ImageR);
 
   /**
    * @fn isBusy
@@ -79,12 +79,12 @@ public:
    * @brief Returns a reference to a List Full of Objects
    * @return list<Object>&: List of Objects
    */
-  list<Object>& GetObjects() { return objects; }
+  vector<Object>& GetObjects() { return objects; }
 
 private:
 
   bool busy;
-  list<Object> objects;
+  vector<Object> objects;
 
 };
 

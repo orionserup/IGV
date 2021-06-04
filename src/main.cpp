@@ -65,16 +65,23 @@ int main(int argc, char** argv){
           << "'--test' Runs the Tests to specify which one put options after:\n"
           << "\t'cam', 'gps', 'all', 'motor', 'lidar', 'ld', 'od', 'sensors'\n";
 
-    
-  return EXIT_SUCCESS;
   
 #endif
 
-  IGV igv;
+  LIDAR lidar;
 
-  igv.Setup();
-  igv.Run();
+  lidar.Probe();
+
+  LaserScan scan = lidar.GetMap();
+
+  for(float distance: scan.ranges)
+    cout << "Range:  " << distance << endl; 
+
+
+  return 0;
+
 
 }
+
 
 

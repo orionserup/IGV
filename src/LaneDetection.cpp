@@ -146,10 +146,10 @@ void LaneDetector::DetectLanes(Mat &image)
 
     Mat gray, edged;
     cvtColor(image, gray, COLOR_BGR2GRAY);
-    Canny(gray, edged, 180, 180);
+    Canny(gray, edged, 190, 190);
 
     vector<Vec4i> linesP;                           // a vector to fill with line points
-    HoughLinesP(edged, linesP, 2, CV_PI / 256, 20); // find the lines
+    HoughLinesP(edged, linesP, 1, CV_PI / 512.0f, 1, 50, 0); // find the lines
 
     if (!linesP.size())
     {
@@ -173,10 +173,13 @@ void LaneDetector::DetectLanes(Mat &image)
 
         if (mag > largest[0].mag)
             largest[0] = {mag, i}; // if larger than the largest then replace it
+
         else if (mag > largest[1].mag)
             largest[1] = {mag, i}; // same here except second largest
+
         else if (mag > largest[2].mag)
             largest[2] = {mag, i};
+
         else if (mag > largest[3].mag)
             largest[3] = {mag, i};
     }
@@ -202,7 +205,7 @@ void LaneDetector::DetectLanes(Mat &image)
         else
         {
             // m = deltay/deltax
-            slope = (linesP[largest[i].index][Y1] - linesP[largest[i].index][Y0]) / (linesP[largest[i].index][X1] - linesP[largest[i].index][X0]);
+            slope = (float)(linesP[largest[i].index][Y1] - linesP[largest[i].index][Y0]) / (float)(linesP[largest[i].index][X1] - linesP[largest[i].index][X0]);
             // b = Yo - mXo
             intercept = (linesP[largest[i].index][Y0] - slope * linesP[largest[i].index][X0]);
         }
@@ -212,13 +215,19 @@ void LaneDetector::DetectLanes(Mat &image)
 #ifdef DEBUG // if debugging then print the image with lines
 
         line(imgcopy, Point(linesP[largest[i].index][X0], linesP[largest[i].index][Y0]),
-             Point(linesP[largest[i].index][X1], linesP[largest[i].index][Y1]), Scalar(0, 0, 255));
+            Point(linesP[largest[i].index][X1], linesP[largest[i].index][Y1]), Scalar(0, 0, 255));
 
 #endif
     }
 
 #ifdef DEBUG
-    imwrite("../test/LDed.png", imgcopy);
+
+    imshow("Canny", edged);
+    waitKey(0);
+
+    imshow("LDed", imgcopy);
+    waitKey(0);
+    
 #endif
 
     busy = false;

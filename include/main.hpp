@@ -8,9 +8,7 @@
 #pragma once 
 
 #include <array>
-#include <list>
 #include <vector>
-#include <unordered_map>
 #include <string>
 #include <cmath>
 #include <chrono>
@@ -20,7 +18,7 @@
 #include "opencv2/opencv.hpp"
 
 #ifdef CUDA
-#include "opencv2/"
+#include "opencv2/cudaimgproc.hpp"
 #endif
 
 // global constants
@@ -41,7 +39,7 @@
 #define ULTRAFPS   5
 
 /// PI
-#define PI 3.1415926 
+#define PI 3.1415926f 
 
 /// SPEED OF SOUND
 #define VSOUND 346.3  // m/s
@@ -52,16 +50,27 @@
 // CAMERA DEFINES
 /// Port of the Lane Cam
 #define LANECAMPORT 1
+
 // Port of the Object Cam
 #define OBJCAMPORT 0
+
 /// Image Width From Lane Cam
 #define LANECAMWIDTH
+
 /// Image Height from Lane Cam
 #define LANECAMHEIGHT
+
 /// Image Width from Object Cam 
 #define OBJCAMWIDTH
+
 /// Image Height from Object Cam
 #define OBJCAMHEIGHT
+
+/// Distance Between the Cameras
+#define CAMERADISTANCE .4
+
+/// Focal Length of the Cameras
+#define FOCALLENGTH .1
 
 #ifdef SABERTOOTH
 // MOTOR CONTROLLER DEFINES
@@ -71,7 +80,7 @@
 #elif defined(PHIDGET)
 
 #define LEFTMOTORPORT 0
-#define RIGHTMOTORPORT 1
+#define RIGHTMOTORPORT 2
 
 #endif
 
@@ -81,7 +90,7 @@
 
 // LIDAR DEFINES
 /// LIDAR USB Port
-#define LIDARPORT "/dev/USB"
+#define LIDARPORT "/dev/ttyUSB0"
 
 // LANE DETECTION DEFINES
 /// X0 Index
@@ -101,6 +110,8 @@
 #define ULTRA_IN  15
 /// UltraSonic GPIO Out Pin
 #define ULTRA_OUT 12
+
+#define Sign(x) ( (x > 0) - (x < 0) ) ///< Returns the Sign of a Number, 1, -1, or 0
 
 namespace igv{
 

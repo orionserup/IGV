@@ -18,7 +18,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 set(CMAKE_CXX_FLAGS "-Wall -Wextra -pthread -DPHIDGET") # all errors on and treat it like a dll but an executable
 set(CMAKE_CXX_FLAGS_DEBUG "-ggdb3 -DDEBUG") # have a debug option
-set(CMAKE_CXX_FLAGS_RELEASE "-Ofast -DNDEBUG -march=native -flto -fprofile-generate") # have an optimized version for the release
+set(CMAKE_CXX_FLAGS_RELEASE "-Ofast -DNDEBUG -march=native") # have an optimized version for the release
 
 #========================================================================================#
 
@@ -41,7 +41,7 @@ set(LIBRARIES ${SERIALLIB} ${GPSLIB} ${LIDARLIB} ${PHIDGETLIB})
 #------------------------------------ SOURCES ----------------------------------------------#
 #===========================================================================================#
 
-file(GLOB SOURCES ../src/*.cpp ../test.cpp)  # use all of the sources in /src and /test
+file(GLOB SOURCES ../src/*.cpp ../test/test.cpp)  # use all of the sources in /src and /test
 file(GLOB INCLUDES ../include/*.hpp)
 
 #===========================================================================================#
