@@ -1,52 +1,52 @@
 [
 {
   "directory": "/home/orion/Code/Projects/IGV/build",
-  "command": "/usr/bin/c++ -D_GLIBCXX_DEBUG -I/home/orion/Code/Projects/IGV/build/../include -I/home/orion/Code/Projects/IGV/build/../test -isystem /usr/local/include/opencv4 -Wall -Wextra -pthread -DPHIDGET -Ofast -DNDEBUG -march=native -std=gnu++20 -o CMakeFiles/IGV.dir/home/orion/Code/Projects/IGV/src/BasicNavigation.cpp.o -c /home/orion/Code/Projects/IGV/src/BasicNavigation.cpp",
+  "command": "/usr/bin/c++ -D_GLIBCXX_DEBUG -I/home/orion/Code/Projects/IGV/build/../include -I/home/orion/Code/Projects/IGV/build/../test -isystem /usr/local/include/opencv4 -Wall -Wextra -pthread -DPHIDGET -ggdb3 -DDEBUG -std=gnu++20 -o CMakeFiles/IGV.dir/home/orion/Code/Projects/IGV/src/BasicNavigation.cpp.o -c /home/orion/Code/Projects/IGV/src/BasicNavigation.cpp",
   "file": "/home/orion/Code/Projects/IGV/src/BasicNavigation.cpp"
 },
 {
   "directory": "/home/orion/Code/Projects/IGV/build",
-  "command": "/usr/bin/c++ -D_GLIBCXX_DEBUG -I/home/orion/Code/Projects/IGV/build/../include -I/home/orion/Code/Projects/IGV/build/../test -isystem /usr/local/include/opencv4 -Wall -Wextra -pthread -DPHIDGET -Ofast -DNDEBUG -march=native -std=gnu++20 -o CMakeFiles/IGV.dir/home/orion/Code/Projects/IGV/src/Camera.cpp.o -c /home/orion/Code/Projects/IGV/src/Camera.cpp",
+  "command": "/usr/bin/c++ -D_GLIBCXX_DEBUG -I/home/orion/Code/Projects/IGV/build/../include -I/home/orion/Code/Projects/IGV/build/../test -isystem /usr/local/include/opencv4 -Wall -Wextra -pthread -DPHIDGET -ggdb3 -DDEBUG -std=gnu++20 -o CMakeFiles/IGV.dir/home/orion/Code/Projects/IGV/src/Camera.cpp.o -c /home/orion/Code/Projects/IGV/src/Camera.cpp",
   "file": "/home/orion/Code/Projects/IGV/src/Camera.cpp"
 },
 {
   "directory": "/home/orion/Code/Projects/IGV/build",
-  "command": "/usr/bin/c++ -D_GLIBCXX_DEBUG -I/home/orion/Code/Projects/IGV/build/../include -I/home/orion/Code/Projects/IGV/build/../test -isystem /usr/local/include/opencv4 -Wall -Wextra -pthread -DPHIDGET -Ofast -DNDEBUG -march=native -std=gnu++20 -o CMakeFiles/IGV.dir/home/orion/Code/Projects/IGV/src/GPS.cpp.o -c /home/orion/Code/Projects/IGV/src/GPS.cpp",
+  "command": "/usr/bin/c++ -D_GLIBCXX_DEBUG -I/home/orion/Code/Projects/IGV/build/../include -I/home/orion/Code/Projects/IGV/build/../test -isystem /usr/local/include/opencv4 -Wall -Wextra -pthread -DPHIDGET -ggdb3 -DDEBUG -std=gnu++20 -o CMakeFiles/IGV.dir/home/orion/Code/Projects/IGV/src/GPS.cpp.o -c /home/orion/Code/Projects/IGV/src/GPS.cpp",
   "file": "/home/orion/Code/Projects/IGV/src/GPS.cpp"
 },
 {
   "directory": "/home/orion/Code/Projects/IGV/build",
-  "command": "/usr/bin/c++ -D_GLIBCXX_DEBUG -I/home/orion/Code/Projects/IGV/build/../include -I/home/orion/Code/Projects/IGV/build/../test -isystem /usr/local/include/opencv4 -Wall -Wextra -pthread -DPHIDGET -Ofast -DNDEBUG -march=native -std=gnu++20 -o CMakeFiles/IGV.dir/home/orion/Code/Projects/IGV/src/IGV.cpp.o -c /home/orion/Code/Projects/IGV/src/IGV.cpp",
+  "command": "/usr/bin/c++ -D_GLIBCXX_DEBUG -I/home/orion/Code/Projects/IGV/build/../include -I/home/orion/Code/Projects/IGV/build/../test -isystem /usr/local/include/opencv4 -Wall -Wextra -pthread -DPHIDGET -ggdb3 -DDEBUG -std=gnu++20 -o CMakeFiles/IGV.dir/home/orion/Code/Projects/IGV/src/IGV.cpp.o -c /home/orion/Code/Projects/IGV/src/IGV.cpp",
   "file": "/home/orion/Code/Projects/IGV/src/IGV.cpp"
 },
 {
   "directory": "/home/orion/Code/Projects/IGV/build",
-  "command": "/usr/bin/c++ -D_GLIBCXX_DEBUG -I/home/orion/Code/Projects/IGV/build/../include -I/home/orion/Code/Projects/IGV/build/../test -isystem /usr/local/include/opencv4 -Wall -Wextra -pthread -DPHIDGET -Ofast -DNDEBUG -march=native -std=gnu++20 -o CMakeFiles/IGV.dir/home/orion/Code/Projects/IGV/src/LIDAR.cpp.o -c /home/orion/Code/Projects/IGV/src/LIDAR.cpp",
+  "command": "/usr/bin/c++ -D_GLIBCXX_DEBUG -I/home/orion/Code/Projects/IGV/build/../include -I/home/orion/Code/Projects/IGV/build/../test -isystem /usr/local/include/opencv4 -Wall -Wextra -pthread -DPHIDGET -ggdb3 -DDEBUG -std=gnu++20 -o CMakeFiles/IGV.dir/home/orion/Code/Projects/IGV/src/LIDAR.cpp.o -c /home/orion/Code/Projects/IGV/src/LIDAR.cpp",
   "file": "/home/orion/Code/Projects/IGV/src/LIDAR.cpp"
 },
 {
   "directory": "/home/orion/Code/Projects/IGV/build",
-  "command": "/usr/bin/c++ -D_GLIBCXX_DEBUG -I/home/orion/Code/Projects/IGV/build/../include -I/home/orion/Code/Projects/IGV/build/../test -isystem /usr/local/include/opencv4 -Wall -Wextra -pthread -DPHIDGET -Ofast -DNDEBUG -march=native -std=gnu++20 -o CMakeFiles/IGV.dir/home/orion/Code/Projects/IGV/src/LaneDetection.cpp.o -c /home/orion/Code/Projects/IGV/src/LaneDetection.cpp",
+  "command": "/usr/bin/c++ -D_GLIBCXX_DEBUG -I/home/orion/Code/Projects/IGV/build/../include -I/home/orion/Code/Projects/IGV/build/../test -isystem /usr/local/include/opencv4 -Wall -Wextra -pthread -DPHIDGET -ggdb3 -DDEBUG -std=gnu++20 -o CMakeFiles/IGV.dir/home/orion/Code/Projects/IGV/src/LaneDetection.cpp.o -c /home/orion/Code/Projects/IGV/src/LaneDetection.cpp",
   "file": "/home/orion/Code/Projects/IGV/src/LaneDetection.cpp"
 },
 {
   "directory": "/home/orion/Code/Projects/IGV/build",
-  "command": "/usr/bin/c++ -D_GLIBCXX_DEBUG -I/home/orion/Code/Projects/IGV/build/../include -I/home/orion/Code/Projects/IGV/build/../test -isystem /usr/local/include/opencv4 -Wall -Wextra -pthread -DPHIDGET -Ofast -DNDEBUG -march=native -std=gnu++20 -o CMakeFiles/IGV.dir/home/orion/Code/Projects/IGV/src/ObjectDetection.cpp.o -c /home/orion/Code/Projects/IGV/src/ObjectDetection.cpp",
+  "command": "/usr/bin/c++ -D_GLIBCXX_DEBUG -I/home/orion/Code/Projects/IGV/build/../include -I/home/orion/Code/Projects/IGV/build/../test -isystem /usr/local/include/opencv4 -Wall -Wextra -pthread -DPHIDGET -ggdb3 -DDEBUG -std=gnu++20 -o CMakeFiles/IGV.dir/home/orion/Code/Projects/IGV/src/ObjectDetection.cpp.o -c /home/orion/Code/Projects/IGV/src/ObjectDetection.cpp",
   "file": "/home/orion/Code/Projects/IGV/src/ObjectDetection.cpp"
 },
 {
   "directory": "/home/orion/Code/Projects/IGV/build",
-  "command": "/usr/bin/c++ -D_GLIBCXX_DEBUG -I/home/orion/Code/Projects/IGV/build/../include -I/home/orion/Code/Projects/IGV/build/../test -isystem /usr/local/include/opencv4 -Wall -Wextra -pthread -DPHIDGET -Ofast -DNDEBUG -march=native -std=gnu++20 -o CMakeFiles/IGV.dir/home/orion/Code/Projects/IGV/src/Sensors.cpp.o -c /home/orion/Code/Projects/IGV/src/Sensors.cpp",
+  "command": "/usr/bin/c++ -D_GLIBCXX_DEBUG -I/home/orion/Code/Projects/IGV/build/../include -I/home/orion/Code/Projects/IGV/build/../test -isystem /usr/local/include/opencv4 -Wall -Wextra -pthread -DPHIDGET -ggdb3 -DDEBUG -std=gnu++20 -o CMakeFiles/IGV.dir/home/orion/Code/Projects/IGV/src/Sensors.cpp.o -c /home/orion/Code/Projects/IGV/src/Sensors.cpp",
   "file": "/home/orion/Code/Projects/IGV/src/Sensors.cpp"
 },
 {
   "directory": "/home/orion/Code/Projects/IGV/build",
-  "command": "/usr/bin/c++ -D_GLIBCXX_DEBUG -I/home/orion/Code/Projects/IGV/build/../include -I/home/orion/Code/Projects/IGV/build/../test -isystem /usr/local/include/opencv4 -Wall -Wextra -pthread -DPHIDGET -Ofast -DNDEBUG -march=native -std=gnu++20 -o CMakeFiles/IGV.dir/home/orion/Code/Projects/IGV/src/main.cpp.o -c /home/orion/Code/Projects/IGV/src/main.cpp",
+  "command": "/usr/bin/c++ -D_GLIBCXX_DEBUG -I/home/orion/Code/Projects/IGV/build/../include -I/home/orion/Code/Projects/IGV/build/../test -isystem /usr/local/include/opencv4 -Wall -Wextra -pthread -DPHIDGET -ggdb3 -DDEBUG -std=gnu++20 -o CMakeFiles/IGV.dir/home/orion/Code/Projects/IGV/src/main.cpp.o -c /home/orion/Code/Projects/IGV/src/main.cpp",
   "file": "/home/orion/Code/Projects/IGV/src/main.cpp"
 },
 {
   "directory": "/home/orion/Code/Projects/IGV/build",
-  "command": "/usr/bin/c++ -D_GLIBCXX_DEBUG -I/home/orion/Code/Projects/IGV/build/../include -I/home/orion/Code/Projects/IGV/build/../test -isystem /usr/local/include/opencv4 -Wall -Wextra -pthread -DPHIDGET -Ofast -DNDEBUG -march=native -std=gnu++20 -o CMakeFiles/IGV.dir/home/orion/Code/Projects/IGV/test/test.cpp.o -c /home/orion/Code/Projects/IGV/test/test.cpp",
+  "command": "/usr/bin/c++ -D_GLIBCXX_DEBUG -I/home/orion/Code/Projects/IGV/build/../include -I/home/orion/Code/Projects/IGV/build/../test -isystem /usr/local/include/opencv4 -Wall -Wextra -pthread -DPHIDGET -ggdb3 -DDEBUG -std=gnu++20 -o CMakeFiles/IGV.dir/home/orion/Code/Projects/IGV/test/test.cpp.o -c /home/orion/Code/Projects/IGV/test/test.cpp",
   "file": "/home/orion/Code/Projects/IGV/test/test.cpp"
 }
 ]

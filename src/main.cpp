@@ -68,18 +68,39 @@ int main(int argc, char** argv){
   
 #endif
 
-  LIDAR lidar;
+  VideoCapture cap;
 
-  lidar.Probe();
+  cap.open(0);
 
-  LaserScan scan = lidar.GetMap();
+  cap.set(3, 1280);
+  cap.set(4, 720);
 
-  for(float distance: scan.ranges)
-    cout << "Range:  " << distance << endl; 
+  Mat dest;
 
+  cap >> dest;
+
+  this_thread::sleep_for(100ms);
+
+  cap >> dest;
+
+  LaneDetector ld;
+
+  ld.DetectLanes(dest);
+
+  imshow("Captured Image", dest);
+  waitKey(0);
+
+  cap.release();
+
+  // MotorController mc;
+
+  // mc.SetSpeed(50);
+
+  // //mc.ChangeDirection(64, 50);
+
+  // this_thread::sleep_for(3s);
 
   return 0;
-
 
 }
 

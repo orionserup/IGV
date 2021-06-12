@@ -23,7 +23,7 @@
 
 // global constants
 /// Width of Robot (Wheel Base)
-#define WHEELBASE .67f  // meters
+#define WHEELBASE .5f  // meters
 
 /// How Often to Capture an Image
 #define LaneCamFPS 10
@@ -71,6 +71,8 @@
 
 /// Focal Length of the Cameras
 #define FOCALLENGTH .1
+
+#define FOV 60
 
 #ifdef SABERTOOTH
 // MOTOR CONTROLLER DEFINES

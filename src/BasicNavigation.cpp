@@ -40,7 +40,7 @@ void MotorController::ChangeDirection(DeltaDir deltadir, Speed speeddiff) {
 
   ohmega = ((int)speeddiff << 7) / (PI * WHEELBASE); // get tangential speed and convert it to angular
 
-  waittime = milliseconds((uint64_t)(1000 * abs(deltadir) / ohmega)); // calculate wait time in millis
+  waittime = milliseconds((uint64_t)(1000.0f * abs(deltadir) / ohmega)); // calculate wait time in millis
 
   busy = true;
 
@@ -135,16 +135,6 @@ MotorController::~MotorController() {
   PhidgetBLDCMotor_delete(&this->left);
   PhidgetBLDCMotor_delete(&this->right);
 
-}
-
-// void MotorController::SetSpeed(Motor motor, Speed speed){
-
-//   PhidgetBLDCHandle realmotor = (motor == LEFT? this->left: this->right);
-//   Speed realspeed = (motor == LEFT? speed: speed * -1);
-
-//   PhidgetBLDCMotor_setTargetVelocity(realmotor, realspeed/255.0f);
-
-// }
 
 void HandlePhidgetError() {
     

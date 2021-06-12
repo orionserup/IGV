@@ -13,7 +13,6 @@ using namespace cv;
 // Stream operator allows the lanes to be printed to file of stdout
 ostream& igv::operator<<(ostream &os, Object &obj){
 
-    os << "Object Type " << obj.classification << endl;
     os << "At Left Angle " << obj.leftedge << endl;
     os << "Until Right Angle" << obj.rightedge << endl;
     os << "With Distance " << obj.distance << endl;
@@ -21,9 +20,20 @@ ostream& igv::operator<<(ostream &os, Object &obj){
     return os;
 }
 
+Direction igv::PointToDirection(const cv::Point2f point) {
+
+    return (Direction)((double)FOV * (point.x - 0.5) / 2.0f); // 0.5 is the center so the angle is just the distance from the center times FOV/2
+
+}
+
+Distance igv::ColorToDistance(const uint8_t color) {
+
+    return (FOCALLENGTH * CAMERADISTANCE) / color;
+}
+
 #ifndef CUDA // if not using the GPU
 
-uint32_t ObjDetector::DetectObjects(list<Object> &objects, Mat &imageL, Mat& imageR)
+uint32_t ObjDetector::DetectObjects(vector<Object> &objects, Mat &imageL, Mat& imageR)
 {
 
     Ptr<StereoBM> bm = StereoBM::create(15, 25);
@@ -48,8 +58,23 @@ uint32_t ObjDetector::DetectObjects(list<Object> &objects, Mat &imageL, Mat& ima
 
     bd->detect(diff, kps);
 
-    for(KeyPoint kp: kps)
-        
+    objects.resize(kps.size()); // resize to fit all of the objects
+
+    for(uint8_t i = 0; i < objects.size(); i++) {
+
+        Point2f leftedge;
+        Point2f rightedge;
+
+        leftedge.x = kps[i].pt.x - kps[i].size;
+        rightedge.x = kps[i].pt.x + kps[i].size;
+
+        objects[i].leftedge = PointToDirection(leftedge);
+        objects[i].rightedge = PointToDirection(rightedge);
+
+        objects[i].distance = ColorToDistance(diff.at<uint8_t>(kps[i].pt));
+
+    }
+
 
     #ifdef DEBUG
 
@@ -67,11 +92,11 @@ void ObjDetector::DetectObjects(Mat& ImageL, Mat& ImageR)
 
     #ifdef DEBUG
     
-    Mat dest;
+    // Mat dest;
 
-    drawKeypoints(Image, keypoints[0], dest);
-    imshow("Key Points on Image", dest);
-    waitKey(0);
+    // drawKeypoints(ImageL, keypoints[0], dest);
+    // imshow("Key Points on Image", dest);
+    // waitKey(0);
 
     #endif
 
@@ -97,65 +122,3 @@ uint32_t ObjDetector::DetectObjects(Mat &Image)
 
 #endif
 
-// ###using Yolo as model
-
-// import cv2 as cv2
-// import numpy as np
-// from imutils.video import FPS
-// import imutils
-
-// # Load Yolo
-// net = cv2.dnn.readNet("yolo.weights", "yolo.cfg")
-// classes = []
-// with open("coco.names", "r") as f:
-//     classes = [line.strip() for line in f.readlines()]
-// layer_names = net.getLayerNames()
-// output_layers = [layer_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
-// colors = np.random.uniform(0, 255, size=(len(classes), 3))
-
-// # Loading image
-// img = cv2.imread("approach3.PNG")
-// img = cv2.resize(img, None, fx=0.4, fy=0.4)
-// height, width, channels = img.shape
-
-// # Detecting objects
-// blob = cv2.dnn.blobFromImage(img, 0.00392, (416, 416), (0, 0, 0), True, crop=False)
-// net.setInput(blob)
-// outs = net.forward(output_layers)
-
-// # Showing informations on the screen
-// class_ids = []
-// confidences = []
-// boxes = []
-// for out in outs:
-//     for detection in out:
-//         scores = detection[5:]
-//         class_id = np.argmax(scores)
-//         confidence = scores[class_id]
-//         if confidence > 0.5:
-//             # Object detected
-//             center_x = int(detection[0] * width)
-//             center_y = int(detection[1] * height)
-//             w = int(detection[2] * width)
-//             h = int(detection[3] * height)
-//             # Rectangle coordinates
-//             x = int(center_x - w / 2)
-//             y = int(center_y - h / 2)
-//             boxes.append([x, y, w, h])
-//             confidences.append(float(confidence))
-//             class_ids.append(class_id)
-
-// indexes = cv2.dnn.NMSBoxes(boxes, confidences, 0.5, 0.4)
-
-// font = cv2.FONT_HERSHEY_PLAIN
-// for i in range(len(boxes)):
-//     if i in indexes:
-//         x, y, w, h = boxes[i]
-//         label = str(classes[class_ids[i]])
-//         color = colors[i]
-//         cv2.rectangle(img, (x, y), (x + w, y + h), color, 2)
-//         cv2.putText(img, label, (x, y - 10), font, 1.5, color, 3)
-
-// cv2.imshow("approach3.PNG", img)
-// cv2.waitKey(0)
-// cv2.destroyAllWindows()

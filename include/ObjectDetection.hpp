@@ -22,7 +22,6 @@ struct Object {
 
   Distance distance;
   Direction leftedge, rightedge;
-  string classification;
 
 };
 
@@ -87,5 +86,8 @@ private:
   vector<Object> objects;
 
 };
+
+Direction PointToDirection(const cv::Point2f point);
+Distance ColorToDistance(const uint8_t color);
 
 }

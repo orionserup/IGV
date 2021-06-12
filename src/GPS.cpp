@@ -15,16 +15,18 @@ using namespace igv;
 GPS::GPS(): myport(GPSPORT, B9600){}
 
 void GPS::Probe(){
-
+  
+    this->__CLANG_ATOMIC_SHORT_LOCK_FREE
 }
 
 Direction GPS::GetBearingTo(double lat, double lon){
     return this->gps.courseTo(this->CurrLat, this->CurrLong, lat, lon);
 }
 
-double GPS::GetDistanceTo(double lat, double lon){
+Distance GPS::GetDistanceTo(double lat, double lon){
     return this->gps.distanceBetween(this->CurrLat, this->CurrLong,lat,lon);
 }
+
 
 #else 
 

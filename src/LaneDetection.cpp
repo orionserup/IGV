@@ -227,6 +227,8 @@ void LaneDetector::DetectLanes(Mat &image)
 
     imshow("LDed", imgcopy);
     waitKey(0);
+
+    imwrite("LDed.png", imgcopy);
     
 #endif
 
