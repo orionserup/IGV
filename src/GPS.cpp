@@ -16,7 +16,7 @@ GPS::GPS(): myport(GPSPORT, B9600){}
 
 void GPS::Probe(){
   
-    this->__CLANG_ATOMIC_SHORT_LOCK_FREE
+
 }
 
 Direction GPS::GetBearingTo(double lat, double lon){

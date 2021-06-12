@@ -135,6 +135,8 @@ MotorController::~MotorController() {
   PhidgetBLDCMotor_delete(&this->left);
   PhidgetBLDCMotor_delete(&this->right);
 
+}
+
 
 void HandlePhidgetError() {
     
