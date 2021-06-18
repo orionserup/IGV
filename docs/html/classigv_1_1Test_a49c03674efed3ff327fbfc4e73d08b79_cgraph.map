@@ -1,0 +1,6 @@
+<map id="igv::Test::CameraTest" name="igv::Test::CameraTest">
+<area shape="rect" id="node1" title="Tests to see if the Cameras are connected and get valid images." alt="" coords="5,56,165,83"/>
+<area shape="rect" id="node2" href="$classigv_1_1Camera.html#aa80dd9ac8443af0faba7dbaea781711b" title="Captures an image and puts it in the Image." alt="" coords="220,5,379,32"/>
+<area shape="rect" id="node3" href="$classigv_1_1Camera.html#a26bf5c88950071e86c6bef6a0bdbd8bb" title="Gets the Captured Image." alt="" coords="213,56,385,83"/>
+<area shape="rect" id="node4" href="$classigv_1_1Test.html#ac8063f196d62fce7574babf8ee79e9be" title="Checks if the Test is ready to be run." alt="" coords="237,107,361,133"/>
+</map>

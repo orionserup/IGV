@@ -1,0 +1,7 @@
+/home/orion/Code/Projects/IGV/build/CMakeFiles/install/strip.dir
+/home/orion/Code/Projects/IGV/build/CMakeFiles/install/local.dir
+/home/orion/Code/Projects/IGV/build/CMakeFiles/install.dir
+/home/orion/Code/Projects/IGV/build/CMakeFiles/list_install_components.dir
+/home/orion/Code/Projects/IGV/build/CMakeFiles/rebuild_cache.dir
+/home/orion/Code/Projects/IGV/build/CMakeFiles/edit_cache.dir
+/home/orion/Code/Projects/IGV/build/CMakeFiles/IGV.dir

@@ -1,0 +1,4 @@
+<map id="igv::MotorController::ChangeDirection" name="igv::MotorController::ChangeDirection">
+<area shape="rect" id="node1" title="Turns the vehicle while moving." alt="" coords="5,5,156,47"/>
+<area shape="rect" id="node2" href="$classigv_1_1MotorController.html#a07dab34d6159d22a2d769fc8379a6ebd" title="Sets the Speed of a motor." alt="" coords="204,5,355,47"/>
+</map>

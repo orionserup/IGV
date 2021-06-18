@@ -1,0 +1,5 @@
+<map id="igv::LaneDetector" name="igv::LaneDetector">
+<area shape="rect" id="node1" title="Class that Detects Lanes From Images." alt="" coords="5,300,256,524"/>
+<area shape="rect" id="node2" title=" " alt="" coords="37,160,225,237"/>
+<area shape="rect" id="node3" href="$structigv_1_1Lane.html" title="Structure to hold the Data for a Lane." alt="" coords="71,5,191,97"/>
+</map>

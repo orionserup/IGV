@@ -88,6 +88,7 @@ void MotorController::SetSpeed(Motor motor, Speed speed) {
 
 static void HandlePhidgetError();
 
+/// Initializes the Phidget Motor Hub and Phidet Motors
 MotorController::MotorController(const uint8_t leftport, const uint8_t rightport){
 
   //Create your Phidget channels
@@ -108,9 +109,10 @@ MotorController::MotorController(const uint8_t leftport, const uint8_t rightport
 
 }
 
+/// Default Constructor uses Defined Motor Ports for left and right
 MotorController::MotorController(): MotorController(LEFTMOTORPORT, RIGHTMOTORPORT) {}
 
-
+/// Sets the Phidget Motor Controller Speed
 void MotorController::SetSpeed(const Motor motor, const Speed speed) {
 
   PhidgetBLDCMotorHandle bldc = motor == LEFT? this->left: this->right;
