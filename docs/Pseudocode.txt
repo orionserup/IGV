@@ -1,0 +1,8 @@
+
+
+Navigation Loop:
+
+    Read Speed from Accelerometer...
+
+
+..
